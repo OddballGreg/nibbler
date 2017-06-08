@@ -26,15 +26,16 @@ void		ReadLib::runlib( int const & i ) {
 
 	read.open("./lib/lib.txt");
 	try {
-		read.is_open();
-		std::cout << "File ./lib/lib.txt is open." << std::endl;
-		for (_j = 0; _j < 1; _j++) {
-		//	getline(read, _libraries[_j]);
-			std::cout << "Reading _libraries from ./lib: " << _libraries.at(_j)
-			 << std::endl;
+		if (read.is_open()) {
+			std::cout << "File ./lib/lib.txt is open." << std::endl;
+			for (_j = 0; _j < 3; _j++) {
+				getline(read, str);
+				_libraries.push_back(str);
+				std::cout << "Reading _libraries from ./lib: " << _libraries.at(_j)
+				 << std::endl;
+			}
+			read.close();
 		}
-		read.close();
-	
 	} catch (...) {
 		std::cout << "\nError opening file ./lib/lib.txt" << std::endl;	 
 	}
