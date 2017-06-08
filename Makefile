@@ -1,8 +1,8 @@
 NAME=nibbler
 
-SRC= main.cpp
+SRC= ReadLib.class.cpp main.cpp
 
-OBJ= $(SRC:.c=.o)
+OBJ= $(SRC:.cpp=.o)
 
 HEAD=
 

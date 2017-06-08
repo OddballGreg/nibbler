@@ -16,6 +16,9 @@
 # include <GL/glx.h>
 # include <GL/glext.h>
 
+// Library Reading Class
+#include "ReadLib.class.hpp"
+
 // GameState Class
 //#include Gamestate.hpp
 
