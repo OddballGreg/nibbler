@@ -1,0 +1,16 @@
+#!/bin/bash
+#
+
+
+#
+# Directory and program name detection
+#
+
+# preserve the original working directory
+origDir="${PWD}"
+
+# Set progName to the program name, 
+prog="$0"
+while [[ -h ${prog} ]]; do
+	[[ "$(/bin/ls -ld "${prog}")" =~ .*' -> ' (.*)$ ]]
+new Prog="${BASH_REMATCH[1]}"
