@@ -1,5 +1,10 @@
 #include "ReadLib.class.hpp"
 
+extern "C" {
+	#include <dlfcn.h>
+}
+
+
 ReadLib::ReadLib( void ) {};
 
 ReadLib::~ReadLib( void ) {};
@@ -14,13 +19,7 @@ const ReadLib&	ReadLib::operator=( ReadLib const & lib ) {
 	return lib;	
 };
 
-const ReadLib&	ReadLib::operator[]( ReadLib const & lib ) {
-	//if (*this != lib)
-	//	*this = lib;
-	return lib;
-};
-
-void		ReadLib::runlib(const int&	i) {
+void		ReadLib::runlib( int const & i ) {
 
 	std::ifstream	read;
 	std::string		str;
@@ -29,14 +28,15 @@ void		ReadLib::runlib(const int&	i) {
 	try {
 		read.is_open();
 		std::cout << "File ./lib/lib.txt is open." << std::endl;
-		for (_j = _libraries.begin(); _j != _libraries.end(); _j++) {
-			getline(read, str);
-			std::cout << "Reading _libraries from ./lib: " << *_j << std::endl;
+		for (_j = 0; _j < 1; _j++) {
+		//	getline(read, _libraries[_j]);
+			std::cout << "Reading _libraries from ./lib: " << _libraries.at(_j)
+			 << std::endl;
 		}
 		read.close();
 	
 	} catch (...) {
-		std::cout << "Error opening file ./lib/lib.txt" << std::endl;	 
+		std::cout << "\nError opening file ./lib/lib.txt" << std::endl;	 
 	}
 
 	if (i != 200)
@@ -51,11 +51,12 @@ void		ReadLib::runlib(const int&	i) {
 	// global symbol namespace. the only way to get at bindings is by
 	// using the handle for this library.
 
-	//void	*libhandle = dlopen(fileName, RTLD_NOW | RTLD_LOCAL);
-	//if (libHandle == NULL) {
-	//	std::cout << "Falied loading library: " << _libraries[0] << dlerror() << std::endl;
-	//	return;
-	//}
+//	void	*libhandle = dlopen(_libraries.at(0), RTLD_NOW | RTLD_LOCAL);
+//	if (libhandle == NULL) {
+//		std::cout << "Falied loading library: " << _libraries.at(0) << 
+//		dlerror() << std::endl;
+//		return;
+//	}
 
 	//std::cout << i << std::endl;
 }

@@ -6,8 +6,10 @@ OBJ= $(SRC:.cpp=.o)
 
 HEAD=
 
+FLAGS= -Wall -Wextra -Werror -Wno-unused -Wconversion --std=c++11
+
 $(NAME):
-	clang++ -Wall -Wextra -Werror -Wno-unused -Wconversion -c $(SRC)
+	clang++ $(FLAGS) -c $(SRC)
 	clang++ -Wall -Wextra -Werror -o $(NAME) $(OBJ)
 
 all: $(NAME)

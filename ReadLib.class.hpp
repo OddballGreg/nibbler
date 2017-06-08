@@ -3,16 +3,14 @@
 #include <stdlib.h>
 #include <vector>
 #include <fstream>
-
-extern "C" {
-	#include <dlfcn.h>
-}
+#include <cstdio>
+#include <algorithm>
 
 class ReadLib {
 
 	protected:
 		std::vector<std::string>				_libraries;
-		std::vector<std::string>::iterator		_j;
+		std::vector<std::string>::size_type		_j;
 
 	public:
 		ReadLib( void );
@@ -20,7 +18,6 @@ class ReadLib {
 		ReadLib( ReadLib const & copy );
 		
 		const ReadLib&	operator=( ReadLib const & lib );	
-		const ReadLib&	operator[]( ReadLib const & lib );	
 
 		void		runlib(const int& i);
 
