@@ -7,6 +7,9 @@
 #include <vector>
 #include <fstream>
 
+extern "C" {
+	#include <dlfcn.h>
+}
 
 // OpenGL Libraries
 // But this needs to be done by the CMake or bash because we are using

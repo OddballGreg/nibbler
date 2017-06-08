@@ -6,6 +6,10 @@
 #include <cstdio>
 #include <algorithm>
 
+extern "C" {
+	#include <dlfcn.h>
+}
+
 class ReadLib {
 
 	protected:
