@@ -3,6 +3,10 @@
 
 #include <iostream>
 #include <string>
+#include <stdlib.h>
+#include <vector>
+#include <fstream>
+
 
 // OpenGL Libraries
 // But this needs to be done by the CMake or bash because we are using
