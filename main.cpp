@@ -1,5 +1,7 @@
 #include "main.hpp"
 
+void puts(message) { std::cout << message << std::endl; }
+
 int main(void)
 {
 	int state_code = 0;
