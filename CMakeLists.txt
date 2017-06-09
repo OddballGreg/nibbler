@@ -33,6 +33,24 @@ if (USE_OPENGL)
 	set (EXTRA_LIBS ${EXTRA_LIBS} OpenGL)
 endif (USE_OPENGL)
 
+if (USE_VTK)
+	include_directories ("${PROJECT_SOURCE_DIR}/lib/VTK")
+	add_subdirectory (VTK)
+	set (EXTRA_LIBS ${EXTRA_LIBS} VTK)
+endif (USE_VTK)
+
+if (USE_WEBGL)
+	include_directories ("${PROJECT_SOURCE_DIR}/lib/WebGL")
+	add_subdirectory (WebGL)
+	set (EXTRA_LIBS ${EXTRA_LIBS} WebGL)
+endif (USE_WEBGL)
+
+# install the libraries if necessary
+
+# OpenGL install
+install (TARGETS OpenGL DESTINATION bin)
+install (FILES )
+
 # add the executable
 add_executable(Nibbler nibbler.cxx)
 target_link_libraries (Nibbler )

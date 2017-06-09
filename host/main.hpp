@@ -13,13 +13,8 @@ extern "C" {
 
 #include "../config/NibblerConfig.h"
 
-// OpenGL Libraries
-
-#ifdef USE_OPENGL
-# include <GL/gl.h>
-# include <GL/glx.h>
-# include <GL/glext.h>
-#endif
+// OpenGL libraries
+#include "../lib/OpenGL/OpenGL.hpp"
 
 // Library Reading Class
 #include "./ReadLib.class.hpp"
