@@ -2,7 +2,7 @@ NAME=nibbler
 
 HOST= $(addprefix host/, ReadLib.class.cpp)
 
-SRC= main.cpp
+SRC= $(HOST) main.cpp
 
 OBJ= ./*.o
 

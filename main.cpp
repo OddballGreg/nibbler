@@ -1,8 +1,6 @@
-#include "main.hpp"
+#include "./main.hpp"
 
-/**
- * Loads the library depending on what is chosen.
- */
+
 int				main( void )
 {
 
