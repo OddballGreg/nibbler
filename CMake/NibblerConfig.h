@@ -3,5 +3,5 @@
 #define Nibbler_VERSION_MINOR 0
 
 /* #undef USE_OPENGL */
-/* #undef USE_VTK */
+#define USE_VTK
 /* #undef USE_WEBGL */

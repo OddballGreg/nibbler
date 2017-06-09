@@ -4,6 +4,9 @@ project (Nibbler)
 set (Nibbler_VERSION_MAJOR 1)
 set (Nibbler_VERSION_MINOR 0)
 
+# Set the module path for Find.cmake to be found
+set (CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}")
+
 # configure a header file to pass some of the CMake settings
 # to the source code
 configure_file (
@@ -24,32 +27,30 @@ option (USE_WEBGL
 		"Use the WebGL library on implementation" OFF)
 
 # add the libraries in the subdirectories
-if (NOT DEFINED CMAKE_LIBRARY_DIRECTORY)
-	set (CMAKE_LIBRARY_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
-	set (CMAKE_OPENGL_DIRECTORY ${CMAKE_LIBRARY_DIRECTORY}/OpenGL)
-	set (CMAKE_VTK_DIRECTORY ${CMAKE_LIBRARY_DIRECTORY}/VTK)
-	set (CMAKE_WEBGL_DIRECTORY ${CMAKE_LIBRARY_DIRECTORY}/WebGL)
-endif()
+set (CMAKE_LIBRARY_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
+set (OPENGL_DIR ${CMAKE_LIBRARY_DIRECTORY}/OpenGL)
+set (VTK_DIR ${CMAKE_LIBRARY_DIRECTORY}/vtk)
+set (WEBGL_DIR ${CMAKE_LIBRARY_DIRECTORY}/WebGL)
 
-find_package (VTK REQUIRED)
+find_package (VTK_DIR REQUIRED)
 include (${VTK_USE_FILE})
 
 link_directories(${CMAKE_LIBRARY_DIRECTORY})
 
 if (USE_OPENGL)
-	include_directories ("${CMAKE_OPENGL_DIRECTORY}")
+	include_directories ("${OPENGL_DIR}")
 	add_subdirectory (OpenGL)
 	set (EXTRA_LIBS ${EXTRA_LIBS} OpenGL)
 endif (USE_OPENGL)
 
 if (USE_VTK)
-	include_directories ("${CMAKE_VTK_DIRECTORY}")
+	include_directories ("${VTK_DIR}")
 	add_subdirectory (VTK)
 	set (EXTRA_LIBS ${EXTRA_LIBS} VTK)
 endif (USE_VTK)
 
 if (USE_WEBGL)
-	include_directories ("${CMAKE_WEBGL_DIRECTORY}")
+	include_directories ("${WEBGL_DIR}")
 	add_subdirectory (WebGL)
 	set (EXTRA_LIBS ${EXTRA_LIBS} WebGL)
 endif (USE_WEBGL)
