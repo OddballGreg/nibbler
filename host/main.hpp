@@ -11,16 +11,18 @@ extern "C" {
 	#include <dlfcn.h>
 }
 
-// OpenGL Libraries
-// But this needs to be done by the CMake or bash because we are using
-// dynamically linked libraries
+#include "../config/NibblerConfig.h"
 
+// OpenGL Libraries
+
+#ifdef USE_OPENGL
 # include <GL/gl.h>
 # include <GL/glx.h>
 # include <GL/glext.h>
+#endif
 
 // Library Reading Class
-#include "./host/ReadLib.class.hpp"
+#include "./ReadLib.class.hpp"
 
 // GameState Class
 //#include Gamestate.hpp
