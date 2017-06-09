@@ -17,9 +17,9 @@ include_directories("${PROJECT_BINARY_DIR}")
 
 # optional loading of the libraries
 option (USE_OPENGL
-		"Use the OpenGL library on implementation" ON)
+		"Use the OpenGL library on implementation" OFF)
 option (USE_VTK
-		"Use the VTK library on implementation" OFF)
+		"Use the VTK library on implementation" ON)
 option (USE_WEBGL
 		"Use the WebGL library on implementation" OFF)
 
@@ -30,6 +30,10 @@ if (NOT DEFINED CMAKE_LIBRARY_DIRECTORY)
 	set (CMAKE_VTK_DIRECTORY ${CMAKE_LIBRARY_DIRECTORY}/VTK)
 	set (CMAKE_WEBGL_DIRECTORY ${CMAKE_LIBRARY_DIRECTORY}/WebGL)
 endif()
+
+find_package (VTK REQUIRED)
+include (${VTK_USE_FILE})
+
 link_directories(${CMAKE_LIBRARY_DIRECTORY})
 
 if (USE_OPENGL)
@@ -56,10 +60,14 @@ endif (USE_WEBGL)
 install (TARGETS OpenGL DESTINATION bin)
 install (FILES OpenGL DESTINATION include)
 
+# VTK install
+install (TARGETS VTK DESTINATION bin)
+install (FILES VTK DESTINATION include)
+
 # add the install target
 install (TARGETS Nibbler DESTINATION bin)
 install (FILES "${PROJECT_BINARY_DIR}/NibblerConfig.h" DESTINATION include)
 
 # add the executable
 add_executable(Nibbler nibbler.cxx)
-target_link_libraries (Nibbler OpenGL VTK WebGL)
+target_link_libraries (Nibbler ${VTK_LIBRARIES})
