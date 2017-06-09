@@ -12,6 +12,9 @@ extern "C" {
 
 class ReadLib {
 
+	private:
+		void*	_libHandle;
+
 	protected:
 		std::vector<std::string>				_libraries;
 		std::vector<std::string>::size_type		_j;
@@ -24,5 +27,5 @@ class ReadLib {
 		const ReadLib&	operator=( ReadLib const & lib );	
 
 		void		runlib(const int& i);
-
+		void		callRun( void );
 };

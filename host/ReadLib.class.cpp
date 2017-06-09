@@ -1,4 +1,9 @@
-#include "ReadLib.class.hpp"
+#include "./ReadLib.class.hpp"
+
+/**
+ * This is the type of run functions defined by our libraries
+ */
+typedef void	runFunction( void );
 
 ReadLib::ReadLib( void ) {};
 
@@ -42,16 +47,37 @@ void		ReadLib::runlib( int const & i ) {
 	// global symbol namespace. the only way to get at bindings is by
 	// using the handle for this library.
 
-	void	*libhandle = dlopen(_libraries.at(i).c_str(), RTLD_NOW | RTLD_LOCAL);
-	if (libhandle == NULL) {
+	_libHandle = dlopen(_libraries.at(i).c_str(), RTLD_NOW | RTLD_LOCAL);
+	if (_libHandle == NULL) {
 		std::cout << "Falied loading library: " << _libraries.at(i) << std::endl; 
 		std::cout << dlerror() << std::endl;
 		return;
 	} else {
-		std::cout << "Cool beans" << std::endl;
+		std::cout << "Cool beans... You library has loaded." << std::endl;
+		callRun();
 	}
 
 	//std::cout << i << std::endl;
 }
 
 
+/**
+ * This calls the `run` function in the indicated library
+ */
+void		ReadLib::callRun( void ) {
+	std::cout << "Running... " << std::endl;
+
+	// The circumlocution used to assign `runFn` is required, because
+	// directly assigning a `void *` to a function pointer type is
+	// an undefined operation in ISO C. Reference:
+	// <http://pubs.opengroup.org/onlinepubs/009695399/functions/dlsym.html>
+	runFunction	*runFn;
+	*(void **)(&runFn) = dlsym(_libHandle, "run");
+
+	if (runFn == NULL) {
+		std::cout << "Trouble finding `run`: " << dlerror() << std::endl;
+	}
+
+	runFn();
+
+};

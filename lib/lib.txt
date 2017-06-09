@@ -1,4 +1,3 @@
-library you
-ll
-
-ldfd
+../lib/OpenGL/init.cpp
+./lib/VTK/init.cpp
+./WebGL/init.cpp
