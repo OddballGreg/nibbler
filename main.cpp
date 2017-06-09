@@ -1,9 +1,9 @@
 #include "./main.hpp"
 
+void puts(std::string message) { std::cout << message << std::endl; }
 
 int				main( void )
 {
-
 	std::string	input;
 	int			run(1);
 
@@ -44,7 +44,6 @@ int				main( void )
 	//while (state_code != -1)
 	//{
 	//	state_code = gamestate.run_frame();
-
 	//}
 	return 0;
 }
