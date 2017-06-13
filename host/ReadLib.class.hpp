@@ -4,6 +4,7 @@
 #include <vector>
 #include <fstream>
 #include <cstdio>
+#include <array>
 #include <algorithm>
 
 extern "C" {
@@ -26,6 +27,8 @@ class ReadLib {
 		
 		const ReadLib&	operator=( ReadLib const & lib );	
 
-		void		runlib(const int& i);
-		void		callRun( void );
+		void			runlib(const int& i);
+		std::string		execute( const char* cmd );
+		void			openLib( int const & i );
+		void			callRun( void );
 };
