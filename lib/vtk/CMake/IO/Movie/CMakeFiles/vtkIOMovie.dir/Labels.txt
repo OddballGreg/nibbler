@@ -1,9 +1,0 @@
-# Target labels
- vtkIOMovie
-# Source files and their labels
-/home/cameron/Downloads/VTK-7.0.0/IO/Movie/vtkGenericMovieWriter.cxx
-/home/cameron/Downloads/VTK-7.0.0/IO/Movie/vtkOggTheoraWriter.cxx
-/home/cameron/Projects/nibbler-1/lib/vtk/IO/Movie/vtkIOMovieConfigure.h
-/home/cameron/Downloads/VTK-7.0.0/IO/Movie/vtkGenericMovieWriter.h
-/home/cameron/Downloads/VTK-7.0.0/IO/Movie/vtkOggTheoraWriter.h
-/home/cameron/Projects/nibbler-1/lib/vtk/IO/Movie/vtkIOMovieModule.h

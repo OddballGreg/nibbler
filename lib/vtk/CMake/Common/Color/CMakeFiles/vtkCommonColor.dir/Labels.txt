@@ -1,8 +1,0 @@
-# Target labels
- vtkCommonColor
-# Source files and their labels
-/home/cameron/Downloads/VTK-7.0.0/Common/Color/vtkColorSeries.cxx
-/home/cameron/Downloads/VTK-7.0.0/Common/Color/vtkNamedColors.cxx
-/home/cameron/Downloads/VTK-7.0.0/Common/Color/vtkColorSeries.h
-/home/cameron/Downloads/VTK-7.0.0/Common/Color/vtkNamedColors.h
-/home/cameron/Projects/nibbler-1/lib/vtk/Common/Color/vtkCommonColorModule.h

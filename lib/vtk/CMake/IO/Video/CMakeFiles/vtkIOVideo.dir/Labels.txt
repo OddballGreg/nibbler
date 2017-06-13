@@ -1,6 +1,0 @@
-# Target labels
- vtkIOVideo
-# Source files and their labels
-/home/cameron/Downloads/VTK-7.0.0/IO/Video/vtkVideoSource.cxx
-/home/cameron/Downloads/VTK-7.0.0/IO/Video/vtkVideoSource.h
-/home/cameron/Projects/nibbler-1/lib/vtk/IO/Video/vtkIOVideoModule.h

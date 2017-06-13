@@ -1,8 +1,0 @@
-# Target labels
- vtkViewsContext2D
-# Source files and their labels
-/home/cameron/Downloads/VTK-7.0.0/Views/Context2D/vtkContextView.cxx
-/home/cameron/Downloads/VTK-7.0.0/Views/Context2D/vtkContextInteractorStyle.cxx
-/home/cameron/Downloads/VTK-7.0.0/Views/Context2D/vtkContextView.h
-/home/cameron/Downloads/VTK-7.0.0/Views/Context2D/vtkContextInteractorStyle.h
-/home/cameron/Projects/nibbler-1/lib/vtk/Views/Context2D/vtkViewsContext2DModule.h

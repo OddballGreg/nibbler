@@ -1,5 +1,0 @@
-# Target labels
- vtkjsoncpp
-# Source files and their labels
-/home/cameron/Downloads/VTK-7.0.0/ThirdParty/jsoncpp/vtkjsoncpp/json/json.h
-/home/cameron/Downloads/VTK-7.0.0/ThirdParty/jsoncpp/vtkjsoncpp/jsoncpp.cpp
