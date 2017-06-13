@@ -1,0 +1,28 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/LOD/vtkLODActor.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/LOD/vtkQuadricLODActor.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/LOD/vtkLODActor.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/LOD/vtkQuadricLODActor.h"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/LOD/vtkRenderingLODModule.h"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"vtkRenderingLOD"
+		],
+		"name" : "vtkRenderingLOD"
+	}
+}

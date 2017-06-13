@@ -5,7 +5,7 @@ set (Nibbler_VERSION_MAJOR 1)
 set (Nibbler_VERSION_MINOR 0)
 
 # Set the module path for Find.cmake to be found
-set (CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}")
+set (CMAKE_MODULE_PATH "/usr/lib:${CMAKE_MODULE_PATH}")
 
 # configure a header file to pass some of the CMake settings
 # to the source code
@@ -28,47 +28,47 @@ option (USE_WEBGL
 
 # add the libraries in the subdirectories
 set (CMAKE_LIBRARY_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
-set (OPENGL_DIR ${CMAKE_LIBRARY_DIRECTORY}/OpenGL)
-set (VTK_DIR ${CMAKE_LIBRARY_DIRECTORY}/vtk)
-set (WEBGL_DIR ${CMAKE_LIBRARY_DIRECTORY}/WebGL)
+set (OPENGL_DIR ${CMAKE_MODULE_PATH})
+set (VTK_DIR ${CMAKE_MODULE_PATH})
+set (WEBGL_DIR ${CMAKE_MODULE_PATH})
 
-find_package (VTK_DIR REQUIRED)
-include (${VTK_USE_FILE})
+include_directories(${CMAKE_MODULE_PATH})
 
-link_directories(${CMAKE_LIBRARY_DIRECTORY})
+add_library (A MODULE libvtkalglib.so.5.10)
+target_link_libraries(A)
 
 if (USE_OPENGL)
 	include_directories ("${OPENGL_DIR}")
-	add_subdirectory (OpenGL)
-	set (EXTRA_LIBS ${EXTRA_LIBS} OpenGL)
+	# add_subdirectory (OpenGL)
+	# set (EXTRA_LIBS ${EXTRA_LIBS} OpenGL)
 endif (USE_OPENGL)
 
 if (USE_VTK)
 	include_directories ("${VTK_DIR}")
-	add_subdirectory (VTK)
-	set (EXTRA_LIBS ${EXTRA_LIBS} VTK)
+	# add_subdirectory (VTK)
+	# set (EXTRA_LIBS ${EXTRA_LIBS} VTK)
 endif (USE_VTK)
 
 if (USE_WEBGL)
 	include_directories ("${WEBGL_DIR}")
-	add_subdirectory (WebGL)
-	set (EXTRA_LIBS ${EXTRA_LIBS} WebGL)
+	# add_subdirectory (WebGL)
+	# set (EXTRA_LIBS ${EXTRA_LIBS} WebGL)
 endif (USE_WEBGL)
 
 # install the libraries if necessary
 
 # OpenGL install
-install (TARGETS OpenGL DESTINATION bin)
-install (FILES OpenGL DESTINATION include)
+#install (TARGETS OpenGL DESTINATION bin)
+#install (FILES OpenGL DESTINATION include)
 
 # VTK install
-install (TARGETS VTK DESTINATION bin)
-install (FILES VTK DESTINATION include)
+#install (TARGETS VTK DESTINATION bin)
+#install (FILES VTK DESTINATION include)
 
 # add the install target
-install (TARGETS Nibbler DESTINATION bin)
-install (FILES "${PROJECT_BINARY_DIR}/NibblerConfig.h" DESTINATION include)
+#install (TARGETS Nibbler DESTINATION bin)
+#install (FILES "${PROJECT_BINARY_DIR}/NibblerConfig.h" DESTINATION include)
 
 # add the executable
-add_executable(Nibbler nibbler.cxx)
+add_executable(Nibbler .cxx)
 target_link_libraries (Nibbler ${VTK_LIBRARIES})

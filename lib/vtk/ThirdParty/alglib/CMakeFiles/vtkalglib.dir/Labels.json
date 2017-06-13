@@ -1,0 +1,40 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/ThirdParty/alglib/ap.cpp"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/ThirdParty/alglib/bdsvd.cpp"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/ThirdParty/alglib/bidiagonal.cpp"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/ThirdParty/alglib/blas.cpp"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/ThirdParty/alglib/lq.cpp"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/ThirdParty/alglib/qr.cpp"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/ThirdParty/alglib/reflections.cpp"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/ThirdParty/alglib/rotations.cpp"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/ThirdParty/alglib/svd.cpp"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"vtkalglib"
+		],
+		"name" : "vtkalglib"
+	}
+}

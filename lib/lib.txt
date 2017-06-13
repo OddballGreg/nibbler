@@ -1,3 +1,4 @@
 ./lib/VTK/init.cpp
+/usr/lib/libvtkalglib.so.5.10 
 ./lib/OpenGL/init.cpp
 ./lib/WebGL/init.cpp

@@ -1,0 +1,23 @@
+# Target labels
+ vtkIOMINC
+# Source files and their labels
+/home/cameron/Downloads/VTK-7.0.0/IO/MINC/vtkMINCImageAttributes.cxx
+/home/cameron/Downloads/VTK-7.0.0/IO/MINC/vtkMINCImageReader.cxx
+/home/cameron/Downloads/VTK-7.0.0/IO/MINC/vtkMINCImageWriter.cxx
+/home/cameron/Downloads/VTK-7.0.0/IO/MINC/vtkMNIObjectReader.cxx
+/home/cameron/Downloads/VTK-7.0.0/IO/MINC/vtkMNIObjectWriter.cxx
+/home/cameron/Downloads/VTK-7.0.0/IO/MINC/vtkMNITagPointReader.cxx
+/home/cameron/Downloads/VTK-7.0.0/IO/MINC/vtkMNITagPointWriter.cxx
+/home/cameron/Downloads/VTK-7.0.0/IO/MINC/vtkMNITransformReader.cxx
+/home/cameron/Downloads/VTK-7.0.0/IO/MINC/vtkMNITransformWriter.cxx
+/home/cameron/Downloads/VTK-7.0.0/IO/MINC/vtkMINC.h
+/home/cameron/Downloads/VTK-7.0.0/IO/MINC/vtkMINCImageAttributes.h
+/home/cameron/Downloads/VTK-7.0.0/IO/MINC/vtkMINCImageReader.h
+/home/cameron/Downloads/VTK-7.0.0/IO/MINC/vtkMINCImageWriter.h
+/home/cameron/Downloads/VTK-7.0.0/IO/MINC/vtkMNIObjectReader.h
+/home/cameron/Downloads/VTK-7.0.0/IO/MINC/vtkMNIObjectWriter.h
+/home/cameron/Downloads/VTK-7.0.0/IO/MINC/vtkMNITagPointReader.h
+/home/cameron/Downloads/VTK-7.0.0/IO/MINC/vtkMNITagPointWriter.h
+/home/cameron/Downloads/VTK-7.0.0/IO/MINC/vtkMNITransformReader.h
+/home/cameron/Downloads/VTK-7.0.0/IO/MINC/vtkMNITransformWriter.h
+/home/cameron/Projects/nibbler-1/lib/vtk/IO/MINC/vtkIOMINCModule.h

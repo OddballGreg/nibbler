@@ -1,0 +1,10 @@
+# Target labels
+ vtkIOPLY
+# Source files and their labels
+/home/cameron/Downloads/VTK-7.0.0/IO/PLY/vtkPLY.cxx
+/home/cameron/Downloads/VTK-7.0.0/IO/PLY/vtkPLYReader.cxx
+/home/cameron/Downloads/VTK-7.0.0/IO/PLY/vtkPLYWriter.cxx
+/home/cameron/Downloads/VTK-7.0.0/IO/PLY/vtkPLY.h
+/home/cameron/Downloads/VTK-7.0.0/IO/PLY/vtkPLYReader.h
+/home/cameron/Downloads/VTK-7.0.0/IO/PLY/vtkPLYWriter.h
+/home/cameron/Projects/nibbler-1/lib/vtk/IO/PLY/vtkIOPLYModule.h

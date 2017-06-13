@@ -1,0 +1,4 @@
+# Target labels
+ vtktiff
+# Source files and their labels
+/home/cameron/Downloads/VTK-7.0.0/ThirdParty/tiff/vtktiff/mkg3states.c

@@ -1,0 +1,10 @@
+# Target labels
+ vtkRenderingImage
+# Source files and their labels
+/home/cameron/Downloads/VTK-7.0.0/Rendering/Image/vtkImageResliceMapper.cxx
+/home/cameron/Downloads/VTK-7.0.0/Rendering/Image/vtkImageSliceCollection.cxx
+/home/cameron/Downloads/VTK-7.0.0/Rendering/Image/vtkImageStack.cxx
+/home/cameron/Downloads/VTK-7.0.0/Rendering/Image/vtkImageResliceMapper.h
+/home/cameron/Downloads/VTK-7.0.0/Rendering/Image/vtkImageSliceCollection.h
+/home/cameron/Downloads/VTK-7.0.0/Rendering/Image/vtkImageStack.h
+/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/Image/vtkRenderingImageModule.h

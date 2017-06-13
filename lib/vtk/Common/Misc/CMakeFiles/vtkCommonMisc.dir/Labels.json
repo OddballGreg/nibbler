@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Common/Misc/vtkContourValues.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Common/Misc/vtkErrorCode.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Common/Misc/vtkFunctionParser.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Common/Misc/vtkHeap.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Common/Misc/vtkPolygonBuilder.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Common/Misc/vtkContourValues.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Common/Misc/vtkErrorCode.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Common/Misc/vtkFunctionParser.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Common/Misc/vtkHeap.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Common/Misc/vtkPolygonBuilder.h"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Common/Misc/vtkCommonMiscModule.h"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"vtkCommonMisc"
+		],
+		"name" : "vtkCommonMisc"
+	}
+}

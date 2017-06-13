@@ -1,0 +1,8 @@
+# Target labels
+ vtkRenderingLOD
+# Source files and their labels
+/home/cameron/Downloads/VTK-7.0.0/Rendering/LOD/vtkLODActor.cxx
+/home/cameron/Downloads/VTK-7.0.0/Rendering/LOD/vtkQuadricLODActor.cxx
+/home/cameron/Downloads/VTK-7.0.0/Rendering/LOD/vtkLODActor.h
+/home/cameron/Downloads/VTK-7.0.0/Rendering/LOD/vtkQuadricLODActor.h
+/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/LOD/vtkRenderingLODModule.h

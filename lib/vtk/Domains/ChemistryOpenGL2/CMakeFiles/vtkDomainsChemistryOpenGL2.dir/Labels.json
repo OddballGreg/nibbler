@@ -1,0 +1,52 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/ChemistryOpenGL2/vtkOpenGLMoleculeMapper.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/ChemistryOpenGL2/vtkOpenGLSphereMapper.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/ChemistryOpenGL2/vtkOpenGLStickMapper.cxx"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Domains/ChemistryOpenGL2/vtkSphereMapperVS.cxx"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Domains/ChemistryOpenGL2/vtkStickMapperVS.cxx"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Domains/ChemistryOpenGL2/vtkDomainsChemistryOpenGL2ObjectFactory.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/ChemistryOpenGL2/vtkOpenGLMoleculeMapper.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/ChemistryOpenGL2/vtkOpenGLSphereMapper.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/ChemistryOpenGL2/vtkOpenGLStickMapper.h"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Domains/ChemistryOpenGL2/vtkDomainsChemistryOpenGL2ObjectFactory.h"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Domains/ChemistryOpenGL2/vtkDomainsChemistryOpenGL2Module.h"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Domains/ChemistryOpenGL2/vtkSphereMapperVS.cxx.rule"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Domains/ChemistryOpenGL2/vtkStickMapperVS.cxx.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"vtkDomainsChemistryOpenGL2"
+		],
+		"name" : "vtkDomainsChemistryOpenGL2"
+	}
+}

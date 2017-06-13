@@ -1,0 +1,16 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/ThirdParty/glew/vtkglew/src/glew.c"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"vtkglew"
+		],
+		"name" : "vtkglew"
+	}
+}

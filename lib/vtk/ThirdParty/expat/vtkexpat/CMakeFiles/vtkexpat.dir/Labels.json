@@ -1,0 +1,22 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/ThirdParty/expat/vtkexpat/xmlparse.c"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/ThirdParty/expat/vtkexpat/xmltok.c"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/ThirdParty/expat/vtkexpat/xmlrole.c"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"vtkexpat"
+		],
+		"name" : "vtkexpat"
+	}
+}

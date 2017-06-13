@@ -1,0 +1,16 @@
+# Target labels
+ vtkDomainsChemistryOpenGL2
+# Source files and their labels
+/home/cameron/Downloads/VTK-7.0.0/Domains/ChemistryOpenGL2/vtkOpenGLMoleculeMapper.cxx
+/home/cameron/Downloads/VTK-7.0.0/Domains/ChemistryOpenGL2/vtkOpenGLSphereMapper.cxx
+/home/cameron/Downloads/VTK-7.0.0/Domains/ChemistryOpenGL2/vtkOpenGLStickMapper.cxx
+/home/cameron/Projects/nibbler-1/lib/vtk/Domains/ChemistryOpenGL2/vtkSphereMapperVS.cxx
+/home/cameron/Projects/nibbler-1/lib/vtk/Domains/ChemistryOpenGL2/vtkStickMapperVS.cxx
+/home/cameron/Projects/nibbler-1/lib/vtk/Domains/ChemistryOpenGL2/vtkDomainsChemistryOpenGL2ObjectFactory.cxx
+/home/cameron/Downloads/VTK-7.0.0/Domains/ChemistryOpenGL2/vtkOpenGLMoleculeMapper.h
+/home/cameron/Downloads/VTK-7.0.0/Domains/ChemistryOpenGL2/vtkOpenGLSphereMapper.h
+/home/cameron/Downloads/VTK-7.0.0/Domains/ChemistryOpenGL2/vtkOpenGLStickMapper.h
+/home/cameron/Projects/nibbler-1/lib/vtk/Domains/ChemistryOpenGL2/vtkDomainsChemistryOpenGL2ObjectFactory.h
+/home/cameron/Projects/nibbler-1/lib/vtk/Domains/ChemistryOpenGL2/vtkDomainsChemistryOpenGL2Module.h
+/home/cameron/Projects/nibbler-1/lib/vtk/Domains/ChemistryOpenGL2/vtkSphereMapperVS.cxx.rule
+/home/cameron/Projects/nibbler-1/lib/vtk/Domains/ChemistryOpenGL2/vtkStickMapperVS.cxx.rule

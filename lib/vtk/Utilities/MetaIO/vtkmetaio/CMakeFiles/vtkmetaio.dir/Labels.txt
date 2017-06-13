@@ -1,0 +1,36 @@
+# Target labels
+ vtkMetaIO
+# Source files and their labels
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaTypes.h
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaUtils.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaArrow.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaBlob.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaCommand.h
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaCommand.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaContour.h
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaContour.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaDTITube.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaEllipse.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaGroup.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaGaussian.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaImage.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaImageUtils.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaLandmark.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaLine.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaMesh.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaMesh.h
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaObject.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaOutput.h
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaOutput.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaScene.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaSurface.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaTube.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaVesselTube.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaTransform.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaTubeGraph.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaForm.h
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaForm.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaArray.h
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaArray.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaFEMObject.h
+/home/cameron/Downloads/VTK-7.0.0/Utilities/MetaIO/vtkmetaio/metaFEMObject.cxx

@@ -1,0 +1,16 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/ThirdParty/tiff/vtktiff/mkg3states.c"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"vtktiff"
+		],
+		"name" : "vtkmkg3states"
+	}
+}

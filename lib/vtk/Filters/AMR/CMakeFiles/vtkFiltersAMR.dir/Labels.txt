@@ -1,0 +1,18 @@
+# Target labels
+ vtkFiltersAMR
+# Source files and their labels
+/home/cameron/Downloads/VTK-7.0.0/Filters/AMR/vtkAMRCutPlane.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/AMR/vtkAMRGaussianPulseSource.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/AMR/vtkAMRResampleFilter.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/AMR/vtkAMRSliceFilter.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/AMR/vtkAMRToMultiBlockFilter.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/AMR/vtkImageToAMR.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/AMR/vtkParallelAMRUtilities.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/AMR/vtkAMRCutPlane.h
+/home/cameron/Downloads/VTK-7.0.0/Filters/AMR/vtkAMRGaussianPulseSource.h
+/home/cameron/Downloads/VTK-7.0.0/Filters/AMR/vtkAMRResampleFilter.h
+/home/cameron/Downloads/VTK-7.0.0/Filters/AMR/vtkAMRSliceFilter.h
+/home/cameron/Downloads/VTK-7.0.0/Filters/AMR/vtkAMRToMultiBlockFilter.h
+/home/cameron/Downloads/VTK-7.0.0/Filters/AMR/vtkImageToAMR.h
+/home/cameron/Downloads/VTK-7.0.0/Filters/AMR/vtkParallelAMRUtilities.h
+/home/cameron/Projects/nibbler-1/lib/vtk/Filters/AMR/vtkFiltersAMRModule.h

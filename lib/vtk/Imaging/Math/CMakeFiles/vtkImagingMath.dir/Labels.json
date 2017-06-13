@@ -1,0 +1,64 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageDivergence.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageDotProduct.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageLogarithmicScale.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageLogic.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageMagnitude.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageMaskBits.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageMathematics.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageWeightedSum.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageDivergence.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageDotProduct.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageLogarithmicScale.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageLogic.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageMagnitude.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageMaskBits.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageMathematics.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageWeightedSum.h"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Imaging/Math/vtkImagingMathModule.h"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"vtkImagingMath"
+		],
+		"name" : "vtkImagingMath"
+	}
+}

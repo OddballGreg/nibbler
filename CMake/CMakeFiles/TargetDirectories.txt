@@ -1,0 +1,4 @@
+/home/cameron/Projects/nibbler-1/CMake/CMakeFiles/edit_cache.dir
+/home/cameron/Projects/nibbler-1/CMake/CMakeFiles/rebuild_cache.dir
+/home/cameron/Projects/nibbler-1/CMake/CMakeFiles/Nibbler.dir
+/home/cameron/Projects/nibbler-1/CMake/CMakeFiles/A.dir

@@ -1,0 +1,4 @@
+# Target labels
+ vtkUtilitiesEncodeString
+# Source files and their labels
+/home/cameron/Downloads/VTK-7.0.0/Utilities/EncodeString/vtkEncodeString.cxx

@@ -1,0 +1,22 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Utilities/DICOMParser/DICOMFile.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Utilities/DICOMParser/DICOMParser.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Utilities/DICOMParser/DICOMAppHelper.cxx"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"vtkDICOMParser"
+		],
+		"name" : "vtkDICOMParser"
+	}
+}

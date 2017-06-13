@@ -1,0 +1,6 @@
+# Target labels
+ vtkDICOMParser
+# Source files and their labels
+/home/cameron/Downloads/VTK-7.0.0/Utilities/DICOMParser/DICOMFile.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/DICOMParser/DICOMParser.cxx
+/home/cameron/Downloads/VTK-7.0.0/Utilities/DICOMParser/DICOMAppHelper.cxx

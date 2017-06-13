@@ -1,0 +1,10 @@
+# Target labels
+ vtkFiltersProgrammable
+# Source files and their labels
+/home/cameron/Downloads/VTK-7.0.0/Filters/Programmable/vtkProgrammableAttributeDataFilter.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/Programmable/vtkProgrammableFilter.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/Programmable/vtkProgrammableGlyphFilter.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/Programmable/vtkProgrammableAttributeDataFilter.h
+/home/cameron/Downloads/VTK-7.0.0/Filters/Programmable/vtkProgrammableFilter.h
+/home/cameron/Downloads/VTK-7.0.0/Filters/Programmable/vtkProgrammableGlyphFilter.h
+/home/cameron/Projects/nibbler-1/lib/vtk/Filters/Programmable/vtkFiltersProgrammableModule.h

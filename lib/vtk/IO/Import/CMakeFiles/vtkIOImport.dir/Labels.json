@@ -1,0 +1,49 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/IO/Import/vtk3DSImporter.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/IO/Import/vtkImporter.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/IO/Import/vtkVRMLImporter.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/IO/Import/vtkOBJImporter.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/IO/Import/vtkOBJImporterInternals.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/IO/Import/vtk3DS.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/IO/Import/vtk3DSImporter.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/IO/Import/vtkImporter.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/IO/Import/vtkVRMLImporter.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/IO/Import/vtkOBJImporter.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/IO/Import/vtkOBJImporterInternals.h"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/IO/Import/vtkIOImportModule.h"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"vtkIOImport"
+		],
+		"name" : "vtkIOImport"
+	}
+}

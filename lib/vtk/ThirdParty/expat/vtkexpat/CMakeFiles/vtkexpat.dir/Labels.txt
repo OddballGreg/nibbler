@@ -1,0 +1,6 @@
+# Target labels
+ vtkexpat
+# Source files and their labels
+/home/cameron/Downloads/VTK-7.0.0/ThirdParty/expat/vtkexpat/xmlparse.c
+/home/cameron/Downloads/VTK-7.0.0/ThirdParty/expat/vtkexpat/xmltok.c
+/home/cameron/Downloads/VTK-7.0.0/ThirdParty/expat/vtkexpat/xmlrole.c

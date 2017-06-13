@@ -1,0 +1,16 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Utilities/HashSource/vtkHashSource.cxx"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"vtkUtilitiesHashSource"
+		],
+		"name" : "vtkHashSource"
+	}
+}

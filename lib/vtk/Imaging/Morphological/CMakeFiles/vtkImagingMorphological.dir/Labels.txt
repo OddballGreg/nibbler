@@ -1,0 +1,24 @@
+# Target labels
+ vtkImagingMorphological
+# Source files and their labels
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Morphological/vtkImageConnector.cxx
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Morphological/vtkImageContinuousDilate3D.cxx
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Morphological/vtkImageContinuousErode3D.cxx
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Morphological/vtkImageDilateErode3D.cxx
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Morphological/vtkImageIslandRemoval2D.cxx
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Morphological/vtkImageNonMaximumSuppression.cxx
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Morphological/vtkImageOpenClose3D.cxx
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Morphological/vtkImageSeedConnectivity.cxx
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Morphological/vtkImageSkeleton2D.cxx
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Morphological/vtkImageThresholdConnectivity.cxx
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Morphological/vtkImageConnector.h
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Morphological/vtkImageContinuousDilate3D.h
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Morphological/vtkImageContinuousErode3D.h
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Morphological/vtkImageDilateErode3D.h
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Morphological/vtkImageIslandRemoval2D.h
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Morphological/vtkImageNonMaximumSuppression.h
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Morphological/vtkImageOpenClose3D.h
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Morphological/vtkImageSeedConnectivity.h
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Morphological/vtkImageSkeleton2D.h
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Morphological/vtkImageThresholdConnectivity.h
+/home/cameron/Projects/nibbler-1/lib/vtk/Imaging/Morphological/vtkImagingMorphologicalModule.h

@@ -1,0 +1,130 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleDrawPolygon.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleFlight.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleImage.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleJoystickActor.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleJoystickCamera.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleMultiTouchCamera.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleRubberBand2D.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleRubberBand3D.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleRubberBandPick.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleRubberBandZoom.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleTerrain.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleTrackballActor.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleTrackballCamera.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleTrackball.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleUnicam.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleUser.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleSwitch.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkParallelCoordinatesInteractorStyle.cxx"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Interaction/Style/vtkInteractionStyleObjectFactory.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleDrawPolygon.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleFlight.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleImage.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleJoystickActor.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleJoystickCamera.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleMultiTouchCamera.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleRubberBand2D.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleRubberBand3D.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleRubberBandPick.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleRubberBandZoom.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleTerrain.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleTrackballActor.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleTrackballCamera.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleTrackball.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleUnicam.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleUser.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkInteractorStyleSwitch.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Style/vtkParallelCoordinatesInteractorStyle.h"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Interaction/Style/vtkInteractionStyleObjectFactory.h"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Interaction/Style/vtkInteractionStyleModule.h"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"vtkInteractionStyle"
+		],
+		"name" : "vtkInteractionStyle"
+	}
+}

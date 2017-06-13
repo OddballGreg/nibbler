@@ -1,0 +1,58 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Texture/vtkTextureMapToCylinder.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Texture/vtkTextureMapToPlane.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Texture/vtkTextureMapToSphere.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Texture/vtkImplicitTextureCoords.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Texture/vtkThresholdTextureCoords.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Texture/vtkTransformTextureCoords.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Texture/vtkTriangularTCoords.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Texture/vtkTextureMapToCylinder.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Texture/vtkTextureMapToPlane.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Texture/vtkTextureMapToSphere.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Texture/vtkImplicitTextureCoords.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Texture/vtkThresholdTextureCoords.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Texture/vtkTransformTextureCoords.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Texture/vtkTriangularTCoords.h"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Filters/Texture/vtkFiltersTextureModule.h"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"vtkFiltersTexture"
+		],
+		"name" : "vtkFiltersTexture"
+	}
+}

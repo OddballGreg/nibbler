@@ -1,0 +1,154 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkBandedPolyDataContourFilter.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkButterflySubdivisionFilter.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkDijkstraGraphGeodesicPath.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkDijkstraImageGeodesicPath.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkFillHolesFilter.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkGeodesicPath.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkGraphGeodesicPath.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkLinearExtrusionFilter.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkLinearSubdivisionFilter.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkLoopSubdivisionFilter.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkPolyDataPointSampler.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkProjectedTexture.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkQuadRotationalExtrusionFilter.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkRibbonFilter.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkRotationalExtrusionFilter.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkRuledSurfaceFilter.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkSelectEnclosedPoints.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkSelectPolyData.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkSpherePuzzleArrows.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkSpherePuzzle.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkSubdivideTetra.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkOutlineFilter.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkSectorSource.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkBandedPolyDataContourFilter.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkButterflySubdivisionFilter.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkDijkstraGraphGeodesicPath.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkDijkstraImageGeodesicPath.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkFillHolesFilter.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkGeodesicPath.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkGraphGeodesicPath.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkLinearExtrusionFilter.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkLinearSubdivisionFilter.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkLoopSubdivisionFilter.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkPolyDataPointSampler.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkProjectedTexture.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkQuadRotationalExtrusionFilter.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkRibbonFilter.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkRotationalExtrusionFilter.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkRuledSurfaceFilter.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkSelectEnclosedPoints.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkSelectPolyData.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkSpherePuzzleArrows.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkSpherePuzzle.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkSubdivideTetra.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkOutlineFilter.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Modeling/vtkSectorSource.h"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Filters/Modeling/vtkFiltersModelingModule.h"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"vtkFiltersModeling"
+		],
+		"name" : "vtkFiltersModeling"
+	}
+}

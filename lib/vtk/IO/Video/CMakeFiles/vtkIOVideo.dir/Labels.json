@@ -1,0 +1,22 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/IO/Video/vtkVideoSource.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/IO/Video/vtkVideoSource.h"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/IO/Video/vtkIOVideoModule.h"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"vtkIOVideo"
+		],
+		"name" : "vtkIOVideo"
+	}
+}

@@ -1,0 +1,34 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/Image/vtkImageResliceMapper.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/Image/vtkImageSliceCollection.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/Image/vtkImageStack.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/Image/vtkImageResliceMapper.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/Image/vtkImageSliceCollection.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/Image/vtkImageStack.h"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/Image/vtkRenderingImageModule.h"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"vtkRenderingImage"
+		],
+		"name" : "vtkRenderingImage"
+	}
+}

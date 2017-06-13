@@ -1,0 +1,19 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/ThirdParty/jsoncpp/vtkjsoncpp/json/json.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/ThirdParty/jsoncpp/vtkjsoncpp/jsoncpp.cpp"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"vtkjsoncpp"
+		],
+		"name" : "vtkjsoncpp"
+	}
+}

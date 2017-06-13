@@ -1,0 +1,88 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/Chemistry/vtkBlueObeliskData.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/Chemistry/vtkBlueObeliskDataParser.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/Chemistry/vtkCMLMoleculeReader.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/Chemistry/vtkMoleculeAlgorithm.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/Chemistry/vtkMoleculeMapper.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/Chemistry/vtkMoleculeToAtomBallFilter.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/Chemistry/vtkMoleculeToBondStickFilter.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/Chemistry/vtkMoleculeToPolyDataFilter.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/Chemistry/vtkPeriodicTable.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/Chemistry/vtkProgrammableElectronicData.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/Chemistry/vtkProteinRibbonFilter.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/Chemistry/vtkSimpleBondPerceiver.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/Chemistry/vtkBlueObeliskData.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/Chemistry/vtkBlueObeliskDataParser.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/Chemistry/vtkCMLMoleculeReader.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/Chemistry/vtkMoleculeAlgorithm.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/Chemistry/vtkMoleculeMapper.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/Chemistry/vtkMoleculeToAtomBallFilter.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/Chemistry/vtkMoleculeToBondStickFilter.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/Chemistry/vtkMoleculeToPolyDataFilter.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/Chemistry/vtkPeriodicTable.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/Chemistry/vtkProgrammableElectronicData.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/Chemistry/vtkProteinRibbonFilter.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Domains/Chemistry/vtkSimpleBondPerceiver.h"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Domains/Chemistry/vtkDomainsChemistryModule.h"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"vtkDomainsChemistry"
+		],
+		"name" : "vtkDomainsChemistry"
+	}
+}

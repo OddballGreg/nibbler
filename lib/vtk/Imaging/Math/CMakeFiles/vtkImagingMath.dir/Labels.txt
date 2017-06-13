@@ -1,0 +1,20 @@
+# Target labels
+ vtkImagingMath
+# Source files and their labels
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageDivergence.cxx
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageDotProduct.cxx
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageLogarithmicScale.cxx
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageLogic.cxx
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageMagnitude.cxx
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageMaskBits.cxx
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageMathematics.cxx
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageWeightedSum.cxx
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageDivergence.h
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageDotProduct.h
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageLogarithmicScale.h
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageLogic.h
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageMagnitude.h
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageMaskBits.h
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageMathematics.h
+/home/cameron/Downloads/VTK-7.0.0/Imaging/Math/vtkImageWeightedSum.h
+/home/cameron/Projects/nibbler-1/lib/vtk/Imaging/Math/vtkImagingMathModule.h

@@ -11,7 +11,7 @@ extern "C" {
 	#include <dlfcn.h>
 }
 
-#include "../config/NibblerConfig.h"
+#include "../CMake/NibblerConfig.h"
 
 // OpenGL libraries
 #include "../lib/OpenGL/OpenGL.hpp"

@@ -1,0 +1,32 @@
+# Target labels
+ vtkRenderingFreeType
+# Source files and their labels
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/vtkFreeTypeStringToImage.cxx
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/vtkFreeTypeTools.cxx
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/vtkMathTextFreeTypeTextRenderer.cxx
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/vtkMathTextUtilities.cxx
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/vtkTextRendererStringToImage.cxx
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/vtkScaledTextActor.cxx
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/vtkVectorText.cxx
+/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/FreeType/vtkRenderingFreeTypeObjectFactory.cxx
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/fonts/face_arial_bold.cxx
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/fonts/face_arial_bold_italic.cxx
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/fonts/face_arial.cxx
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/fonts/face_arial_italic.cxx
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/fonts/face_courier_bold.cxx
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/fonts/face_courier_bold_italic.cxx
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/fonts/face_courier.cxx
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/fonts/face_courier_italic.cxx
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/fonts/face_times_bold.cxx
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/fonts/face_times_bold_italic.cxx
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/fonts/face_times.cxx
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/fonts/face_times_italic.cxx
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/vtkFreeTypeStringToImage.h
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/vtkFreeTypeTools.h
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/vtkMathTextFreeTypeTextRenderer.h
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/vtkMathTextUtilities.h
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/vtkTextRendererStringToImage.h
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/vtkScaledTextActor.h
+/home/cameron/Downloads/VTK-7.0.0/Rendering/FreeType/vtkVectorText.h
+/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/FreeType/vtkRenderingFreeTypeObjectFactory.h
+/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/FreeType/vtkRenderingFreeTypeModule.h

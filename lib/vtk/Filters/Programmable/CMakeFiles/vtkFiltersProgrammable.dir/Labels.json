@@ -1,0 +1,34 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Programmable/vtkProgrammableAttributeDataFilter.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Programmable/vtkProgrammableFilter.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Programmable/vtkProgrammableGlyphFilter.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Programmable/vtkProgrammableAttributeDataFilter.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Programmable/vtkProgrammableFilter.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Filters/Programmable/vtkProgrammableGlyphFilter.h"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Filters/Programmable/vtkFiltersProgrammableModule.h"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"vtkFiltersProgrammable"
+		],
+		"name" : "vtkFiltersProgrammable"
+	}
+}

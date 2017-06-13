@@ -1,8 +1,8 @@
 #include "./ReadLib.class.hpp"
 
-/**
- * This is the type of run functions defined by our libraries
- */
+/*
+** This is the type of run functions defined by our libraries
+*/
 typedef void	runFunction( void );
 
 ReadLib::ReadLib( void ) {};

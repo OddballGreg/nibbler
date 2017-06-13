@@ -1,0 +1,38 @@
+# Target labels
+ vtkFiltersStatistics
+# Source files and their labels
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkAutoCorrelativeStatistics.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkBivariateLinearTableThreshold.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkComputeQuartiles.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkContingencyStatistics.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkCorrelativeStatistics.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkDescriptiveStatistics.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkHighestDensityRegionsStatistics.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkExtractFunctionalBagPlot.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkKMeansDistanceFunctorCalculator.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkKMeansDistanceFunctor.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkKMeansStatistics.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkMultiCorrelativeStatistics.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkOrderStatistics.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkPCAStatistics.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkStatisticsAlgorithm.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkStrahlerMetric.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkStreamingStatistics.cxx
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkAutoCorrelativeStatistics.h
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkBivariateLinearTableThreshold.h
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkComputeQuartiles.h
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkContingencyStatistics.h
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkCorrelativeStatistics.h
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkDescriptiveStatistics.h
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkHighestDensityRegionsStatistics.h
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkExtractFunctionalBagPlot.h
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkKMeansDistanceFunctorCalculator.h
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkKMeansDistanceFunctor.h
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkKMeansStatistics.h
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkMultiCorrelativeStatistics.h
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkOrderStatistics.h
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkPCAStatistics.h
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkStatisticsAlgorithm.h
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkStrahlerMetric.h
+/home/cameron/Downloads/VTK-7.0.0/Filters/Statistics/vtkStreamingStatistics.h
+/home/cameron/Projects/nibbler-1/lib/vtk/Filters/Statistics/vtkFiltersStatisticsModule.h

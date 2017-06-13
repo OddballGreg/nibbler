@@ -1,0 +1,538 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkRenderingOpenGL2ObjectFactory.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkCameraPass.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkClearRGBPass.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkClearZPass.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkCompositePolyDataMapper2.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkDefaultPass.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkDepthOfFieldPass.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkDepthImageProcessingPass.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkDepthPeelingPass.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkEDLShading.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkFrameBufferObject.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkGaussianBlurPass.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkGenericCompositePolyDataMapper2.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkGenericOpenGLRenderWindow.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkImageProcessingPass.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkLightingMapPass.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkLightsPass.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpaquePass.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLActor.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLBufferObject.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLCamera.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLGlyph3DHelper.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLGlyph3DMapper.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLHardwareSelector.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLHelper.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLImageMapper.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLImageSliceMapper.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLIndexBufferObject.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLLabeledContourMapper.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLLight.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLPointGaussianMapper.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLPolyDataMapper.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLPolyDataMapper2D.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLProperty.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLRenderWindow.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLRenderUtilities.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLRenderer.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLShaderCache.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLTexture.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLVertexArrayObject.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLVertexBufferObject.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOverlayPass.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkRenderPass.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkRenderPassCollection.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkRenderState.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkRenderStepsPass.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkSSAAPass.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkSequencePass.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkShader.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkShaderProgram.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkShadowMapBakerPass.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkShadowMapPass.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkSobelGradientMagnitudePass.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkTextureObject.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkTextureUnitManager.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkTranslucentPass.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkValuePass.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkVolumetricPass.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkDataTransferHelper.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkFrameBufferObject2.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkPixelBufferObject.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkRenderbuffer.cxx"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkDepthOfFieldPassFS.cxx"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkDepthPeelingPassFinalFS.cxx"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkDepthPeelingPassIntermediateFS.cxx"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkEDLBilateralFilterFS.cxx"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkEDLComposeFS.cxx"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkEDLShadeFS.cxx"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkGaussianBlurPassFS.cxx"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkGaussianBlurPassVS.cxx"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkGlyph3DVS.cxx"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkPointGaussianVS.cxx"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkPolyData2DFS.cxx"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkPolyData2DVS.cxx"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkPolyDataFS.cxx"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkPolyDataVS.cxx"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkPolyDataWideLineGS.cxx"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkSSAAPassFS.cxx"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkSobelGradientMagnitudePass1FS.cxx"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkSobelGradientMagnitudePass2FS.cxx"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkTextureObjectFS.cxx"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkTextureObjectVS.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkDummyGPUInfoList.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkXRenderWindowInteractor.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkXOpenGLRenderWindow.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGL.h"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkTDxConfigure.h"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkOpenGLError.h"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkRenderingOpenGLConfigure.h"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkRenderingOpenGL2ObjectFactory.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkCameraPass.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkClearRGBPass.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkClearZPass.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkCompositePolyDataMapper2.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkDefaultPass.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkDepthOfFieldPass.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkDepthImageProcessingPass.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkDepthPeelingPass.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkEDLShading.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkFrameBufferObject.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkGaussianBlurPass.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkGenericCompositePolyDataMapper2.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkGenericOpenGLRenderWindow.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkImageProcessingPass.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkLightingMapPass.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkLightsPass.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpaquePass.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLActor.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLBufferObject.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLCamera.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLGlyph3DHelper.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLGlyph3DMapper.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLHardwareSelector.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLHelper.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLImageMapper.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLImageSliceMapper.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLIndexBufferObject.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLLabeledContourMapper.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLLight.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLPointGaussianMapper.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLPolyDataMapper.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLPolyDataMapper2D.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLProperty.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLRenderWindow.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLRenderUtilities.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLRenderer.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLShaderCache.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLTexture.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLVertexArrayObject.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOpenGLVertexBufferObject.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkOverlayPass.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkRenderPass.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkRenderPassCollection.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkRenderState.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkRenderStepsPass.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkSSAAPass.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkSequencePass.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkShader.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkShaderProgram.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkShadowMapBakerPass.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkShadowMapPass.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkSobelGradientMagnitudePass.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkTextureObject.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkTextureUnitManager.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkTranslucentPass.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkValuePass.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkVolumetricPass.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkDataTransferHelper.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkFrameBufferObject2.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkPixelBufferObject.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkRenderbuffer.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkDummyGPUInfoList.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkXRenderWindowInteractor.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Rendering/OpenGL2/vtkXOpenGLRenderWindow.h"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkRenderingOpenGL2Module.h"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkDepthOfFieldPassFS.cxx.rule"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkDepthPeelingPassFinalFS.cxx.rule"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkDepthPeelingPassIntermediateFS.cxx.rule"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkEDLBilateralFilterFS.cxx.rule"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkEDLComposeFS.cxx.rule"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkEDLShadeFS.cxx.rule"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkGaussianBlurPassFS.cxx.rule"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkGaussianBlurPassVS.cxx.rule"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkGlyph3DVS.cxx.rule"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkPointGaussianVS.cxx.rule"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkPolyData2DFS.cxx.rule"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkPolyData2DVS.cxx.rule"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkPolyDataFS.cxx.rule"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkPolyDataVS.cxx.rule"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkPolyDataWideLineGS.cxx.rule"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkSSAAPassFS.cxx.rule"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkSobelGradientMagnitudePass1FS.cxx.rule"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkSobelGradientMagnitudePass2FS.cxx.rule"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkTextureObjectFS.cxx.rule"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Rendering/OpenGL2/vtkTextureObjectVS.cxx.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"vtkRenderingOpenGL2"
+		],
+		"name" : "vtkRenderingOpenGL2"
+	}
+}

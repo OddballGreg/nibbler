@@ -1,0 +1,40 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Image/vtkImageViewer2.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Image/vtkImageViewer.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Image/vtkResliceImageViewer.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Image/vtkResliceImageViewerMeasurements.cxx"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Image/vtkImageViewer2.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Image/vtkImageViewer.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Image/vtkResliceImageViewer.h"
+		},
+		{
+			"file" : "/home/cameron/Downloads/VTK-7.0.0/Interaction/Image/vtkResliceImageViewerMeasurements.h"
+		},
+		{
+			"file" : "/home/cameron/Projects/nibbler-1/lib/vtk/Interaction/Image/vtkInteractionImageModule.h"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"vtkInteractionImage"
+		],
+		"name" : "vtkInteractionImage"
+	}
+}
