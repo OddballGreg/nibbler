@@ -13,10 +13,9 @@ extern "C" {
 	#include <dlfcn.h>
 }
 
-#include "../CMake/NibblerConfig.h"
 
 // OpenGL libraries
-#include "../lib/OpenGL/OpenGL.hpp"
+//#include "../lib/OpenGL/OpenGL.hpp"
 
 // Library Reading Class
 #include "./ReadLib.class.hpp"

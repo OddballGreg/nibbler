@@ -1,1 +1,0 @@
-echo "OpenGL is so old school"

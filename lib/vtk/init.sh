@@ -1,1 +1,0 @@
-echo "vtk is awesome"
