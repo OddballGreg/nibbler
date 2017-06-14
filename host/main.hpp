@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <vector>
 #include <fstream>
+#include <fcntl.h>
+#include <stdio.h>
 
 extern "C" {
 	#include <dlfcn.h>

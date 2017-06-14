@@ -6,6 +6,9 @@
 #include <cstdio>
 #include <array>
 #include <algorithm>
+#include <fcntl.h>
+#include <stdio.h>
+#include <memory>
 
 extern "C" {
 	#include <dlfcn.h>
