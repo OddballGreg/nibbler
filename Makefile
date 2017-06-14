@@ -10,9 +10,13 @@ HEAD=
 
 FLAGS= -Wall -Wextra -Werror -Wno-unused -Wconversion --std=c++11
 
+ifeq ($(shell uname -s), Linux)
+END_FLAGS = -ldl
+endif
+
 $(NAME):
-	g++ $(FLAGS) -c $(SRC)
-	g++ -Wall -Wextra -Werror -o $(NAME) $(OBJ)
+	g++ $(FLAGS) -c $(SRC) $(END_FLAGS)
+	g++ $(FLAGS) -o $(NAME) $(OBJ) $(END_FLAGS)
 
 all: $(NAME)
 
