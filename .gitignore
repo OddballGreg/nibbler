@@ -35,7 +35,7 @@ nibbler
 # VSCode
 *.vscode
 
-# CMake Folders
-lib/vtk/CMake
-lib/OpenGL/CMake
-lib/WebGL/Cmake
+# Library Folders
+lib/VTK
+lib/OpenGL
+lib/Ogre3D
