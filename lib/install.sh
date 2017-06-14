@@ -22,12 +22,12 @@ if [ ! -d "$LIB_VTK" ]; then
 	mv "$VTK" "$LIB"
 fi
 
-if [ ! -d "$LIB_OGRE"]; then
+if [ ! -d "$LIB_OGRE" ]; then
 	echo "preparing to install Ogre3D..."
 	echo "Begin downloading Ogre3D from Bitbucket...."
-	git clone https://bitbucket.org/sinbad/ogre $OGRE
+	#hg clone https://bitbucket.org/sinbad/ogre $OGRE
 	echo "Busy creating CMake components"
-	cmake -D CMAKE_C_COMPILER="/usr/bin/clang" -D CMAKE_CXX_COMPILER="usr/bin/clang++" "./Ogre3D/CMakeLists.txt"
+	cmake -D CMAKE_C_COMPILER="/usr/bin/clang" -D CMAKE_CXX_COMPILER="/usr/bin/clang++" "./Ogre3D/CMakeLists.txt"
 	echo "Beginning to install Ogre3D...."
 	make -C "$OGRE" install
 	mv "$OGRE" "$LIB"
