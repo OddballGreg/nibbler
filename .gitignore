@@ -37,5 +37,6 @@ nibbler
 
 # Library Folders
 lib/VTK
-lib/Ope
+lib/OpenGL
 lib/Ogre3D
+lib/SDL
