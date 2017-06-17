@@ -6,7 +6,7 @@ echo "Checking to see if any graphic libraries are installed..."
 
 echo "Warning: There might be some dependencies you need that are missing."
 
-sleep 2
+sleep 3
 
 git -C "$(brew --repo homebrew/core)" fetch
 
