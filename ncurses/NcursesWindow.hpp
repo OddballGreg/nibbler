@@ -42,10 +42,13 @@ private:
 	Coord				_size;
 	Direction			_direction;
 	MAP					_map;
+	
+	WINDOW				*_win;
+	PANEL				*_panel;
 
 	void    			drawWindowFrame(void);
 	void				drawTitle(void);
-
+	bool				drawChar(int y, int x, const int c);
 };
 
 #endif
