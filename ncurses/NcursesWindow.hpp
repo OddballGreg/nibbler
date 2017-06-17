@@ -39,9 +39,9 @@ public:
 	virtual int			getWindowSize(void);
 
 private:
-	Coord		_size;
-	Direction	_direction;
-	MAP			_map;
+	Coord				_size;
+	Direction			_direction;
+	MAP					_map;
 
 	void    			drawWindowFrame(void);
 	void				drawTitle(void);
