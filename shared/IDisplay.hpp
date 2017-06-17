@@ -32,22 +32,22 @@
 
 class IDisplay {
 public:
-	IDisplay(void) {};
-	virtual ~IDisplay(void) {};
+	//IDisplay(void) {};
+	//virtual ~IDisplay(void) {};
 
-	IDisplay(const IDisplay &obj) {};
-	virtual IDisplay operator = (const IDisplay &obj);
+	//IDisplay(const IDisplay &obj) {};
+	//virtual IDisplay operator = (const IDisplay &obj);
 
-	virtual void		drawMap(MAP map);
-	virtual void		drawScore(int score);
-	virtual void		drawPause(void);
-	virtual void		drawGameOver(int finalScore);
+	virtual void		drawMap(MAP map) = 0;
+	virtual void		drawScore(int score) = 0;
+	virtual void		drawPause(void) = 0;
+	virtual void		drawGameOver(int finalScore) = 0;
 
-	virtual	void		initWindow(void);
-	virtual void		exitWindow(void);
+	virtual	void		initWindow(void) = 0;
+	virtual void		exitWindow(void) = 0;
 
-	virtual Direction	getDirection(void);
-	virtual Coord		getWindowSize(void);
+	virtual Direction	getDirection(void) = 0;
+	virtual Coord		getWindowSize(void) = 0;
 
 };
 
