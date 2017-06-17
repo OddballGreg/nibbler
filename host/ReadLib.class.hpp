@@ -9,15 +9,14 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include <memory>
+#include <dlfcn.h>
 
-extern "C" {
-	#include <dlfcn.h>
-}
 
 class ReadLib {
 
 	private:
-		void*	_libHandle;
+		void*		_libHandle;
+		std::string	_exect;
 
 	protected:
 		std::vector<std::string>				_libraries;

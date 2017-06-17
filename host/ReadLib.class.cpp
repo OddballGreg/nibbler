@@ -38,52 +38,23 @@ void			ReadLib::runlib( int const & i ) {
 		std::cout << "\nError opening file ./lib/lib.txt" << std::endl;	 
 	}
 
-	// The library selected from the stdin, runs a bash script
-	// to determine is the library is already loaded.
-	/*
-	std::string		temp("bash " + _libraries.at(static_cast<size_t>(i)));
-	
-	try {
-		this->execute(temp.c_str());	
-	} catch(...) {
-		std::cout << "Falied loading library: " << _libraries.at(static_cast<size_t>(i)) << std::endl; 
-		return;
-	}
-	*/
 	this->openLib(i);
 
 }
 
 /**
- * The bash script is executed to load the library.
- */
-std::string		ReadLib::execute( const char* cmd ) {
-    std::array<char, 512> buffer;
-    std::string result;
-    std::shared_ptr<FILE> pipe(popen(cmd, "r"), pclose);
-    if (!pipe) throw std::runtime_error("popen() failed!");
-    while (!feof(pipe.get())) {
-        if (fgets(buffer.data(), 128, pipe.get()) != NULL)
-            result += buffer.data();
-    }
-    return result;
-};
-
-/**
  * This is where the libraries are loaded dynamically.
  */
+
 void		ReadLib::openLib( int const & i ) {
 
-	// RTLD_NOW: Performall dynamic linking immediately, so if there are
-	// undefined symbols, there will be an error here and now. That is,
-	// this will cause a bad library to to load at all, rather than get
-	// confused somewhere down the line
+	const std::string& _compile("g++ -Wall -Wextra -Werror -shared -fPIC -o graphilib.so ");
+	const std::string& _temp(_compile + _libraries.at(static_cast<size_t>(i)));
+	
+	_exect = execute(_temp.c_str());
 
-	// RTLD_LOCAL: Do not add symbols exported from this library to the
-	// global symbol namespace. the only way to get at bindings is by
-	// using the handle for this library.
-
-	_libHandle = dlopen(_libraries.at(static_cast<size_t>(i)).c_str(), RTLD_LAZY | RTLD_LOCAL);
+	_libHandle = dlopen("graphlib.so", RTLD_LAZY | RTLD_LOCAL);
+	
 	if (_libHandle == NULL) {
 		std::cout << "Falied loading library: " << _libraries.at(static_cast<size_t>(i)) << std::endl; 
 		std::cout << dlerror() << std::endl;
@@ -98,19 +69,36 @@ void		ReadLib::openLib( int const & i ) {
  * This calls the `run` function in the indicated library
  */
 void		ReadLib::callRun( void ) {
-	std::cout << "Running... " << std::endl;
+	
+	std::cout << "Busy loading symbols..." << std::endl;
+	typedef void	(*nib_t)();
 
-	// The circumlocution used to assign `runFn` is required, because
-	// directly assigning a `void *` to a function pointer type is
-	// an undefined operation in ISO C. Reference:
-	// <http://pubs.opengroup.org/onlinepubs/009695399/functions/dlsym.html>
-	runFunction	*runFn;
-	*(void **)(&runFn) = dlsym(_libHandle, "run");
-
-	if (runFn == NULL) {
-		std::cout << "Trouble finding `run`: " << dlerror() << std::endl;
+	// reset errors
+	dlerror();
+	nib_t nib = (nib_t) dlsym(_libHandle, "run");
+	const char *dlsym_error = dlerror();
+	if (dlsym_error) {
+		std::cerr << "Trouble finding `run`: " << dlerror() << std::endl;
+		dlclose(_libHandle);
 	}
 
-	runFn();
+	nib();
 
+	dlclose(_libHandle);
+
+};
+
+/**
+ * The bash script is executed to load the library.
+ */
+std::string		ReadLib::execute( const char* cmd ) {
+    std::array<char, 512> buffer;
+    std::string result;
+    std::shared_ptr<FILE> pipe(popen(cmd, "r"), pclose);
+    if (!pipe) throw std::runtime_error("popen() failed!");
+    while (!feof(pipe.get())) {
+        if (fgets(buffer.data(), 128, pipe.get()) != NULL)
+            result += buffer.data();
+    }
+    return result;
 };

@@ -1,4 +1,5 @@
 NAME=nibbler
+NAME_LIB=nibbler graphlib.so
 
 HOST= $(addprefix host/, ReadLib.class.cpp main.cpp)
 
@@ -18,8 +19,9 @@ endif
 
 $(NAME):
 	bash ./lib/install.sh
+	g++ -shared -fPIC -o graphlib.so host/run.cpp
 	g++ $(FLAGS) -c $(SRC) $(END_FLAGS)
-	g++ $(FLAGS) -o $(NAME) $(OBJ) $(END_FLAGS)
+	g++ $(FLAGS) -o $(NAME_LIB) $(OBJ) $(END_FLAGS)
 
 all: $(NAME)
 
