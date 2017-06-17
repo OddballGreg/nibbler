@@ -53,7 +53,7 @@ public:
 
 extern "C" {
 	IDisplay	*createWindow(void);
-	void		deleteWindow(IDisplay window);
+	void		deleteWindow(IDisplay *window);
 }
 
 #endif
