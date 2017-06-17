@@ -159,18 +159,29 @@ Direction	NcursesWindow::getDirection(void) {
 }
 
 Coord		NcursesWindow::getWindowSize(void) {
-	//
+	return (Coord(this->_size.getX() - 3, this->_size.getY() - 6));
 }
 
 /*
 ** Private Functions
 */
 void    	NcursesWindow::drawWindowFrame(void) {
-	//
+	box(this->_win, 0, 0);
+	mvwaddch(this->_win, 2, 0, ACS_LTEE);
+	mvwaddch(this->_win, 2, this->_size.getX() - 1, ACS_RTEE);
+	for (int k = 1; k < this->_size.getX() - 1; k++) {
+		mvwaddch(this->_win, 2, k, ACS_HLINE);
+		mvwaddch(this->_win, this->_size.getX() - 3, k, ACS_HLINE);
+	}
+
+	drawTitle();
+    mvwaddstr(this->_win, this->_size.getY() - 2, 2, "Score:");
 }
 
 void		NcursesWindow::drawTitle(void) {
-	//
+	std::string		title("NIBBLER");
+
+    mvwaddstr(this->_win, 1, (this->_size.getX() - title.length()) / 2, title.c_str());
 }
 
 bool		NcursesWindow::drawChar(int y, int x, const int c) {
