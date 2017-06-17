@@ -93,15 +93,22 @@ void		NcursesWindow::drawMap(MAP map) {
 }
 
 void		NcursesWindow::drawScore(int score) {
-	//
+	std::stringstream s;
+	s << "Score: " << score << "            ";
+
+	std::string str = s.str();
+	str.resize(20);
+
+	mvwaddstr(this->_win, this->_size.getY() - 2, 2, str.c_str());
 }
 
 void		NcursesWindow::drawPause(void) {
-	//
+	mvwaddstr(this->_win, this->_size.getY() - 2, 2, "-PAUSED-            ");
 }
 
-void		NcursesWindow::drawGameOver(void) {
-	//
+void		NcursesWindow::drawGameOver(int finalScore) {
+	std::stringstream s;
+	s << "-GAMEOVER- [score: " << finalScore << "]            ";
 }
 
 /*
