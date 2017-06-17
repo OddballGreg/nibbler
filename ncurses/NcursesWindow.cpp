@@ -20,6 +20,7 @@ NcursesWindow::NcursesWindow(void) {
 
 	getmaxyx(stdscr, y, x);
 
+	_listen = false;
 	_size = Coord(x - 2, y - 2);
 	_direction = Direction(EAST);
 
@@ -35,6 +36,7 @@ NcursesWindow::~NcursesWindow(void) {
 
 	// if (_panel)
 	// 	del_panel(this->_panel);
+	listen = false;
 }
 
 /*
@@ -47,6 +49,7 @@ NcursesWindow::NcursesWindow(const NcursesWindow &obj) {
 
 	this->_win = obj._win;
 	this->_panel = obj._panel;
+	this->_listen = false;
 }
 
 NcursesWindow NcursesWindow::operator = (const NcursesWindow &obj) {
@@ -56,6 +59,7 @@ NcursesWindow NcursesWindow::operator = (const NcursesWindow &obj) {
 
 	this->_win = obj._win;
 	this->_panel = obj._panel;
+	this->_listen = false;
 
 	return (*this);
 }
@@ -138,6 +142,8 @@ void		NcursesWindow::initWindow(void) {
 	drawWindowFrame();
 	update_panels();
 	doupdate();
+
+	keyListener();
 }
 
 void		NcursesWindow::exitWindow(void) {
@@ -194,4 +200,37 @@ bool		NcursesWindow::drawChar(int y, int x, const int c) {
 	}
 
 	return (false);
+}
+
+void		NcursesWindow::keyLoop(void *threadID) {
+	int		key;
+
+	if (!threadID)
+		throw std::runtime_error("Calling NCurses Loop with main thread");
+
+	while (this->_keyListener) {
+		if (((key = getch()) != ERR)) {
+			if ((key == 'a') && this->_direction.getDirection() != EAST)
+				this->_direction = Direction(WEST);
+			else if ((key == 'd') && this->_direction.getDirection() != WEST)
+				this->_direction = Direction(EAST);
+			else if ((key == 'w') && this->_direction.getDirection() != SOUTH)
+				this->_direction = Direction(NORTH);
+			else if ((key == 's') && this->_direction.getDirection() != NORTH)
+				this->_direction = Direction(SOUTH);
+		}
+	}
+	pthread_exit(NULL);
+}
+
+void		NcursesWindow::keyListener(void) {
+	 pthread_t	thread;
+	 int		ret;
+
+	 if (!this->_keyListener) {
+		 ret = pthread_create(&thread, NULL, this->keyLoop, (void *)1);
+		 if (ret)
+		 	throw std::runtime_error("Unable to create new thread");
+		 this->_keyListener = true;
+	 }
 }

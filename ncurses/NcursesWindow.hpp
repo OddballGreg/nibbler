@@ -17,8 +17,11 @@
 # include <sstream>
 # include <panel.h>
 # include <ncurses.h>
+# include <pthread.h>
 
 # include "../shared/IDisplay.hpp"
+
+/* Compile with: -lpthread */
 
 class NcursesWindow : public IDisplay {
 public:
@@ -40,6 +43,7 @@ public:
 	virtual Coord		getWindowSize(void);
 
 private:
+	bool				_listen;
 	Coord				_size;
 	Direction			_direction;
 	// MAP					_map;
@@ -50,6 +54,8 @@ private:
 	void    			drawWindowFrame(void);
 	void				drawTitle(void);
 	bool				drawChar(int y, int x, const int c);
+	void				keyLoop(void *threadID);
+	void				keyListener(void);
 };
 
 #endif
