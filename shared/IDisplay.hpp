@@ -22,6 +22,14 @@
 #  define MAP std::map<int, std::map<int, char> >
 # endif
 
+# ifndef MAP_EMPTY
+#  define MAP_EMPTY		0
+#  define MAP_OBSTICLE	1
+#  define MAP_HEAD		2
+#  define MAP_BODY		3
+#  define MAP_FOOD		4
+# endif
+
 class IDisplay {
 public:
 	IDisplay(void) {};
