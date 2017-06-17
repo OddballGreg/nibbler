@@ -1,42 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   IDisplay.hpp                                       :+:      :+:    :+:   */
+/*   NcursesWindow.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/17 10:55:42 by khansman          #+#    #+#             */
-/*   Updated: 2017/06/17 10:55:45 by khansman         ###   ########.fr       */
+/*   Created: 2017/06/17 11:35:35 by khansman          #+#    #+#             */
+/*   Updated: 2017/06/17 11:35:37 by khansman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef NCURSES_WINDOW_HPP
+ # define NCURSES_WINDOW_HPP
 
-#ifndef IDISPLAY_HPP
-# define IDISPLAY_HPP
+# include <iostream>
+# include <panel.h>
+# include <ncurses.h>
 
-# include <map>
+# include "../shared/IDisplay.hpp"
 
-# include "../shared/Direction.hpp"
-
-# ifndef MAP
-#  define MAP std::map<int, std::map<int, char> >
-# endif
-
-# ifndef MAP_EMPTY
-#  define MAP_EMPTY		0
-#  define MAP_OBSTICLE	1
-#  define MAP_HEAD		2
-#  define MAP_BODY		3
-#  define MAP_FOOD		4
-# endif
-
-class IDisplay {
+class NcursesWindow : public IDisplay{
 public:
-	IDisplay(void) {};
-	virtual ~IDisplay(void) {};
+	NcursesWindow(void);
+	virtual ~NcursesWindow(void);
 
-	IDisplay(const IDisplay &obj) {};
-	virtual IDisplay operator = (const IDisplay &obj);
+	NcursesWindow(const NcursesWindow &obj);
+	virtual NcursesWindow operator = (const NcursesWindow &obj);
 
 	virtual void		drawMap(MAP map);
 	virtual void		drawScore(int score);
@@ -49,11 +38,17 @@ public:
 	virtual Direction	getDirection(void);
 	virtual int			getWindowSize(void);
 
-};
+private:
+	Coord				_size;
+	Direction			_direction;
+	// MAP					_map;
+	
+	WINDOW				*_win;
+	PANEL				*_panel;
 
-extern "C" {
-	IDisplay	*createWindow(void);
-	void		deleteWindow(IDisplay window);
-}
+	void    			drawWindowFrame(void);
+	void				drawTitle(void);
+	bool				drawChar(int y, int x, const int c);
+};
 
 #endif

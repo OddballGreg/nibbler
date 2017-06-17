@@ -23,11 +23,13 @@
 # define DEFAULT_HEIGHT	20
 # define DEFAULT_WIDTH	20
 
-# define MAP_EMPTY		0
-# define MAP_OBSTICLE	1
-# define MAP_HEAD		2
-# define MAP_BODY		3
-# define MAP_FOOD		4
+# ifndef MAP_EMPTY
+#  define MAP_EMPTY		0
+#  define MAP_OBSTICLE	1
+#  define MAP_HEAD		2
+#  define MAP_BODY		3
+#  define MAP_FOOD		4
+# endif
 
 # define MODE_PAUSE		0
 # define MODE_PLAY		1
