@@ -41,3 +41,10 @@ lib/OpenGL
 lib/Ogre3D
 lib/SDL
 lib/glsl-optimiser
+
+# Other
+.DS_Store
+._*
+.nfs.*
+.tmp.c
+.vscode
