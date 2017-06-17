@@ -41,7 +41,7 @@ public:
 private:
 	Coord				_size;
 	Direction			_direction;
-	MAP					_map;
+	// MAP					_map;
 	
 	WINDOW				*_win;
 	PANEL				*_panel;

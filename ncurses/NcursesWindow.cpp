@@ -28,7 +28,7 @@ NcursesWindow::NcursesWindow(void) {
 }
 
 NcursesWindow::~NcursesWindow(void) {
-	_map.clear();
+	// _map.clear();
 
 	if (_win)
 		delwin(this->_win);
@@ -43,7 +43,7 @@ NcursesWindow::~NcursesWindow(void) {
 NcursesWindow::NcursesWindow(const NcursesWindow &obj) {
 	this->_size = obj._size;
 	this->_direction = obj._direction;
-	this->_map = obj._map;
+	// this->_map = obj._map;
 
 	this->_win = obj._win;
 	this->_panel = obj._panel;
@@ -52,7 +52,7 @@ NcursesWindow::NcursesWindow(const NcursesWindow &obj) {
 NcursesWindow NcursesWindow::operator = (const NcursesWindow &obj) {
 	this->_size = obj._size;
 	this->_direction = obj._direction;
-	this->_map = obj._map;
+	// this->_map = obj._map;
 
 	this->_win = obj._win;
 	this->_panel = obj._panel;
@@ -64,10 +64,32 @@ NcursesWindow NcursesWindow::operator = (const NcursesWindow &obj) {
 ** Draw Functions
 */
 void		NcursesWindow::drawMap(MAP map) {
-	this->_map.clear();
-	this->_map = map;
+	// this->_map.clear();
+	// this->_map = map;
 
-	//
+	for (int k = 0; k < this->_size.getY(); k++)
+		for (int l = 0; l < this->_size.getX(); l++) {
+			switch (map[k][l]) {
+				case MAP_EMPTY :
+					drawChar(k, l, ' ');
+					break;
+				case MAP_OBSTICLE :
+					drawChar(k, l, '#');
+					break;
+				case MAP_HEAD :
+					drawChar(k, l, '0');
+					break;
+				case MAP_BODY :
+					drawChar(k, l, 'o');
+					break;
+				case MAP_FOOD :
+					drawChar(k, l, 'x');
+					break;
+				default :
+					drawChar(k, l, ' ');
+					break;
+			}
+		}
 }
 
 void		NcursesWindow::drawScore(int score) {
