@@ -6,7 +6,7 @@ echo "Checking to see if any graphic libraries are installed..."
 
 echo "Warning: There might be some dependencies you need that are missing."
 
-sleep 3
+sleep 2
 
 git -C "$(brew --repo homebrew/core)" fetch
 
@@ -18,8 +18,12 @@ NPM="~/.npm"
 # Graphic Libraries
 VTK="VTK"
 OGRE="Ogre3D"
+SDL="SDL"
+OPENGL="OpenGL"
 LIB_VTK="./lib/VTK"
 LIB_OGRE="./lib/Ogre3D"
+LIB_SDL="./lib/SDL"
+LIB_OPENGL="./lib/OpenGL"
 
 # Dependencies
 FREE_IMAGE="~/.brew/Cellar/freeimage"
@@ -102,4 +106,16 @@ if [ ! -d "$LIB_OGRE" ]; then
 	make -C "$OGRE" install/local
 	mv "$OGRE" "$LIB"
 	echo "Finish install Ogre3D...."
+fi
+
+if [ ! -d "$LIB_SDL" ]; then
+	echo "Preparing to install SDL..."
+	echo "Note: SDL can be installed with the Managed Software Centre"
+	if [ ! -d "$SDL" ]; then
+		hg clone https://hg.libsdl.org/SDL SDL
+	fi
+	echo "Busy creating CMake components"
+	cd ./SDL/build ; CC=/sgoinfre/Students/cdebruyn/nibbler-1/SDL/build-scripts/gcc-fat.sh ../configure ; make
+	echo "Beginning to install SDL...."
+	mv "$SDL" "$LIB"
 fi
