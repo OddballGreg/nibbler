@@ -90,6 +90,9 @@ void		NcursesWindow::drawMap(MAP map) {
 					break;
 			}
 		}
+
+	update_panels();
+	doupdate();
 }
 
 void		NcursesWindow::drawScore(int score) {
@@ -109,27 +112,53 @@ void		NcursesWindow::drawPause(void) {
 void		NcursesWindow::drawGameOver(int finalScore) {
 	std::stringstream s;
 	s << "-GAMEOVER- [score: " << finalScore << "]            ";
+
+	std::string str = s.str();
+	mvwaddstr(this->_win, this->_size.getY() - 2, 2, str.c_str());
 }
 
 /*
 ** Window Specialities
 */
 void		NcursesWindow::initWindow(void) {
-	//
+	initscr();
+	keypad(stdscr, TRUE);
+	// timeout(25);
+	start_color();
+	init_pair(1, COLOR_GREEN, COLOR_BLACK);
+	attron(COLOR_PAIR(1));
+	nodelay(stdscr, TRUE);
+	curs_set(0);
+    cbreak();
+    noecho();
+
+	_win  = newwin(this->_size.getY(), this->_size.getX(), 1, 1);
+	_panel = new_panel(_win);
+
+	drawWindowFrame();
+	update_panels();
+	doupdate();
 }
 
 void		NcursesWindow::exitWindow(void) {
-	//
+	if (this->_win) {
+		delwin(this->_win);
+		this->_win = NULL;
+	}
+	// if (_panel) {
+	// 	del_panel(this->_panel);
+	// 	this->_panel = NULL;
+	// }
 }
 
 /*
 ** Getters
 */
 Direction	NcursesWindow::getDirection(void) {
-	//
+	return (this->_direction);
 }
 
-int			NcursesWindow::getWindowSize(void) {
+Coord		NcursesWindow::getWindowSize(void) {
 	//
 }
 

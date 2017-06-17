@@ -37,7 +37,7 @@ public:
 	virtual void		exitWindow(void);
 
 	virtual Direction	getDirection(void);
-	virtual int			getWindowSize(void);
+	virtual Coord		getWindowSize(void);
 
 private:
 	Coord				_size;
