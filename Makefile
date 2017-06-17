@@ -32,4 +32,7 @@ fclean: clean
 
 re: fclean all
 
+unistall:
+	bash ./lib/uninstall.sh
+
 .PHONY: $(NAME) all clean fclean re

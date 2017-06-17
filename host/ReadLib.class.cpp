@@ -40,7 +40,8 @@ void			ReadLib::runlib( int const & i ) {
 
 	// The library selected from the stdin, runs a bash script
 	// to determine is the library is already loaded.
-	std::string		temp{"bash " + _libraries.at(static_cast<size_t>(i))};
+	/*
+	std::string		temp("bash " + _libraries.at(static_cast<size_t>(i)));
 	
 	try {
 		this->execute(temp.c_str());	
@@ -48,6 +49,8 @@ void			ReadLib::runlib( int const & i ) {
 		std::cout << "Falied loading library: " << _libraries.at(static_cast<size_t>(i)) << std::endl; 
 		return;
 	}
+	*/
+	this->openLib(i);
 
 }
 
@@ -80,7 +83,7 @@ void		ReadLib::openLib( int const & i ) {
 	// global symbol namespace. the only way to get at bindings is by
 	// using the handle for this library.
 
-	_libHandle = dlopen(_libraries.at(static_cast<size_t>(i)).c_str(), RTLD_NOW | RTLD_LOCAL);
+	_libHandle = dlopen(_libraries.at(static_cast<size_t>(i)).c_str(), RTLD_LAZY | RTLD_LOCAL);
 	if (_libHandle == NULL) {
 		std::cout << "Falied loading library: " << _libraries.at(static_cast<size_t>(i)) << std::endl; 
 		std::cout << dlerror() << std::endl;

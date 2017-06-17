@@ -2,6 +2,15 @@
 
 clear
 
+LIB_VTK="VTK"
+LIB_OGRE="Ogre3D"
+LIB_SDL="SDL"
+LIB_OPENGL="OpenGL"
+
+if [ "$LIB_VTK" ] && [ "$LIB_OGRE" ] && [ "$LIB_SDL" ] && [ "$LIB_OPENGL" ]; then
+	exit
+fi
+
 echo "Checking to see if any graphic libraries are installed..."
 
 echo "Warning: There might be some dependencies you need that are missing."
@@ -20,10 +29,6 @@ VTK="VTK"
 OGRE="Ogre3D"
 SDL="SDL"
 OPENGL="OpenGL"
-LIB_VTK="./lib/VTK"
-LIB_OGRE="./lib/Ogre3D"
-LIB_SDL="./lib/SDL"
-LIB_OPENGL="./lib/OpenGL"
 
 # Dependencies
 FREE_IMAGE="~/.brew/Cellar/freeimage"
@@ -52,8 +57,6 @@ if [ ! -d "$LIB_OGRE" ]; then
 	echo "Finding dependencies for Ogre3D..."
 	echo "This build is specific to OS X El Capitan"
 	echo "You need to have Homebrew installed for this program to work."
-
-	sleep 3
 
 	if [ ! "$FREE_IMAGE" ]; then
 		echo "Busy installing freeimage..."
