@@ -20,7 +20,7 @@
 
 # include "../shared/IDisplay.hpp"
 
-class NcursesWindow : public IDisplay{
+class NcursesWindow : public IDisplay {
 public:
 	NcursesWindow(void);
 	virtual ~NcursesWindow(void);
