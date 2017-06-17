@@ -35,6 +35,9 @@ public:
 	virtual void		drawPause(void);
 	virtual void		drawGameOver(void);
 
+	virtual	void		initWindow(void);
+	virtual void		exitWindow(void);
+
 	virtual Direction	getDirection(void);
 
 };
