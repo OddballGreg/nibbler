@@ -17,6 +17,8 @@
 # include <map>
 
 # include "../shared/Direction.hpp"
+# include <iostream>
+# include <sstream>
 
 # ifndef MAP
 #  define MAP std::map<int, std::map<int, char> >
