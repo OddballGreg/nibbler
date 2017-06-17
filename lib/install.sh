@@ -94,6 +94,9 @@ if [ ! -d "$LIB_OGRE" ]; then
 		hg clone https://bitbucket.org/sinbad/ogre "$OGRE"
 	fi
 	echo "Busy creating CMake components"
+	echo "Make sure you add 'typedef void *locale_t;' to the header file. That it complains about."
+	echo "You need to change strtod_l to strtodll and strtol_l to strtoll"
+	sleep 2
 	cmake -D CMAKE_C_COMPILER="/usr/bin/clang" -D CMAKE_CXX_COMPILER="/usr/bin/clang++" "./Ogre3D/CMakeLists.txt"
 	echo "Beginning to install Ogre3D......"
 	make -C "$OGRE" install/local

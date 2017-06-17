@@ -1,0 +1,23 @@
+{
+  "name": "nibbler-1",
+  "version": "1.0.0",
+  "description": "This is a package install for the game Nibbler-1",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cdebruyn/nibbler-1.git"
+  },
+  "author": "cdebruyn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cdebruyn/nibbler-1/issues"
+  },
+  "homepage": "https://github.com/cdebruyn/nibbler-1#readme"
+}
