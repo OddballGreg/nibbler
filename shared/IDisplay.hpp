@@ -41,7 +41,7 @@ public:
 	virtual void		drawMap(MAP map);
 	virtual void		drawScore(int score);
 	virtual void		drawPause(void);
-	virtual void		drawGameOver(void);
+	virtual void		drawGameOver(int finalScore);
 
 	virtual	void		initWindow(void);
 	virtual void		exitWindow(void);
