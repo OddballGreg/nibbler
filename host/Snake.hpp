@@ -16,8 +16,8 @@
 # include <iostream>
 # include <list>
 
-# include "Coord.hpp"
-# include "Direction.hpp"
+# include "../shared/Coord.hpp"
+# include "../shared/Direction.hpp"
 # include "Part.hpp"
 
 # define DEFAULT_SNAKE_LENGTH 4

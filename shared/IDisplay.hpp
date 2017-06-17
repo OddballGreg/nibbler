@@ -16,7 +16,7 @@
 
 # include <map>
 
-# include "Direction.hpp"
+# include "../shared/Direction.hpp"
 
 # ifndef MAP
 #  define MAP std::map<int, std::map<int, char> >

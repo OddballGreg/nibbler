@@ -17,7 +17,7 @@
 # include <map>
 # include <time.h>
 
-# include "Coord.hpp"
+# include "../shared/Coord.hpp"
 # include "Snake.hpp"
 
 # define DEFAULT_HEIGHT	20
