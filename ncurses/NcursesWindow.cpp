@@ -11,3 +11,7 @@
 /* ************************************************************************** */
 
 #include "NcursesWindow.hpp"
+
+NcursesWindow::NcursesWindow(void) {
+	//
+}

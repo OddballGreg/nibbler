@@ -13,6 +13,10 @@
 #ifndef NCURSES_WINDOW_HPP
  # define NCURSES_WINDOW_HPP
 
+# include <iostream>
+# include <panel.h>
+# include <ncurses.h>
+
 # include "../shared/IDisplay.hpp"
 
 class NcursesWindow : public IDisplay{
@@ -38,6 +42,9 @@ private:
 	Coord		_size;
 	Direction	_direction;
 	MAP			_map;
+
+	void    			drawWindowFrame(void);
+	void				drawTitle(void);
 
 };
 
