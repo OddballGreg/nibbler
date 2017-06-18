@@ -29,6 +29,7 @@ NcursesWindow::NcursesWindow(void) {
 }
 
 NcursesWindow::~NcursesWindow(void) {
+	_listen = false;
 	// _map.clear();
 
 	if (_win)
@@ -36,7 +37,6 @@ NcursesWindow::~NcursesWindow(void) {
 
 	// if (_panel)
 	// 	del_panel(this->_panel);
-	listen = false;
 }
 
 /*
@@ -208,7 +208,7 @@ void		NcursesWindow::keyLoop(void *threadID) {
 	if (!threadID)
 		throw std::runtime_error("Calling NCurses Loop with main thread");
 
-	while (this->_keyListener) {
+	while (this->_listen) {
 		if (((key = getch()) != ERR)) {
 			if ((key == 'a') && this->_direction.getDirection() != EAST)
 				this->_direction = Direction(WEST);
@@ -227,10 +227,10 @@ void		NcursesWindow::keyListener(void) {
 	 pthread_t	thread;
 	 int		ret;
 
-	 if (!this->_keyListener) {
+	 if (!this->_listen) {
 		 ret = pthread_create(&thread, NULL, this->keyLoop, (void *)1);
 		 if (ret)
 		 	throw std::runtime_error("Unable to create new thread");
-		 this->_keyListener = true;
+		 this->_listen = true;
 	 }
 }
