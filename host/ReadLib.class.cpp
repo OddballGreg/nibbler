@@ -75,7 +75,7 @@ void		ReadLib::callRun( int const & i ) {
 
 	// reset errors
 	dlerror();
-	nib_t nib = (nib_t) dlsym(_libHandle, "run");
+	nib_t nib = (nib_t) dlsym(_libHandle, "NcursesLoad");
 	const char *dlsym_error = dlerror();
 	if (dlsym_error) {
 		std::cerr << "Trouble finding `run`: " << dlerror() << std::endl;

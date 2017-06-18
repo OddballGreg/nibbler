@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <memory>
 #include <dlfcn.h>
-
+#include "../shared/IDisplay.hpp"
 
 class ReadLib {
 

@@ -118,6 +118,14 @@ void		NcursesWindow::drawGameOver(int finalScore) {
 	mvwaddstr(this->_win, this->_size.getY() - 2, 2, str.c_str());
 }
 
+extern "C" NcursesWindow*	createObject() {
+	return new NcursesWindow;
+}
+
+extern "C" void destroyObject( NcursesWindow* object ) {
+	delete object;
+}
+
 /*
 ** Window Specialities
 */

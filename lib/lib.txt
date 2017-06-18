@@ -1,7 +1,7 @@
 ./lib/VTK/lib/libvtkalglib-8.1.1.dylib
 -framework OpenGL -framework GLUT -Wno-deprecated-declarations
 /Library/Frameworks/SDL.framework/SDL
-/usr/lib/libncurses.dylib /usr/lib/libpanel.dylib
+../ncurses/NCursesWindow.cpp /usr/lib/libncurses.dylib /usr/lib/libpanel.dylib
 
 
 

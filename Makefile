@@ -19,7 +19,9 @@ endif
 
 $(NAME):
 	bash ./lib/install.sh
-	g++ -shared -fPIC -o graphlib.so host/run.cpp
+	g++ -dynamiclib -flat_namespace ./shared/Coord.cpp ./shared/Direction.cpp -o shared.so
+	g++ -dynamiclib -flat_namespace shared.so -lpanel -lncurses ./environ/ncurses/NcursesWindow.cpp -o NcursesWindow.so
+	g++ -shared -fPIC -o graphlib.so ./host/run.cpp
 	g++ $(FLAGS) -c $(SRC) $(END_FLAGS)
 	g++ $(FLAGS) -o $(NAME_LIB) $(OBJ) $(END_FLAGS)
 
