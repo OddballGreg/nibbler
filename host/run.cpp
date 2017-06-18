@@ -1,5 +1,9 @@
 #include <iostream>
 
-extern "C" void	run() {
-	std::cout << "Hello" << std::endl;
+extern "C" void	run( int const & i ) {
+
+	if ( i == 3 ) {
+		
+	}
+
 }

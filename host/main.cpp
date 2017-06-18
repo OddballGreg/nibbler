@@ -14,6 +14,7 @@ int				main( void )
 		std::cout << "\n\n1: VTK" << std::endl;
 		std::cout << "2: OpenGL" << std::endl;
 		std::cout << "3: SDL" << std::endl;
+		std::cout << "4: NCurses" << std::endl;
 		std::cout << "Please select a library from the list:" << std::endl;
 
 		std::cin >> input;
@@ -29,6 +30,9 @@ int				main( void )
 		} else if ( input.compare("3") == 0 ) {
 			std::cout << "Loading the SDL library..." << std::endl;
 			lib->runlib(2);
+		} else if ( input.compare("4") == 0 ) {
+			std::cout << "Loading the ncurses library..." << std::endl;
+			lib->runlib(3);
 		} else if ( (input.compare("exit") == 0) || (input.compare("quit") == 0) || 
 			(input.compare("0") == 0) ) {
 			run = 0;
@@ -38,12 +42,5 @@ int				main( void )
 		}
 	}
 
-	//int state_code = 0;
-	//Gamestate gamestate();
-
-	//while (state_code != -1)
-	//{
-	//	state_code = gamestate.run_frame();
-	//}
 	return 0;
 }

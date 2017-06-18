@@ -61,17 +61,17 @@ void		ReadLib::openLib( int const & i ) {
 		return;
 	} else {
 		std::cout << "Cool beans... You library has loaded." << std::endl;
-		callRun();
+		callRun(i);
 	}
 }
 
 /**
  * This calls the `run` function in the indicated library
  */
-void		ReadLib::callRun( void ) {
+void		ReadLib::callRun( int const & i ) {
 	
 	std::cout << "Busy loading symbols..." << std::endl;
-	typedef void	(*nib_t)();
+	typedef void	(*nib_t)( int const & i );
 
 	// reset errors
 	dlerror();
@@ -82,7 +82,7 @@ void		ReadLib::callRun( void ) {
 		dlclose(_libHandle);
 	}
 
-	nib();
+	nib(i);
 
 	dlclose(_libHandle);
 
