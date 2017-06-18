@@ -118,7 +118,7 @@ void		NcursesWindow::drawGameOver(int finalScore) {
 	mvwaddstr(this->_win, this->_size.getY() - 2, 2, str.c_str());
 }
 
-extern "C" NcursesWindow*	createObject() {
+extern "C" NcursesWindow*	createNcurses() {
 	return new NcursesWindow;
 }
 
