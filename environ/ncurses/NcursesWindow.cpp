@@ -265,8 +265,8 @@ void		*keyLoop(void *threadID) {
 			lastKeyPress = key;
 		}
 	}
-	pthread_exit(NULL);
 	logger.log("Ncurses Window keyLoop() - pthread exited");
+	pthread_exit(NULL);
 }
 
 IDisplay			*createWindow(void) {
