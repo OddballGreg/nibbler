@@ -11,7 +11,6 @@
 #include <memory>
 #include <dlfcn.h>
 #include "../shared/IDisplay.hpp"
-#include "../environ/ncurses/NcursesWindow.hpp"
 
 class ReadLib {
 
