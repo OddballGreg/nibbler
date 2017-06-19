@@ -13,6 +13,9 @@ FLAGS= -Wall -Wextra -Werror -Wno-unused -Wconversion --std=c++11
 
 NCURSES=./environ/ncurses/NcursesWindow.cpp
 
+SHARED= ./shared/Coord.cpp \
+		./shared/Direction.cpp
+
 BOOL= 0
 
 ifeq ($(shell uname -s), Linux)
@@ -21,7 +24,8 @@ endif
 
 $(NAME):
 	bash ./lib/install.sh
-	g++ -shared -fPIC -lpanel -lncurses -o NcursesWindow.so $(NCURSES)
+	g++ -shared -fPIC $(SHARED) -I ./shared/ -o Shared.so
+	g++ -shared -fPIC -lpanel -lncurses Shared.so -o NcursesWindow.so $(NCURSES) 
 	g++ $(FLAGS) -c $(SRC) $(END_FLAGS)
 	g++ $(FLAGS) -o $(NAME) $(OBJ) $(END_FLAGS)
 

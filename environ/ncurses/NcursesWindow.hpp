@@ -23,7 +23,7 @@
 
 /* Compile with: -lpthread */
 
-# ifdef MAIN_FILE
+# ifdef NCURSES_FILE
 
 bool		listen = false;
 int			lastKeyPress = 0;
@@ -54,8 +54,8 @@ public:
 	virtual Direction		getDirection(void);
 	virtual Coord			getWindowSize(void);
 
-	virtual NcursesWindow* 	createObject();
-	virtual void 			destroyObject( NcursesWindow* object );	
+	// virtual NcursesWindow* 	createObject();
+	// virtual void 			destroyObject( NcursesWindow* object );	
 
 private:
 	Coord					_size;
