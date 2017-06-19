@@ -23,11 +23,17 @@
 
 /* Compile with: -lpthread */
 
-#ifndef listen
-# define bool listen false
+# ifdef MAIN_FILE
 
-#ifndef lastKeyPress
-# define int lastKeyPress 0
+bool		listen = false;
+int			lastKeyPress = 0;
+
+# else
+
+extern bool	listen;
+extern int	lastKeyPress;
+
+# endif
 
 class NcursesWindow : public IDisplay {
 public:
