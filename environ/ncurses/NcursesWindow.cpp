@@ -198,11 +198,12 @@ void    	NcursesWindow::drawWindowFrame(void) {
 	mvwaddch(this->_win, 2, this->_size.getX() - 1, ACS_RTEE);
 	for (int k = 1; k < this->_size.getX() - 1; k++) {
 		mvwaddch(this->_win, 2, k, ACS_HLINE);
-		// mvwaddch(this->_win, this->_size.getY() - 4, k, ACS_HLINE);
+		mvwaddch(this->_win, this->_size.getY() - 3, k, ACS_HLINE);
 	}
 
 	drawTitle();
-    // mvwaddstr(this->_win, this->_size.getY() - 2, 2, "Score:");
+    mvwaddstr(this->_win, this->_size.getY() - 2, 2, "Score:");
+	wmove(this->_win, 3, 1);// used to move
 }
 
 void		NcursesWindow::drawTitle(void) {
