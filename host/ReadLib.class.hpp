@@ -11,6 +11,7 @@
 #include <memory>
 #include <dlfcn.h>
 #include "../shared/IDisplay.hpp"
+#include "../environ/ncurses/NcursesWindow.hpp"
 
 class ReadLib {
 
@@ -29,8 +30,8 @@ class ReadLib {
 		
 		const ReadLib&	operator=( ReadLib const & lib );	
 
-		void			runlib(const int& i);
+		void			runlib( const int & i );
 		std::string		execute( const char* cmd );
-		void			openLib( std::string const & str );
-		void			callRun( int const & i );
+		void			openLib( const int & i );
+		void			callRun( void );
 };

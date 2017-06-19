@@ -19,7 +19,7 @@ const ReadLib&	ReadLib::operator=( ReadLib const & lib ) {
 	return lib;	
 };
 
-void			ReadLib::runlib( int const & i ) {
+void			ReadLib::runlib( const int & i ) {
 
 	std::ifstream	read;
 	std::string		str;
@@ -46,38 +46,45 @@ void			ReadLib::runlib( int const & i ) {
  * This is where the libraries are loaded dynamically.
  */
 
-void		ReadLib::openLib( std::string const & str ) {
+void		ReadLib::openLib( const int & i ) {
 
-	_libHandle = dlopen(str, RTLD_LAZY | RTLD_LOCAL);
+	_libHandle = dlopen(_libraries.at(static_cast<size_t>(i)).c_str(), RTLD_LAZY | RTLD_LOCAL);
 	
 	if (_libHandle == NULL) {
-		std::cout << "Falied loading library: " << str << std::endl; 
+		std::cout << "Falied loading library: " << _libraries.at(static_cast<size_t>(i)) << std::endl; 
 		std::cout << dlerror() << std::endl;
 		return;
 	} else {
 		std::cout << "Cool beans... You library has loaded." << std::endl;
-		callRun(i);
+		callRun();
 	}
 }
 
 /**
  * This calls the `run` function in the indicated library
  */
-void		ReadLib::callRun( int const & i ) {
+void		ReadLib::callRun( void ) {
 	
 	std::cout << "Busy loading symbols..." << std::endl;
-	typedef void	(*nib_t)( int const & i );
+
+	// For now I will only load the ncurses library. I will have to create
+	// template for loading different classes.
+	NcursesWindow* (*create)();
+	void	(*destroy)(NcursesWindow*);
 
 	// reset errors
 	dlerror();
-	nib_t nib = (nib_t) dlsym(_libHandle, "NcursesLoad");
+	create = (NcursesWindow* (*)())dlsym(_libHandle, "createObject");
+	destroy = (void (*)(NcursesWindow*))dlsym(_libHandle, "destroyObject");
 	const char *dlsym_error = dlerror();
 	if (dlsym_error) {
 		std::cerr << "Trouble finding `run`: " << dlerror() << std::endl;
 		dlclose(_libHandle);
 	}
 
-	nib(i);
+	NcursesWindow* Ncurses = (NcursesWindow*)create();
+	Ncurses->initWindow();
+	destroy( Ncurses );
 
 	dlclose(_libHandle);
 

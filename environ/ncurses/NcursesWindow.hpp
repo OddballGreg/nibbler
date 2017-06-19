@@ -34,31 +34,34 @@ public:
 	NcursesWindow(const NcursesWindow &obj);
 	virtual NcursesWindow operator = (const NcursesWindow &obj);
 
-	virtual void		drawMap(MAP map);
-	virtual void		drawScore(int score);
-	virtual void		drawPause(void);
-	virtual void		drawGameOver(int finalScore);
+	virtual void			drawMap(MAP map);
+	virtual void			drawScore(int score);
+	virtual void			drawPause(void);
+	virtual void			drawGameOver(int finalScore);
 
-	virtual	void		initWindow(void);
-	virtual void		exitWindow(void);
+	virtual	void			initWindow(void);
+	virtual void			exitWindow(void);
+	
+	virtual Direction		getDirection(void);
+	virtual Coord			getWindowSize(void);
 
-	virtual Direction	getDirection(void);
-	virtual Coord		getWindowSize(void);
+	virtual NcursesWindow* 	createObject();
+	virtual void 			destroyObject( NcursesWindow* object );	
 
 private:
-	Coord				_size;
-	Direction			_direction;
+	Coord					_size;
+	Direction				_direction;
 	// MAP					_map;
 	
-	WINDOW				*_win;
-	PANEL				*_panel;
+	WINDOW					*_win;
+	PANEL					*_panel;
 
-	void    			drawWindowFrame(void);
-	void				drawTitle(void);
-	bool				drawChar(int y, int x, const int c);
-	void				keyListener(void);
+	void    				drawWindowFrame(void);
+	void					drawTitle(void);
+	bool					drawChar(int y, int x, const int c);
+	void					keyListener(void);
 };
 
-void				*keyLoop(void *threadID);
+void						*keyLoop(void *threadID);
 
 #endif
