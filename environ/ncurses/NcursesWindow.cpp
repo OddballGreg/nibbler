@@ -17,11 +17,6 @@
 ** Constructors and Destructors
 */
 NcursesWindow::NcursesWindow(void) {
-	int x, y;
-
-	getmaxyx(stdscr, y, x);
-
-	_size = Coord(x - 2, y - 2);
 	_direction = Direction(EAST);
 
 	_win = NULL;
@@ -138,6 +133,8 @@ extern "C" void destroyObject( NcursesWindow* object ) {
 ** Window Specialities
 */
 void		NcursesWindow::initWindow(void) {
+	int x, y;
+
 	logger.log("Ncurses Window initWindow() called");
 	initscr();
 	keypad(stdscr, TRUE);
@@ -149,6 +146,10 @@ void		NcursesWindow::initWindow(void) {
 	curs_set(0);
     cbreak();
     noecho();
+
+	getmaxyx(stdscr, y, x);
+
+	_size = Coord(x - 2, y - 2);
 
 	_win  = newwin(this->_size.getY(), this->_size.getX(), 1, 1);
 	_panel = new_panel(_win);
@@ -197,11 +198,11 @@ void    	NcursesWindow::drawWindowFrame(void) {
 	mvwaddch(this->_win, 2, this->_size.getX() - 1, ACS_RTEE);
 	for (int k = 1; k < this->_size.getX() - 1; k++) {
 		mvwaddch(this->_win, 2, k, ACS_HLINE);
-		mvwaddch(this->_win, this->_size.getX() - 3, k, ACS_HLINE);
+		// mvwaddch(this->_win, this->_size.getY() - 4, k, ACS_HLINE);
 	}
 
 	drawTitle();
-    mvwaddstr(this->_win, this->_size.getY() - 2, 2, "Score:");
+    // mvwaddstr(this->_win, this->_size.getY() - 2, 2, "Score:");
 }
 
 void		NcursesWindow::drawTitle(void) {
