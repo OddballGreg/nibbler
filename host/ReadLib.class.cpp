@@ -69,20 +69,20 @@ void		ReadLib::callRun( void ) {
 
 	// For now I will only load the ncurses library. I will have to create
 	// template for loading different classes.
-	NcursesWindow* (*create)();
-	void	(*destroy)(NcursesWindow*);
+	IDisplay* (*create)();
+	void	(*destroy)(IDisplay*);
 
 	// reset errors
 	dlerror();
-	create = (NcursesWindow* (*)())dlsym(_libHandle, "createObject");
-	destroy = (void (*)(NcursesWindow*))dlsym(_libHandle, "destroyObject");
+	create = (IDisplay* (*)())dlsym(_libHandle, "createObject");
+	destroy = (void (*)(IDisplay*))dlsym(_libHandle, "destroyObject");
 	const char *dlsym_error = dlerror();
 	if (dlsym_error) {
 		std::cerr << "Trouble finding `run`: " << dlerror() << std::endl;
 		dlclose(_libHandle);
 	}
 
-	NcursesWindow* Ncurses = (NcursesWindow*)create();
+	IDisplay* Ncurses = (IDisplay*)create();
 	Ncurses->initWindow();
 	destroy( Ncurses );
 
