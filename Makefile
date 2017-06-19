@@ -11,6 +11,8 @@ HEAD=
 
 FLAGS= -Wall -Wextra -Werror -Wno-unused -Wconversion --std=c++11
 
+NCURSES=./environ/ncurses/NcursesWindow.cpp
+
 BOOL= 0
 
 ifeq ($(shell uname -s), Linux)
@@ -19,9 +21,9 @@ endif
 
 $(NAME):
 	bash ./lib/install.sh
-	g++ -dynamiclib -flat_namespace ./shared/Coord.cpp ./shared/Direction.cpp -o shared.so
-	g++ -dynamiclib -flat_namespace shared.so -lpanel -lncurses ./environ/ncurses/NcursesWindow.cpp -o NcursesWindow.so
-	g++ -shared -fPIC -o graphlib.so ./host/run.cpp
+	g++ -shared -fPIC -lpanel -lncurses -o NcursesWindow.so $(NCURSES)
+	#g++ -shared -fPIC 
+	#g++ -shared -fPIC 
 	g++ $(FLAGS) -c $(SRC) $(END_FLAGS)
 	g++ $(FLAGS) -o $(NAME_LIB) $(OBJ) $(END_FLAGS)
 

@@ -46,17 +46,12 @@ void			ReadLib::runlib( int const & i ) {
  * This is where the libraries are loaded dynamically.
  */
 
-void		ReadLib::openLib( int const & i ) {
+void		ReadLib::openLib( std::string const & str ) {
 
-	const std::string& _compile("g++ -Wall -Wextra -Werror -shared -fPIC -o graphilib.so ");
-	const std::string& _temp(_compile + _libraries.at(static_cast<size_t>(i)));
-	
-	_exect = execute(_temp.c_str());
-
-	_libHandle = dlopen("graphlib.so", RTLD_LAZY | RTLD_LOCAL);
+	_libHandle = dlopen(str, RTLD_LAZY | RTLD_LOCAL);
 	
 	if (_libHandle == NULL) {
-		std::cout << "Falied loading library: " << _libraries.at(static_cast<size_t>(i)) << std::endl; 
+		std::cout << "Falied loading library: " << str << std::endl; 
 		std::cout << dlerror() << std::endl;
 		return;
 	} else {

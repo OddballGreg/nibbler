@@ -31,6 +31,6 @@ class ReadLib {
 
 		void			runlib(const int& i);
 		std::string		execute( const char* cmd );
-		void			openLib( int const & i );
+		void			openLib( std::string const & str );
 		void			callRun( int const & i );
 };
