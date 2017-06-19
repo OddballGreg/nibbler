@@ -249,3 +249,11 @@ void		*keyLoop(void *threadID) {
 	}
 	pthread_exit(NULL);
 }
+
+IDisplay			*createWindow(void) {
+	return new NcursesWindow;
+}
+
+void				deleteWindow(IDisplay *window) {
+	delete window;
+}
