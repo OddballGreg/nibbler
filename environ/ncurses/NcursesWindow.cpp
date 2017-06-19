@@ -255,5 +255,7 @@ IDisplay			*createWindow(void) {
 }
 
 void				deleteWindow(IDisplay *window) {
-	delete window;
+	NcursesWindow	*win = static_cast<NcursesWindow *>(window);
+
+	delete win;
 }
