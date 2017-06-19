@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef NCURSES_WINDOW_HPP
- # define NCURSES_WINDOW_HPP
+# define NCURSES_WINDOW_HPP
 
 # include <iostream>
 # include <sstream>
@@ -23,8 +23,11 @@
 
 /* Compile with: -lpthread */
 
-bool		listen = false;
-int			lastKeyPress = 0;
+#ifndef listen
+# define bool listen false
+
+#ifndef lastKeyPress
+# define int lastKeyPress 0
 
 class NcursesWindow : public IDisplay {
 public:

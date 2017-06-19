@@ -22,8 +22,6 @@ endif
 $(NAME):
 	bash ./lib/install.sh
 	g++ -shared -fPIC -lpanel -lncurses -o NcursesWindow.so $(NCURSES)
-	#g++ -shared -fPIC 
-	#g++ -shared -fPIC 
 	g++ $(FLAGS) -c $(SRC) $(END_FLAGS)
 	g++ $(FLAGS) -o $(NAME) $(OBJ) $(END_FLAGS)
 

@@ -1,6 +1,6 @@
 #include "./main.hpp"
 
-void puts(std::string message) { std::cout << message << std::endl; }
+//void puts(std::string message) { std::cout << message << std::endl; }
 
 int				main( void )
 {
