@@ -98,3 +98,14 @@ Direction	OpenGL::getDirection(void) {
 Coord		OpenGL::getWindowSize(void) {
 	//
 }
+
+/*
+** Other Functions
+*/
+IDisplay			*createWindow(void) {
+	return new OpenGL;
+}
+
+void				deleteWindow(IDisplay *window) {
+	delete window;
+}
