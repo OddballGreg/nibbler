@@ -14,7 +14,8 @@ FLAGS= -Wall -Wextra -Werror -Wno-unused -Wconversion --std=c++11
 NCURSES=./environ/ncurses/NcursesWindow.cpp
 
 SHARED= ./shared/Coord.cpp \
-		./shared/Direction.cpp
+		./shared/Direction.cpp \
+		./shared/Logger.cpp
 
 BOOL= 0
 

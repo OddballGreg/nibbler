@@ -19,6 +19,7 @@
 # include <ncurses.h>
 # include <pthread.h>
 
+# include "../../shared/Logger.hpp"
 # include "../../shared/IDisplay.hpp"
 
 /* Compile with: -lpthread */
