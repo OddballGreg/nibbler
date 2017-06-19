@@ -20,7 +20,7 @@ Logger::Logger(std::string filename, bool verbose)
 	if (verbose)
 	{
 		*this->_logfile << "Logger instantiated" << std::endl;
-		std::cout << "Logger instantiated and pointed to " << filename << std::endl;
+		// std::cout << "Logger instantiated and pointed to " << filename << std::endl;
 	}
 }
 
@@ -35,7 +35,7 @@ Logger::~Logger()
 	if (this->_verbose)
 	{
 		*this->_logfile << "Logger deconstructed" << std::endl;
-		std::cout << "Logger deconstructed" << std::endl;
+		// std::cout << "Logger deconstructed" << std::endl;
 	}
 	delete this->_logfile;
 }

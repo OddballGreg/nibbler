@@ -6,7 +6,6 @@ Ncurses Window drawTitle() called
 Ncurses Window keyListener() called
 Ncurses Window Destructed
 Ncurses Window keyLoop() called
-Ncurses Window keyLoop() called
 Logger deconstructed
-Ncurses Window keyLoop() - pthread exited
+Logger deconstructed
 Ncurses Window keyLoop() - pthread exited

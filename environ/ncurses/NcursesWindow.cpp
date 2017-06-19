@@ -93,6 +93,7 @@ void		NcursesWindow::drawMap(MAP map) {
 
 	update_panels();
 	doupdate();
+	wmove(this->_win, 3, 1);// used to move
 	logger.log("Ncurses Window Map Drawn");
 }
 
