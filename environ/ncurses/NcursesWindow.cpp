@@ -31,6 +31,9 @@ NcursesWindow::~NcursesWindow(void) {
 	listen = false;
 	// _map.clear();
 
+	if (_win)
+		delwin(this->_win);
+
 	// if (_panel)
 	// 	del_panel(this->_panel);
 	logger.log_step_out("Ncurses Window Destructed");
