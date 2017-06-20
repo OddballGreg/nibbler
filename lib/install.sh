@@ -7,7 +7,7 @@ LIB_OGRE="./lib/Ogre3D"
 LIB_SDL="./lib/SDL"
 LIB_OPENGL="./lib/OpenGL"
 
-if [ "$LIB_VTK" ] && [ "$LIB_OGRE" ] && [ "$LIB_SDL" ] && [ "$LIB_OPENGL" ]; then
+if [ -d "$LIB_VTK" ] && [ -d "$LIB_OGRE" ] && [ -d "$LIB_SDL" ] && [ -d "$LIB_OPENGL" ]; then
 	exit
 fi
 
