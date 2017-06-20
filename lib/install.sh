@@ -47,13 +47,16 @@ if [ ! -d "$LIB_VTK" ]; then
 	brew install vtk
 	echo "Begin downloading VTK from GitHub...."
 	git clone https://github.com/Kitware/VTK.git $VTK 
-	mv $VTK $LIB ; cd $LIB
+	mv "$VTK" "$LIB" ; cd "$LIB"
 	echo "Busy creating CMake components"
 	cmake -D CMAKE_C_COMPILER="/usr/bin/clang" -D CMAKE_CXX_COMPILER="/usr/bin/clang++" "./VTK/CMakeLists.txt"
 	echo "Beginning to install VTK...."
 	make -C "$VTK" install
+	cd "../"
 fi
 
+# For now we will not use Ogre3D as the system architecture is too old
+mkdir "$LIB_OGRE"
 if [ ! -d "$LIB_OGRE" ]; then
 
 	# Start by looking for the dependencies needed by Ogre3D
@@ -120,8 +123,11 @@ if [ ! -d "$LIB_SDL" ]; then
 	if [ ! -d "$SDL" ]; then
 		hg clone https://hg.libsdl.org/SDL SDL
 	fi
+	echo "Begin downloading VTK from GitHub...."
+	git clone https://github.com/Kitware/VTK.git $VTK 
+	mv "$VTK" "$LIB" ; cd "$LIB"
 	echo "Busy creating CMake components"
 	cd ./SDL/build ; CC=/sgoinfre/Students/cdebruyn/nibbler-1/SDL/build-scripts/gcc-fat.sh ../configure ; make
 	echo "Beginning to install SDL...."
-	mv "$SDL" "$LIB"
+	cd "../"
 fi
