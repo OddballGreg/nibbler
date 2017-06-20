@@ -230,7 +230,6 @@ void		NcursesWindow::drawTitle(void) {
 }
 
 bool		NcursesWindow::drawChar(int y, int x, const int c) {
-	logger.log_step_in("Ncurses Window| drawChar() Called", UNIMPORTANT);
 	x += 1;
 	y += 3;
 
@@ -240,7 +239,6 @@ bool		NcursesWindow::drawChar(int y, int x, const int c) {
 	}
 
 	return (false);
-	logger.log_step_out("Ncurses Window| drawChar() Completed", UNIMPORTANT);
 }
 
 void		NcursesWindow::keyListener(void) {
@@ -281,7 +279,7 @@ void		*keyLoop(void *threadID) {
 
 	while (listen) {
 		if (((key = getch()) != ERR)) {
-			logger.log("Ncurses Window| keyLoop() - getch() not ERR", IMPORTANT);
+			logger.log("Ncurses Window| keyLoop() - getch() = " + std::to_string(key), IMPORTANT);
 			lastKeyPress = key;
 		}
 	}
