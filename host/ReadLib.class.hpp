@@ -12,6 +12,7 @@
 #include <dlfcn.h>
 #include <unistd.h>
 #include "../shared/IDisplay.hpp"
+#include "../shared/Logger.hpp"
 #include "GameState.hpp"
 
 class ReadLib {

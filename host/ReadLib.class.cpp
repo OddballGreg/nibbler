@@ -20,6 +20,7 @@ const ReadLib&	ReadLib::operator=( ReadLib const & lib ) {
 };
 
 void			ReadLib::runlib( const int & i ) {
+	logger.log_step_in("ReadLib| runlib() Called");
 
 	std::ifstream	read;
 	std::string		str;
@@ -39,6 +40,7 @@ void			ReadLib::runlib( const int & i ) {
 	}
 
 	this->openLib(i);
+	logger.log_step_out("ReadLib| runlib() Completed");
 
 }
 
@@ -47,6 +49,7 @@ void			ReadLib::runlib( const int & i ) {
  */
 
 void		ReadLib::openLib( const int & i ) {
+	logger.log_step_in("ReadLib| openlib() Called");
 
 	_libHandle = dlopen(_libraries.at(static_cast<size_t>(i)).c_str(), RTLD_LAZY | RTLD_LOCAL);
 	
@@ -57,15 +60,17 @@ void		ReadLib::openLib( const int & i ) {
 	} else {
 		std::cout << "Cool beans... You library has loaded." << std::endl;
 		callRun();
+		dlclose(_libHandle);
 	}
+	logger.log_step_out("ReadLib| openlib() Completed");
 }
 
 /**
  * This calls the `run` function in the indicated library
  */
 void		ReadLib::callRun( void ) {
+	logger.log_step_in("ReadLib| callRun() Called");
 	
-	logger.log("Readlib callRun() called");
 	std::cout << "Busy loading symbols..." << std::endl;
 
 	// For now I will only load the ncurses library. I will have to create
@@ -91,14 +96,14 @@ void		ReadLib::callRun( void ) {
 
 	destroy( Ncurses );
 
-	dlclose(_libHandle);
-
+	logger.log_step_out("ReadLib| callRun() Completed");
 };
 
 /**
  * The bash script is executed to load the library.
  */
 std::string		ReadLib::execute( const char* cmd ) {
+	logger.log_step_in("ReadLib| execute() Called");
     std::array<char, 512> buffer;
     std::string result;
     std::shared_ptr<FILE> pipe(popen(cmd, "r"), pclose);
@@ -108,12 +113,14 @@ std::string		ReadLib::execute( const char* cmd ) {
             result += buffer.data();
     }
     return result;
+	logger.log_step_out("ReadLib| execute() Completed");
 };
 
 /*
 ** The gameplay logic
 */
 void		ReadLib::runGame(IDisplay *window) const {
+	logger.log_step_in("ReadLib| runGame() Called");
 	GameState	game;
 	Direction	dir;
 
@@ -128,4 +135,5 @@ void		ReadLib::runGame(IDisplay *window) const {
 			game.setSnakeDir(dir.getDirection());
 		sleep(1);//temp
 	}
+	logger.log_step_out("ReadLib| runGame() Completed");
 }
