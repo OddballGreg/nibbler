@@ -46,14 +46,14 @@ GLSLANG="~/.brew/Cellar/glslang"
 GLSL_OPTIMISER="./lib/glsl-optimiser"
 CGAL="~/.brew/Cellar/cgal"
 
-if [ ! -d "$LIB_VTK" ] || [ ! -d "$SGOINFRE/VTK" ]; then
+if [ ! -d "$LIB_VTK" ] && [ ! -d "$SGOINFRE/VTK" ]; then
 	echo "Preparing to install VTK..."
 	echo "Installing vtk command-line.."
 	brew tap homebrew/science
 	brew install vtk
 	echo "Begin downloading VTK from GitHub...."
 	git clone https://github.com/Kitware/VTK.git $VTK 
-	mv "$VTK" "$LIB" ; cd "$LIB"
+	mv "$VTK" "$SGOINFRE/$LIB" ; cd "$SGOINFRE/$LIB"
 	echo "Busy creating CMake components"
 	cmake -D CMAKE_C_COMPILER="/usr/bin/clang" -D CMAKE_CXX_COMPILER="/usr/bin/clang++" "./VTK/CMakeLists.txt"
 	echo "Beginning to install VTK...."
@@ -65,7 +65,7 @@ fi
 
 # For now we will not use Ogre3D as the system architecture is too old
 mkdir "$LIB_OGRE"
-if [ ! -d "$LIB_OGRE" ] || [ ! -d "$SGOINFRE/Ogre3D" ]; then
+if [ ! -d "$LIB_OGRE" ] && [ ! -d "$SGOINFRE/Ogre3D" ]; then
 
 	# Start by looking for the dependencies needed by Ogre3D
 	echo "Finding dependencies for Ogre3D..."
@@ -118,14 +118,15 @@ if [ ! -d "$LIB_OGRE" ] || [ ! -d "$SGOINFRE/Ogre3D" ]; then
 	echo "Make sure you add 'typedef void *locale_t;' to the header file. That it complains about."
 	echo "You need to change strtod_l to strtodll and strtol_l to strtoll"
 	sleep 2
+	mv "$OGRE" "$SGOINFRE/$LIB" ; cd "$SGOINFRE/$LIB"
 	cmake -D CMAKE_C_COMPILER="/usr/bin/clang" -D CMAKE_CXX_COMPILER="/usr/bin/clang++" "./Ogre3D/CMakeLists.txt"
 	echo "Beginning to install Ogre3D......"
 	make -C "$OGRE" install/local
-	mv "$OGRE" "$LIB"
 	echo "Finish install Ogre3D...."
+	cd "../"
 fi
 
-if [ ! -d "$LIB_SDL" ] || [ ! -d "$SGOINFRE/SDL" ]; then
+if [ ! -d "$LIB_SDL" ] && [ ! -d "$SGOINFRE/SDL" ]; then
 	echo "Preparing to install SDL..."
 	echo "Note: SDL can be installed with the Managed Software Centre"
 	if [ ! -d "$SDL" ]; then
@@ -133,7 +134,7 @@ if [ ! -d "$LIB_SDL" ] || [ ! -d "$SGOINFRE/SDL" ]; then
 	fi
 	echo "Begin downloading VTK from GitHub...."
 	git clone https://github.com/Kitware/VTK.git $VTK 
-	mv "$VTK" "$LIB" ; cd "$LIB"
+	mv "$SDL" "$SGOINFRE/$LIB" ; cd "$SGOINFRE/$LIB"
 	echo "Busy creating CMake components"
 	cd ./SDL/build ; CC=/sgoinfre/Students/cdebruyn/nibbler-1/SDL/build-scripts/gcc-fat.sh ../configure ; make
 	echo "Beginning to install SDL...."
