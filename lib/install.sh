@@ -7,7 +7,13 @@ LIB_OGRE="./lib/Ogre3D"
 LIB_SDL="./lib/SDL"
 LIB_OPENGL="./lib/OpenGL"
 
+SGOINFRE="sgoinfre/Students/cdebruyn/nibbler-1/lib/"
+
 if [ -d "$LIB_VTK" ] && [ -d "$LIB_OGRE" ] && [ -d "$LIB_SDL" ] && [ -d "$LIB_OPENGL" ]; then
+	exit
+fi
+
+if [ -d "$SGOINFRE/VTK" ] && [ -d "$SGOINFRE/Ogre3D" ] && [ -d "$SGOINFRE/SDL" ] && [ -d "$SGOINFRE/OpenGL" ]; then
 	exit
 fi
 
