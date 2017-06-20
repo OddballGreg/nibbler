@@ -20,7 +20,7 @@ const ReadLib&	ReadLib::operator=( ReadLib const & lib ) {
 };
 
 void			ReadLib::runlib( const int & i ) {
-	logger.log_step_in("ReadLib| runlib() Called");
+	logger.log_step_in("ReadLib| runlib() Called", CRITICAL);
 
 	std::ifstream	read;
 	std::string		str;
@@ -40,7 +40,7 @@ void			ReadLib::runlib( const int & i ) {
 	}
 
 	this->openLib(i);
-	logger.log_step_out("ReadLib| runlib() Completed");
+	logger.log_step_out("ReadLib| runlib() Completed", CRITICAL);
 
 }
 
@@ -49,7 +49,7 @@ void			ReadLib::runlib( const int & i ) {
  */
 
 void		ReadLib::openLib( const int & i ) {
-	logger.log_step_in("ReadLib| openlib() Called");
+	logger.log_step_in("ReadLib| openlib() Called", CRITICAL);
 
 	_libHandle = dlopen(_libraries.at(static_cast<size_t>(i)).c_str(), RTLD_LAZY | RTLD_LOCAL);
 	
@@ -62,14 +62,14 @@ void		ReadLib::openLib( const int & i ) {
 		callRun();
 		dlclose(_libHandle);
 	}
-	logger.log_step_out("ReadLib| openlib() Completed");
+	logger.log_step_out("ReadLib| openlib() Completed", CRITICAL);
 }
 
 /**
  * This calls the `run` function in the indicated library
  */
 void		ReadLib::callRun( void ) {
-	logger.log_step_in("ReadLib| callRun() Called");
+	logger.log_step_in("ReadLib| callRun() Called", CRITICAL);
 	
 	std::cout << "Busy loading symbols..." << std::endl;
 
@@ -96,14 +96,14 @@ void		ReadLib::callRun( void ) {
 
 	destroy( Ncurses );
 
-	logger.log_step_out("ReadLib| callRun() Completed");
+	logger.log_step_out("ReadLib| callRun() Completed", CRITICAL);
 };
 
 /**
  * The bash script is executed to load the library.
  */
 std::string		ReadLib::execute( const char* cmd ) {
-	logger.log_step_in("ReadLib| execute() Called");
+	logger.log_step_in("ReadLib| execute() Called", CRITICAL);
     std::array<char, 512> buffer;
     std::string result;
     std::shared_ptr<FILE> pipe(popen(cmd, "r"), pclose);
@@ -113,18 +113,18 @@ std::string		ReadLib::execute( const char* cmd ) {
             result += buffer.data();
     }
     return result;
-	logger.log_step_out("ReadLib| execute() Completed");
+	logger.log_step_out("ReadLib| execute() Completed", CRITICAL);
 };
 
 /*
 ** The gameplay logic
 */
 void		ReadLib::runGame(IDisplay *window) const {
-	logger.log_step_in("ReadLib| runGame() Called");
+	logger.log_step_in("ReadLib| runGame() Called", CRITICAL);
 	GameState	game;
 	Direction	dir;
 
-	logger.log("Readlib runGame() called");
+	logger.log("Readlib runGame() called", CRITICAL);
 	game.setSize(window->getWindowSize());
 	while (game.runIteration()) {
 		window->drawScore(game.getScore());
@@ -135,5 +135,5 @@ void		ReadLib::runGame(IDisplay *window) const {
 			game.setSnakeDir(dir.getDirection());
 		sleep(1);//temp
 	}
-	logger.log_step_out("ReadLib| runGame() Completed");
+	logger.log_step_out("ReadLib| runGame() Completed", CRITICAL);
 }
