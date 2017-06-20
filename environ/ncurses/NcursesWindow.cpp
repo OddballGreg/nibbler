@@ -253,8 +253,8 @@ void		NcursesWindow::keyListener(void) {
 */
 
 void		*keyLoop(void *threadID) {
-	logger.log("Ncurses Window keyLoop() called");
 	int		key;
+	logger.log("Ncurses Window keyLoop() called");
 
 	if (!threadID)
 		throw std::runtime_error("Calling NCurses Loop with main thread");

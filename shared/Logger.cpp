@@ -15,7 +15,7 @@
 
 Logger::Logger(std::string filename, bool verbose)
 {
-	this->_logfile = new std::ofstream(filename);
+	this->_logfile = new std::ofstream(filename, std::ofstream::out | std::ofstream::app);
 	this->_verbose = verbose;
 	if (verbose)
 	{
