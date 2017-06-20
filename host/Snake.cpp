@@ -109,7 +109,7 @@ void				Snake::moveSnake(void) {
 	logger.log_step_in("Snake| moveSnake() Called", CRITICAL);
 	Part	head = this->_direction.moveCoord(this->_body.front().getPos());
 
-	logger.log("Snake| moveSnake() New Head Pos: ", head.getPos());
+	logger.log("Snake| moveSnake() New Head Pos: ", head.getPos(), CRITICAL);
 	this->_body.push_front(head);
 	if (!this->_body.back().getEaten())
 		this->_body.pop_back();
