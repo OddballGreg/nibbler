@@ -84,6 +84,10 @@ void		ReadLib::callRun( void ) {
 
 	IDisplay* Ncurses = (IDisplay*)create();
 	Ncurses->initWindow();
+	this->runGame(Ncurses);
+	sleep(1);
+	Ncurses->exitWindow();
+
 	destroy( Ncurses );
 
 	dlclose(_libHandle);
@@ -104,3 +108,23 @@ std::string		ReadLib::execute( const char* cmd ) {
     }
     return result;
 };
+
+/*
+** The gameplay logic
+*/
+void		ReadLib::runGame(IDisplay *window) const {
+	// GameState	game;
+	// Direction	dir;
+
+	// game.setSize(window->getWindowSize());
+	// while (game.runIteration()) {
+	// 	window->drawScore(game.getScore());
+	// 	window->drawMap(game.getMap());
+
+	// 	dir = window->getDirection();
+	// 	if (dir.getDirection() != LOST)
+	// 		game.setSnakeDir(dir.getDirection());
+	// 	sleep(1);//temp
+	// }
+	(void)window;
+}
