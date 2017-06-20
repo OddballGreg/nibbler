@@ -31,7 +31,7 @@ NcursesWindow::~NcursesWindow(void) {
 	listen = false;
 	// _map.clear();
 
-	if (_win != false)
+	if (_win)
 		delwin(this->_win);
 
 	// if (_panel)
