@@ -42,13 +42,13 @@ Snake::~Snake(void) {
 ** Copying
 */
 Snake::Snake(const Snake &obj) {
-	for (std::list<Part>::iterator it = _body.begin(); it != _body.end(); ++it)
+	for (std::list<Part>::iterator it = obj.getBody().begin(); it != obj.getBody().end(); ++it)
 		this->_body.push_back(*it);
 	this->_direction = _direction;
 }
 
 Snake Snake::operator = (const Snake &obj) {
-	for (std::list<Part>::iterator it = _body.begin(); it != _body.end(); ++it)
+	for (std::list<Part>::iterator it = obj.getBody().begin(); it != obj.getBody().end(); ++it)
 		this->_body.push_back(*it);
 	this->_direction = _direction;
 
@@ -81,7 +81,8 @@ void				Snake::setDirection(char dir) {
 ** Display
 */
 std::ostream& operator << (std::ostream &o, const Snake &s) {
-	o << "<Snake>";
+	o << "<Snake>";//temp
+	(void)s;
 
 	return (o);
 }
