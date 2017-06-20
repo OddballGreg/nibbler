@@ -41,6 +41,10 @@ fclean: clean
 
 re: fclean all
 
+run: re
+	reset
+	./nibbler
+
 unistall:
 	bash ./lib/uninstall.sh
 

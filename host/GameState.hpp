@@ -18,6 +18,7 @@
 # include <time.h>
 
 # include "../shared/Coord.hpp"
+# include "../shared/Logger.hpp"
 # include "Snake.hpp"
 
 # define DEFAULT_HEIGHT	20

@@ -36,6 +36,8 @@ class Logger
 		void log(std::string message, int depth_step);
 		void log(std::string message, Coord coord);
 		void log(std::string message, Direction direction);
+		void log_step_in(std::string message);
+		void log_step_out(std::string message);
 		void die(std::string message);
 
 	private:

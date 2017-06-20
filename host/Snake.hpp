@@ -18,6 +18,7 @@
 
 # include "../shared/Coord.hpp"
 # include "../shared/Direction.hpp"
+# include "../shared/Logger.hpp"
 # include "Part.hpp"
 
 # define DEFAULT_SNAKE_LENGTH 4

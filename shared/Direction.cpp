@@ -124,8 +124,6 @@ void	Direction::setDirection(char direction) {
 ** Functions
 */
 Coord	Direction::moveCoord(Coord coord) const {
-	Coord	result;
-
 	if (this->_x == RIGHT)
 		coord.incX();
 	else if (this->_x == LEFT)
@@ -136,7 +134,7 @@ Coord	Direction::moveCoord(Coord coord) const {
 	else if (this->_y == DOWN)
 		coord.decY();
 
-	return (result);
+	return (coord);
 }
 
 Direction	Direction::opposite(void) const {

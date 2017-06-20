@@ -54,7 +54,40 @@ void Logger::log(std::string message)
 {	
 	pthread_mutex_lock(&this->_log_lock);
 	if (this->_verbose)
+	{
+		int i = -1;
+		while (++i < this->_depth + 1)
+			*this->_logfile << "\t";
 		*this->_logfile << message << std::endl;
+	}
+	pthread_mutex_unlock(&this->_log_lock);
+}
+
+void Logger::log_step_in(std::string message)
+{	
+	pthread_mutex_lock(&this->_log_lock);
+	this->_depth += 1;
+	if (this->_verbose)
+	{
+		int i = -1;
+		while (++i < this->_depth)
+			*this->_logfile << "\t";
+		*this->_logfile << message << std::endl;
+	}
+	pthread_mutex_unlock(&this->_log_lock);
+}
+
+void Logger::log_step_out(std::string message)
+{	
+	pthread_mutex_lock(&this->_log_lock);
+	if (this->_verbose)
+	{
+		int i = -1;
+		while (++i < this->_depth)
+			*this->_logfile << "\t";
+		*this->_logfile << message << std::endl;
+	}
+	this->_depth += -1;
 	pthread_mutex_unlock(&this->_log_lock);
 }
 
@@ -66,7 +99,7 @@ void Logger::log(std::string message, int depth_step)
 	if (this->_verbose)
 	{
 		int i = -1;
-		while (++i < this->_depth)
+		while (++i < this->_depth + 1)
 			*this->_logfile << "\t";
 		*this->_logfile << message << std::endl;
 	}
@@ -79,7 +112,12 @@ void Logger::log(std::string message, Coord coord)
 {	
 	pthread_mutex_lock(&this->_log_lock);
 	if (this->_verbose)
+	{
+		int i = -1;
+		while (++i < this->_depth + 1)
+			*this->_logfile << "\t";
 		*this->_logfile << message << coord.getX() << " " << coord.getY() << std::endl;
+	}
 	pthread_mutex_unlock(&this->_log_lock);
 }
 
@@ -87,7 +125,12 @@ void Logger::log(std::string message, Direction direction)
 {	
 	pthread_mutex_lock(&this->_log_lock);
 	if (this->_verbose)
+	{
+		int i = -1;
+		while (++i < this->_depth + 1)
+			*this->_logfile << "\t";
 		*this->_logfile << message << " " << direction.getDirectionString() << std::endl;
+	}
 	pthread_mutex_unlock(&this->_log_lock);
 }
 
