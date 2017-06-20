@@ -255,9 +255,9 @@ void		NcursesWindow::keyListener(void) {
 			this->_direction = Direction(WEST);
 		else if ((lastKeyPress == 'd') && this->_direction.getDirection() != WEST)
 			this->_direction = Direction(EAST);
-		else if ((lastKeyPress == 'w') && this->_direction.getDirection() != SOUTH)
+		else if ((lastKeyPress == 'w') && this->_direction.getDirection() != NORTH)
 			this->_direction = Direction(SOUTH);
-		else if ((lastKeyPress == 's') && this->_direction.getDirection() != NORTH)
+		else if ((lastKeyPress == 's') && this->_direction.getDirection() != SOUTH)
 			this->_direction = Direction(NORTH);
 		lastKeyPress = 0;
 	 }
