@@ -22,7 +22,7 @@ Snake::Snake(void) {
 
 	for (int k = 0; k < DEFAULT_SNAKE_LENGTH; k++) {
 		_body.push_front(part);
-		logger.log("Snake| coordinate moved to: ", _direction.moveCoord(part.getPos()), CRITICAL);
+		logger.log("Snake| coordinate moved to: ", part.getPos(), CRITICAL);
 		part = _direction.moveCoord(part.getPos());
 	}
 	logger.log_step_out("Snake| Constructor Completed", CRITICAL);
@@ -109,6 +109,7 @@ void				Snake::moveSnake(void) {
 	logger.log_step_in("Snake| moveSnake() Called", CRITICAL);
 	Part	head = this->_direction.moveCoord(this->_body.front().getPos());
 
+	logger.log("Snake| moveSnake() New Head Pos: ", head.getPos());
 	this->_body.push_front(head);
 	if (!this->_body.back().getEaten())
 		this->_body.pop_back();
