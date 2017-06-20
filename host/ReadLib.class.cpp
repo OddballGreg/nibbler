@@ -91,7 +91,7 @@ void		ReadLib::callRun( void ) {
 	IDisplay* Ncurses = (IDisplay*)create();
 	Ncurses->initWindow();
 	this->runGame(Ncurses);
-	sleep(1);
+	sleep(3);
 	Ncurses->exitWindow();
 
 	destroy( Ncurses );
@@ -137,7 +137,6 @@ void		ReadLib::runGame(IDisplay *window) const {
 		dir = window->getDirection();
 		if (dir.getDirection() != LOST)
 			game.setSnakeDir(dir.getDirection());
-		// sleep(1);//temp
 
 		gettimeofday(&now, NULL);
 
@@ -148,5 +147,6 @@ void		ReadLib::runGame(IDisplay *window) const {
 
 		gettimeofday(&reff, NULL);
 	}
+	window->drawGameOver(game.getScore());
 	logger.log_step_out("ReadLib| runGame() Completed", CRITICAL);
 }
