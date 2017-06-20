@@ -21,6 +21,7 @@
 
 # include "../../shared/Logger.hpp"
 # include "../../shared/IDisplay.hpp"
+# include "../../shared/Logger.hpp"
 
 /* Compile with: -lpthread */
 
