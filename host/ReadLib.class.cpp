@@ -123,9 +123,13 @@ void		ReadLib::runGame(IDisplay *window) const {
 	logger.log_step_in("ReadLib| runGame() Called", CRITICAL);
 	GameState	game;
 	Direction	dir;
+	struct timeval	now, reff;
+	unsigned int	utime;
 
 	logger.log("Readlib runGame() called", CRITICAL);
 	game.setSize(window->getWindowSize());
+	gettimeofday(&reff, NULL);
+
 	while (game.runIteration()) {
 		window->drawScore(game.getScore());
 		window->drawMap(game.getMap());
@@ -133,7 +137,16 @@ void		ReadLib::runGame(IDisplay *window) const {
 		dir = window->getDirection();
 		if (dir.getDirection() != LOST)
 			game.setSnakeDir(dir.getDirection());
-		sleep(1);//temp
+		// sleep(1);//temp
+
+		gettimeofday(&now, NULL);
+
+		utime = static_cast<unsigned int>(abs(reff.tv_usec - now.tv_usec));
+
+		if (utime < DELAY)
+			usleep(DELAY - utime);
+
+		gettimeofday(&reff, NULL);
 	}
 	logger.log_step_out("ReadLib| runGame() Completed", CRITICAL);
 }

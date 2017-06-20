@@ -16,6 +16,7 @@
 # include <iostream>
 # include <map>
 # include <time.h>
+# include <sys/time.h>
 
 # include "../shared/Coord.hpp"
 # include "../shared/Logger.hpp"
@@ -35,6 +36,8 @@
 # define MODE_PAUSE		0
 # define MODE_PLAY		1
 # define MODE_END		2
+
+# define DELAY 60000
 
 # ifndef MAP
 #  define MAP std::map<int, std::map<int, char> >

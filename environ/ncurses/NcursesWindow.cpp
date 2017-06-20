@@ -72,7 +72,7 @@ void		NcursesWindow::drawMap(MAP map) {
 
 	for (int k = 0; k < this->_size.getY(); k++)
 		for (int l = 0; l < this->_size.getX(); l++) {
-			switch (map[k][l]) {
+			switch (map[l][k]) {
 				case MAP_EMPTY :
 					drawChar(k, l, ' ');
 					break;
@@ -255,10 +255,10 @@ void		NcursesWindow::keyListener(void) {
 			this->_direction = Direction(WEST);
 		else if ((lastKeyPress == 'd') && this->_direction.getDirection() != WEST)
 			this->_direction = Direction(EAST);
-		else if ((lastKeyPress == 'w') && this->_direction.getDirection() != SOUTH)
-			this->_direction = Direction(NORTH);
-		else if ((lastKeyPress == 's') && this->_direction.getDirection() != NORTH)
+		else if ((lastKeyPress == 'w') && this->_direction.getDirection() != NORTH)
 			this->_direction = Direction(SOUTH);
+		else if ((lastKeyPress == 's') && this->_direction.getDirection() != SOUTH)
+			this->_direction = Direction(NORTH);
 		lastKeyPress = 0;
 	 }
 	logger.log("Ncurses Window| keyListener() Completed", IMPORTANT);
