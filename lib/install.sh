@@ -46,7 +46,7 @@ GLSLANG="~/.brew/Cellar/glslang"
 GLSL_OPTIMISER="./lib/glsl-optimiser"
 CGAL="~/.brew/Cellar/cgal"
 
-if [ ! -d "$LIB_VTK" ]; then
+if [ ! -d "$LIB_VTK" ] || [ ! -d "$SGOINFRE/VTK" ]; then
 	echo "Preparing to install VTK..."
 	echo "Installing vtk command-line.."
 	brew tap homebrew/science
@@ -65,7 +65,7 @@ fi
 
 # For now we will not use Ogre3D as the system architecture is too old
 mkdir "$LIB_OGRE"
-if [ ! -d "$LIB_OGRE" ]; then
+if [ ! -d "$LIB_OGRE" ] || [ ! -d "$SGOINFRE/Ogre3D" ]; then
 
 	# Start by looking for the dependencies needed by Ogre3D
 	echo "Finding dependencies for Ogre3D..."
@@ -125,7 +125,7 @@ if [ ! -d "$LIB_OGRE" ]; then
 	echo "Finish install Ogre3D...."
 fi
 
-if [ ! -d "$LIB_SDL" ]; then
+if [ ! -d "$LIB_SDL" ] || [ ! -d "$SGOINFRE/SDL" ]; then
 	echo "Preparing to install SDL..."
 	echo "Note: SDL can be installed with the Managed Software Centre"
 	if [ ! -d "$SDL" ]; then
