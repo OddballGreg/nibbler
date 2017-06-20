@@ -52,6 +52,8 @@ if [ ! -d "$LIB_VTK" ]; then
 	cmake -D CMAKE_C_COMPILER="/usr/bin/clang" -D CMAKE_CXX_COMPILER="/usr/bin/clang++" "./VTK/CMakeLists.txt"
 	echo "Beginning to install VTK...."
 	make -C "$VTK" install
+	make -C "$VTK"
+	make -C "$VTK" test
 	cd "../"
 fi
 
