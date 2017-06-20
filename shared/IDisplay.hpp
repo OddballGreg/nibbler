@@ -17,6 +17,7 @@
 # include <map>
 
 # include "../shared/Direction.hpp"
+# include "../shared/Logger.hpp"
 # include <iostream>
 # include <sstream>
 

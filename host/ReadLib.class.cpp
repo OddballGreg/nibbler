@@ -65,6 +65,7 @@ void		ReadLib::openLib( const int & i ) {
  */
 void		ReadLib::callRun( void ) {
 	
+	logger.log("Readlib callRun() called");
 	std::cout << "Busy loading symbols..." << std::endl;
 
 	// For now I will only load the ncurses library. I will have to create
@@ -113,18 +114,18 @@ std::string		ReadLib::execute( const char* cmd ) {
 ** The gameplay logic
 */
 void		ReadLib::runGame(IDisplay *window) const {
-	// GameState	game;
-	// Direction	dir;
+	GameState	game;
+	Direction	dir;
 
-	// game.setSize(window->getWindowSize());
-	// while (game.runIteration()) {
-	// 	window->drawScore(game.getScore());
-	// 	window->drawMap(game.getMap());
+	logger.log("Readlib runGame() called");
+	game.setSize(window->getWindowSize());
+	while (game.runIteration()) {
+		window->drawScore(game.getScore());
+		window->drawMap(game.getMap());
 
-	// 	dir = window->getDirection();
-	// 	if (dir.getDirection() != LOST)
-	// 		game.setSnakeDir(dir.getDirection());
-	// 	sleep(1);//temp
-	// }
-	(void)window;
+		dir = window->getDirection();
+		if (dir.getDirection() != LOST)
+			game.setSnakeDir(dir.getDirection());
+		sleep(1);//temp
+	}
 }
