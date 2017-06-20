@@ -13,6 +13,11 @@ FLAGS= -Wall -Wextra -Werror -Wno-unused -Wconversion --std=c++11
 
 NCURSES=./environ/ncurses/NcursesWindow.cpp
 
+# I'll include the entire 3.5GB library if I want to. Ha Ha.
+VTK_DIR=./lib/VTK/lib
+
+VTK_FUCKTON= $(addprefix $(VTK_DIR), *.dylib)
+
 SHARED= ./shared/Coord.cpp \
 		./shared/Direction.cpp \
 		./shared/Logger.cpp

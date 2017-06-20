@@ -88,13 +88,13 @@ void		ReadLib::callRun( void ) {
 		dlclose(_libHandle);
 	}
 
-	IDisplay* Ncurses = (IDisplay*)create();
-	Ncurses->initWindow();
-	this->runGame(Ncurses);
+	IDisplay* display = (IDisplay*)create();
+	display->initWindow();
+	this->runGame(display);
 	sleep(1);
-	Ncurses->exitWindow();
+	display->exitWindow();
 
-	destroy( Ncurses );
+	destroy( display );
 
 	logger.log_step_out("ReadLib| callRun() Completed", CRITICAL);
 };
