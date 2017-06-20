@@ -1,7 +1,8 @@
 #ifndef NCURSES_WINDOW_HPP
  # define NCURSES_WINDOW_HPP
 
-# include "../shared/IDisplay.hpp"
+# include "../../shared/IDisplay.hpp"
+
 
 class OpenGL : public IDisplay {
 

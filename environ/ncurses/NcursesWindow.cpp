@@ -125,6 +125,10 @@ void		NcursesWindow::drawGameOver(int finalScore) {
 
 	std::string str = s.str();
 	mvwaddstr(this->_win, this->_size.getY() - 2, 2, str.c_str());
+
+	update_panels();
+	doupdate();
+
 	logger.log_step_out("Ncurses Window| drawGameOver() Completed", CRITICAL);
 }
 

@@ -88,11 +88,12 @@ void		ReadLib::callRun( void ) {
 		dlclose(_libHandle);
 	}
 
+	IDisplay* Ncurses = (IDisplay*)create();
+	Ncurses->initWindow();
+	this->runGame(Ncurses);
+	sleep(2);
+	Ncurses->exitWindow();
 	IDisplay* display = (IDisplay*)create();
-	display->initWindow();
-	this->runGame(display);
-	sleep(1);
-	display->exitWindow();
 
 	destroy( display );
 
@@ -137,7 +138,6 @@ void		ReadLib::runGame(IDisplay *window) const {
 		dir = window->getDirection();
 		if (dir.getDirection() != LOST)
 			game.setSnakeDir(dir.getDirection());
-		// sleep(1);//temp
 
 		gettimeofday(&now, NULL);
 
@@ -148,5 +148,6 @@ void		ReadLib::runGame(IDisplay *window) const {
 
 		gettimeofday(&reff, NULL);
 	}
+	window->drawGameOver(game.getScore());
 	logger.log_step_out("ReadLib| runGame() Completed", CRITICAL);
 }
