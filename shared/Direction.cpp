@@ -70,6 +70,19 @@ char	Direction::getDirection(void) const {
 	return (LOST);
 }
 
+std::string Direction::getDirectionString(void) const {
+	if (this->_x == 0 && this->_y == 1)
+		return ("NORTH");
+	if (this->_x == 1 && this->_y == 0)
+		return ("EAST");
+	if (this->_x == 0 && this->_y == -1)
+		return ("SOUTH");
+	if (this->_x == -1 && this->_y == 0)
+		return ("WEST");
+
+	return ("LOST");
+}
+
 /*
 ** Setters
 */

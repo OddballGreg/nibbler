@@ -1,7 +1,7 @@
 NAME=nibbler
 NAME_LIB=nibbler NcursesWindow.so 
 
-HOST= $(addprefix host/, ReadLib.class.cpp main.cpp)
+HOST= $(addprefix host/, ReadLib.class.cpp main.cpp GameState.cpp Part.cpp Snake.cpp)
 
 SRC= $(HOST)
 
@@ -25,10 +25,10 @@ endif
 
 $(NAME):
 	bash ./lib/install.sh
-	g++ -shared -fPIC $(SHARED) -I ./shared/ -o Shared.so
-	g++ -shared -fPIC -lpanel -lncurses Shared.so -o NcursesWindow.so $(NCURSES) 
+	g++ $(FLAGS) -shared -fPIC $(SHARED) -I ./shared/ -o Shared.so
+	g++ $(FLAGS) -shared -fPIC -lpanel -lncurses Shared.so -o NcursesWindow.so $(NCURSES) 
 	g++ $(FLAGS) -c $(SRC) $(END_FLAGS)
-	g++ $(FLAGS) -o $(NAME) $(OBJ) $(END_FLAGS)
+	g++ $(FLAGS) -o $(NAME) $(OBJ) Shared.so $(END_FLAGS)
 
 all: $(NAME)
 

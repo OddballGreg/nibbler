@@ -15,6 +15,10 @@
 
 # include <iostream>
 # include <fstream>
+# include <pthread.h>
+
+# include "Direction.hpp"
+# include "Coord.hpp"
 
 class Logger
 {
@@ -29,10 +33,15 @@ class Logger
 		
 		// Member Methods
 		void log(std::string message);
+		void log(std::string message, int depth_step);
+		void log(std::string message, Coord coord);
+		void log(std::string message, Direction direction);
 		void die(std::string message);
 
 	private:
+		pthread_mutex_t _log_lock = PTHREAD_MUTEX_INITIALIZER;
 		bool _verbose;
+		int  _depth;
 		std::ofstream* _logfile;
 };
 

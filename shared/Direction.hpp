@@ -41,6 +41,7 @@ public:
 	char		getX(void) const;
 	char		getY(void) const;
 	char		getDirection(void) const;
+	std::string getDirectionString(void) const;
 
 	void		setX(char x);
 	void		setY(char y);

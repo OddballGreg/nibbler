@@ -48,3 +48,4 @@ lib/glsl-optimiser
 .nfs.*
 .tmp.c
 .vscode
+nibbler_log.txt

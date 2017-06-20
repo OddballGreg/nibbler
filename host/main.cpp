@@ -4,6 +4,9 @@
 
 int				main( void )
 {
+	logger.log("");
+	logger.log("----------------------------------------------------");
+	logger.log("Program Started");
 	std::string	input;
 	int			run(1);
 
@@ -42,5 +45,6 @@ int				main( void )
 		}
 	}
 
+	logger.log("Graceful Exit");
 	return 0;
 }

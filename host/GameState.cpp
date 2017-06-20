@@ -172,7 +172,7 @@ void		GameState::generateFood(void) {
 	Coord	pos;
 	int		max_runs = 0;
 
-	srand(clock());
+	srand(static_cast<unsigned int>(clock()));
 	do {
 		pos = Coord(rand() % this->_size.getX(), rand() % this->_size.getY());
 

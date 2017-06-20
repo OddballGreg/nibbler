@@ -10,8 +10,9 @@
 #include <stdio.h>
 #include <memory>
 #include <dlfcn.h>
+#include <unistd.h>
 #include "../shared/IDisplay.hpp"
-#include "../environ/ncurses/NcursesWindow.hpp"
+#include "GameState.hpp"
 
 class ReadLib {
 
@@ -34,4 +35,5 @@ class ReadLib {
 		std::string		execute( const char* cmd );
 		void			openLib( const int & i );
 		void			callRun( void );
+		void			runGame(IDisplay *window) const;
 };

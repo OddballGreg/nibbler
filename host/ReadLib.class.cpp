@@ -69,21 +69,25 @@ void		ReadLib::callRun( void ) {
 
 	// For now I will only load the ncurses library. I will have to create
 	// template for loading different classes.
-	NcursesWindow* (*create)();
-	void	(*destroy)(NcursesWindow*);
+	IDisplay* (*create)();
+	void	(*destroy)(IDisplay*);
 
 	// reset errors
 	dlerror();
-	create = (NcursesWindow* (*)())dlsym(_libHandle, "createObject");
-	destroy = (void (*)(NcursesWindow*))dlsym(_libHandle, "destroyObject");
+	create = (IDisplay* (*)())dlsym(_libHandle, "createObject");
+	destroy = (void (*)(IDisplay*))dlsym(_libHandle, "destroyObject");
 	const char *dlsym_error = dlerror();
 	if (dlsym_error) {
 		std::cerr << "Trouble finding `run`: " << dlerror() << std::endl;
 		dlclose(_libHandle);
 	}
 
-	NcursesWindow* Ncurses = (NcursesWindow*)create();
+	IDisplay* Ncurses = (IDisplay*)create();
 	Ncurses->initWindow();
+	this->runGame(Ncurses);
+	sleep(1);
+	Ncurses->exitWindow();
+
 	destroy( Ncurses );
 
 	dlclose(_libHandle);
@@ -104,3 +108,23 @@ std::string		ReadLib::execute( const char* cmd ) {
     }
     return result;
 };
+
+/*
+** The gameplay logic
+*/
+void		ReadLib::runGame(IDisplay *window) const {
+	// GameState	game;
+	// Direction	dir;
+
+	// game.setSize(window->getWindowSize());
+	// while (game.runIteration()) {
+	// 	window->drawScore(game.getScore());
+	// 	window->drawMap(game.getMap());
+
+	// 	dir = window->getDirection();
+	// 	if (dir.getDirection() != LOST)
+	// 		game.setSnakeDir(dir.getDirection());
+	// 	sleep(1);//temp
+	// }
+	(void)window;
+}

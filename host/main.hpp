@@ -13,6 +13,8 @@ extern "C" {
 	#include <dlfcn.h>
 }
 
+# include "../shared/Logger.hpp"
+
 // OpenGL libraries
 //#include "../lib/OpenGL/OpenGL.hpp"
 
