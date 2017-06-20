@@ -91,13 +91,9 @@ void		ReadLib::callRun( void ) {
 	IDisplay* Ncurses = (IDisplay*)create();
 	Ncurses->initWindow();
 	this->runGame(Ncurses);
-	sleep(3);
+	sleep(2);
 	Ncurses->exitWindow();
 	IDisplay* display = (IDisplay*)create();
-	display->initWindow();
-	this->runGame(display);
-	sleep(3);
-	display->exitWindow();
 
 	destroy( display );
 
