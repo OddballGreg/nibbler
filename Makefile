@@ -1,6 +1,8 @@
 NAME=nibbler
 NAME_LIB=nibbler NcursesWindow.so 
 
+DEFD=DDEBUG
+
 HOST= $(addprefix host/, ReadLib.class.cpp main.cpp GameState.cpp Part.cpp Snake.cpp)
 
 SRC= $(HOST)
@@ -9,9 +11,16 @@ OBJ= ./*.o
 
 HEAD=
 
-FLAGS= -Wall -Wextra -Werror -Wno-unused -Wconversion --std=c++11
+FLAGS= -Wall -Wextra -Werror -Wno-unused -Wno-deprecated -Wconversion --std=c++11
 
 NCURSES=./environ/ncurses/NcursesWindow.cpp
+
+# I'll include the entire 3.5GB library if I want to. Ha Ha.
+VTK_DIR=./lib/VTK
+CXXFLAG=-I$(VTK_DIR)/include/
+
+
+VTK_FUCKTON= $(addprefix $(VTK_DIR), *.dylib)
 
 SHARED= ./shared/Coord.cpp \
 		./shared/Direction.cpp \
@@ -35,6 +44,9 @@ all: $(NAME)
 clean:
 	/bin/rm -rf $(OBJ)
 	/bin/rm -rf tst_file
+	/bin/rm -rf Shared.so
+	/bin/rm -rf NcursesWindow.so
+	/bin/rm -rf nibbler_log.txt 
 
 fclean: clean
 	/bin/rm -rf $(NAME)
