@@ -35,7 +35,7 @@ END_FLAGS = -ldl
 endif
 
 $(NAME):
-	# bash ./lib/install.sh
+	bash ./lib/install.sh
 	g++ $(FLAGS) -shared -fPIC $(SHARED) -I ./shared/ -o Shared.so
 	g++ $(FLAGS) -shared -fPIC -lpanel -lncurses Shared.so -o NcursesWindow.so $(NCURSES)
 	g++ $(FLAGS) -shared -fPIC -framework OpenGL -framework GLUT Shared.so -o OpenGL.so $(OPENGL) 
