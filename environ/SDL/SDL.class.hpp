@@ -2,8 +2,9 @@
 # define SDL_WINDOW_HPP
 
 
-# include <SDL/SDL_main.h>
-# include <SDL/SDL.h>
+# include <SDL2/SDL.h>
+# include <SDL2/SDL_main.h>
+
 # include <unistd.h> //debug
 # include <pthread.h>
 
@@ -33,7 +34,9 @@ class SDL : public IDisplay {
 	private:
 		Coord				_size;
 		Direction			_direction;
-		SDL_Surface*		surfDisplay;
+		SDL_Window*			Window;
+		SDL_Renderer*		Renderer;
+		SDL_Surface*		primaryDisplay;
 
 	public:
 		SDL(void);
@@ -48,6 +51,8 @@ class SDL : public IDisplay {
 		virtual void		drawGameOver(int finalScore);
 	
 		virtual	void		initWindow(void);
+				bool		setupWindow(void);
+				void		renderWindow(void);
 		virtual void		exitWindow(void);
 	
 		virtual Direction	getDirection(void);
