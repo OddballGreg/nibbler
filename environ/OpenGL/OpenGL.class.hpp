@@ -1,5 +1,5 @@
-#ifndef OPENGL_HPP
-# define OPENGL_HPP
+#ifndef OPENGL_WINDOW_HPP
+# define OPENGL_WINDOW_HPP
 
 # ifdef __APPLE__
 #  include <OpenGL/gl.h>

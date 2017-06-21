@@ -133,8 +133,8 @@ clear
 echo "Have you installed SDL from the Managed Software Centre at WeThinkCode_"
 
 if [ ! -d "/Library/Frameworks/SDL.framework/Versions/Current" ]; then
-	echo "You do not have /Library/Frameworks/SDL.framework/Versions/Current/SDL.h on your system"
+	echo "You do not have /Library/Frameworks/SDL.framework/Versions/Current/Headers/SDL.h on your system"
 	exit
 else []
-	echo "You have SDL installed successfully at /Library/Frameworks/SDL.framework/Versions/Current/SDL.h"
+	echo "You have SDL installed successfully at /Library/Frameworks/SDL.framework/Versions/Current/Headers/SDL.h"
 fi
