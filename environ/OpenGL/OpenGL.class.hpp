@@ -9,6 +9,8 @@
 #  include <GL/glut.h>
 # endif
 
+# include <unistd.h> //debug
+
 # define WIN_WIDTH    720
 # define WIN_HEIGHT   720
 # define WIN_X        200
