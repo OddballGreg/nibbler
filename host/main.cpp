@@ -12,7 +12,7 @@ int				main( void )
 
 	ReadLib* lib = new ReadLib();
 
-	while (run) {
+	/*while (run)*/ {
 		// Asks the user for input
 		std::cout << "\n\n1: VTK" << std::endl;
 		std::cout << "2: OpenGL" << std::endl;
