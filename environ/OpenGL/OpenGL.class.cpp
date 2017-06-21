@@ -34,7 +34,7 @@ OpenGL OpenGL::operator = (const OpenGL &obj) {
 ** Draw Functions
 */
 void		OpenGL::drawMap(MAP map) {
-	logger.log_step_in("NcursesWindow| drawMap() Called", CRITICAL);
+	logger.log_step_in("OpenGL| drawMap() Called", CRITICAL);
 	// glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	// glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	// glLoadIdentity();
@@ -54,7 +54,7 @@ void		OpenGL::drawMap(MAP map) {
 	(void)map;//FIXME
 
 	// glutSwapBuffers();
-	logger.log_step_out("NcursesWindow| drawMap() Completed", CRITICAL);
+	logger.log_step_out("OpenGL| drawMap() Completed", CRITICAL);
 }
 
 void		OpenGL::drawScore(int score) {
@@ -119,7 +119,16 @@ Coord		OpenGL::getWindowSize(void) {
 /*
 ** Other Functions
 */
+extern "C" OpenGL*	createObject() {
+	return new OpenGL;
+}
+
+extern "C" void destroyObject( OpenGL* object ) {
+	delete object;
+}
+
 IDisplay			*createWindow(void) {
+	logger.log("OpenGL| createWindow() called", CRITICAL);
 	return new OpenGL;
 }
 
