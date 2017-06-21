@@ -127,3 +127,14 @@ if [ ! -d "$LIB_OGRE" ] && [ ! -d "$SGOINFRE/$OGRE" ]; then
 	make -C "$SGOINFRE/$OGRE" install/local
 	echo "Finish install Ogre3D...."
 fi
+
+clear
+
+echo "Have you installed SDL from the Managed Software Centre at WeThinkCode_"
+
+if [ ! -d "/Library/Frameworks/SDL.framework/Versions/Current" ]; then
+	echo "You do not have /Library/Frameworks/SDL.framework/Versions/Current/SDL.h on your system"
+	exit
+else []
+	echo "You have SDL installed successfully at /Library/Frameworks/SDL.framework/Versions/Current/SDL.h"
+fi

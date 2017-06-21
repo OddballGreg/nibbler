@@ -27,7 +27,6 @@ endif
 VTK_DIR=./lib/VTK
 CXXFLAG=-I$(VTK_DIR)/include/
 
-
 VTK_FUCKTON= $(addprefix $(VTK_DIR), *.dylib)
 
 SHARED= ./shared/Coord.cpp \
