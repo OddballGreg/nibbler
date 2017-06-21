@@ -41,7 +41,7 @@ END_FLAGS = -ldl
 endif
 
 $(NAME):
-	# bash ./lib/install.sh
+	bash ./lib/install.sh
 	g++ $(FLAGS) -shared -fPIC $(SHARED) -I ./shared/ -o Shared.so
 	g++ $(FLAGS) -shared -fPIC -lpanel -lncurses Shared.so -o NcursesWindow.so $(NCURSES)
 ifeq ($(SYS), OSX)
@@ -59,6 +59,7 @@ clean:
 	/bin/rm -rf tst_file
 	/bin/rm -rf Shared.so
 	/bin/rm -rf NcursesWindow.so
+	/bin/rm -rf OpenGL.so
 	/bin/rm -rf nibbler_log.txt 
 
 fclean: clean
