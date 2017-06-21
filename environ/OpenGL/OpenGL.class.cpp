@@ -90,6 +90,7 @@ void		OpenGL::initWindow(void) {
 		glutReshapeFunc(changeSize);
 		// glutIdleFunc(renderScene);
 		glutSpecialFunc(pressKey);
+		glutSpecialUpFunc(pressKey);//test
 
 		// glEnable(GL_LIGHTING);
 		// glEnable(GL_COLOR_MATERIAL);
@@ -115,6 +116,20 @@ void		OpenGL::exitWindow(void) {
 */
 Direction	OpenGL::getDirection(void) {
 	logger.log("OpenGL| getDirection() Called", AVERAGE);
+	if (lastKeyPress) {
+		if ((lastKeyPress == GLUT_KEY_UP) && this->_direction.getDirection() != EAST)
+			this->_direction = Direction(WEST);
+		else if ((lastKeyPress == GLUT_KEY_RIGHT) && this->_direction.getDirection() != WEST)
+			this->_direction = Direction(EAST);
+		else if ((lastKeyPress == GLUT_KEY_LEFT) && this->_direction.getDirection() != NORTH)
+			this->_direction = Direction(SOUTH);
+		else if ((lastKeyPress == GLUT_KEY_DOWN) && this->_direction.getDirection() != SOUTH)
+			this->_direction = Direction(NORTH);
+		lastKeyPress = 0;
+	 }
+
+	 logger.log("OpenGL| getDirection() Direction = ", this->_direction, UNIMPORTANT);
+
 	return (this->_direction);
 }
 
@@ -185,6 +200,7 @@ void	changeSize(int width, int height)
 }
 
 void			pressKey(int key, int x, int y) {
+	logger.log("OpenGL| pressKey() Called", IMPORTANT);
 	lastKeyPress = key;
 	(void)x;
 	(void)y;
@@ -218,7 +234,7 @@ void				drawSquare(int x, int y, char colour) {
 			glColor3f(0.0f, 0.0f, 1.0f);
 			break;
 		case MAP_BODY :
-			glColor3f(0.0f, 0.0f, 5.0f);
+			glColor3f(0.0f, 0.0f, 0.5f);
 			break;
 		case MAP_FOOD :
 			glColor3f(0.0f, 1.0f, 0.0f);
@@ -232,6 +248,9 @@ void				drawSquare(int x, int y, char colour) {
 
 	glPushMatrix();
 	glTranslatef(new_x, new_y, 0);
-	glutSolidCube((GRID_WIDTH < GRID_HEIGHT) ? (2.0f / GRID_WIDTH) : (2.0f / GRID_WIDTH));
+	if (colour != MAP_FOOD)
+		glutSolidCube((GRID_WIDTH < GRID_HEIGHT) ? (2.0f / GRID_WIDTH) : (2.0f / GRID_WIDTH));
+	else
+		glutSolidSphere((GRID_WIDTH < GRID_HEIGHT) ? (2.0f / GRID_WIDTH) : (2.0f / GRID_WIDTH) * 0.5, 25, 25);
 	glPopMatrix();
 }
