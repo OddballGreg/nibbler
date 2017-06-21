@@ -46,5 +46,6 @@ int				main( void )
 	}
 
 	logger.log("Graceful Exit", CRITICAL);
+	exit(0);
 	return 0;
 }
