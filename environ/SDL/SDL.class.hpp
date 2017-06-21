@@ -1,14 +1,7 @@
 #ifndef SDL_WINDOW_HPP
 # define SDL_WINDOW_HPP
 
-# ifdef __APPLE__
-#  include <OpenGL/gl.h>
-#  include <GLUT/glut.h>
-# else
-#  include <GL/gl.h>
-#  include <GL/glut.h>
-# endif
-
+# include "/Library/Frameworks/SDL.framework/Versions/Current/Headers/SDL.h"
 # include <unistd.h> //debug
 # include <pthread.h>
 

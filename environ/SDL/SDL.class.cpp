@@ -40,7 +40,7 @@ SDL SDL::operator = (const SDL &obj) {
 */
 void		SDL::drawMap(MAP map) {
 	logger.log_step_in("SDL| drawMap() Called", IMPORTANT);
-	//glMap = map;
+	glMap = map;
 
 	//renderScene();
 	logger.log_step_in("SDL| drawMap() Called", IMPORTANT);
