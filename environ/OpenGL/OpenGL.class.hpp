@@ -1,5 +1,5 @@
-#ifndef NCURSES_WINDOW_HPP
-# define NCURSES_WINDOW_HPP
+#ifndef OPENGL_HPP
+# define OPENGL_HPP
 
 # ifdef __APPLE__
 #  include <OpenGL/gl.h>
@@ -12,8 +12,8 @@
 # include <unistd.h> //debug
 # include <pthread.h>
 
-# define WIN_WIDTH    720
-# define WIN_HEIGHT   720
+# define WIN_WIDTH    600
+# define WIN_HEIGHT   600
 # define WIN_X        200
 # define WIN_Y        200
 

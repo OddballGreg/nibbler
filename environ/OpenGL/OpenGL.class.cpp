@@ -88,11 +88,11 @@ void		OpenGL::initWindow(void) {
 
 		glutDisplayFunc(renderScene);
 		glutReshapeFunc(changeSize);
-		// glutIdleFunc(render_scene);
+		// glutIdleFunc(renderScene);
 		glutSpecialFunc(pressKey);
 
-		glEnable(GL_LIGHTING);
-		glEnable(GL_COLOR_MATERIAL);
+		// glEnable(GL_LIGHTING);
+		// glEnable(GL_COLOR_MATERIAL);
 		glEnable(GL_DEPTH_TEST);
 
 		ret = pthread_create(&thread, NULL, startGlutLoop, (void *)1);
@@ -151,21 +151,16 @@ void				deleteWindow(IDisplay *window) {
 */
 void	renderScene(void) {
 	logger.log_step_in("OpenGL| drawMap() Called", IMPORTANT);
-	glClearColor(0.0f, 0.0f, 0.0f, 3.0f);
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 
 	gluLookAt(
 		0.0, 1.0, 0.0,
-		0.0, 1.0, 1.0,
+		0.0, 1.0, 0.0,
 		0.0, 2.0, 0.0);
 	
-	glBegin(GL_QUADS);
-		glVertex3f(20, 0, 15);
-		glVertex3f(20, 0, 15);
-		glVertex3f(20, 0, 15);
-		glVertex3f(20, 0, 15);
-	glEnd();
+	glutSolidTeapot(1.0f);
 
 	// (void)map;//FIXME
 
