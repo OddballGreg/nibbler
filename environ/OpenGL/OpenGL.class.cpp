@@ -1,11 +1,16 @@
+#define OPENGL_FILE
 #include "OpenGL.class.hpp"
+
+MAP		glMap;
 
 /*
 ** Constructors and Destructors
 */
 OpenGL::OpenGL(void) {
 	logger.log_step_in("OpenGl| Constructor Called {", CRITICAL);
-	//
+	
+	_size = Coord(25, 25);
+
 	logger.log_step_out("} OpenGL| Constructor Completed", CRITICAL);
 }
 
@@ -34,27 +39,11 @@ OpenGL OpenGL::operator = (const OpenGL &obj) {
 ** Draw Functions
 */
 void		OpenGL::drawMap(MAP map) {
-	logger.log_step_in("OpenGL| drawMap() Called", CRITICAL);
-	// glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-	// glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	// glLoadIdentity();
+	logger.log_step_in("OpenGL| drawMap() Called", IMPORTANT);
+	glMap = map;
 
-	// gluLookAt(
-	// 	0.0, 1.0, 0.0,
-	// 	0.0, 1.0, 1.0,
-	// 	0.0, 2.0, 0.0);
-	
-	// glBegin(GL_QUADS);
-	// 	glVertex3f(0, 0, 15);
-	// 	glVertex3f(0, 0, 15);
-	// 	glVertex3f(0, 0, 15);
-	// 	glVertex3f(0, 0, 15);
-	// glEnd();
-
-	(void)map;//FIXME
-
-	// glutSwapBuffers();
-	logger.log_step_out("OpenGL| drawMap() Completed", CRITICAL);
+	renderScene();
+	logger.log_step_in("OpenGL| drawMap() Called", IMPORTANT);
 }
 
 void		OpenGL::drawScore(int score) {
@@ -80,20 +69,38 @@ void		OpenGL::drawGameOver(int finalScore) {
 */
 void		OpenGL::initWindow(void) {
 	logger.log_step_in("OpenGL| initWindow() Called", CRITICAL);
-	// glutInit(NULL, NULL);
-	// glutInitDisplayMode(GLUT_DEPTH | GLUT_MULTISAMPLE | GLUT_RGBA | GLUT_DOUBLE);
-	// glutInitWindowPosition(WIN_X, WIN_Y);
-	// glutInitWindowSize(WIN_WIDTH, WIN_HEIGHT);
-	// glutCreateWindow("Nibbler");
 
-	// // glutDisplayFunc(render_scene);
-	// // glutReshapeFunc(change_size);
-	// // glutIdleFunc(render_scene);
-	// // glutSpecialFunc(press_key);
+	char		*av[1];
+	int			ac = 1;
+	pthread_t	thread;
+	int			ret;
 
-	// glEnable(GL_LIGHTING);
-	// glEnable(GL_COLOR_MATERIAL);
-	// glEnable(GL_DEPTH_TEST);
+	av [0] = strdup ("nibbler");
+
+	if (!glLoop) {
+		glLoop = true;
+
+		glutInit(&ac, av);
+		glutInitDisplayMode(GLUT_DEPTH | GLUT_MULTISAMPLE | GLUT_RGBA | GLUT_DOUBLE);
+		glutInitWindowPosition(WIN_X, WIN_Y);
+		glutInitWindowSize(WIN_WIDTH, WIN_HEIGHT);
+		glutCreateWindow("Nibbler");
+
+		glutDisplayFunc(renderScene);
+		glutReshapeFunc(changeSize);
+		// glutIdleFunc(render_scene);
+		glutSpecialFunc(pressKey);
+
+		glEnable(GL_LIGHTING);
+		glEnable(GL_COLOR_MATERIAL);
+		glEnable(GL_DEPTH_TEST);
+
+		ret = pthread_create(&thread, NULL, startGlutLoop, (void *)1);
+		 if (ret)
+		 	throw std::runtime_error("Unable to create new thread");
+	}
+	free(av[0]);
+
 	logger.log_step_out("OpenGL| initWindow() Completed", CRITICAL);
 }
 
@@ -117,7 +124,7 @@ Coord		OpenGL::getWindowSize(void) {
 }
 
 /*
-** Other Functions
+** Linker Functions
 */
 extern "C" OpenGL*	createObject() {
 	return new OpenGL;
@@ -137,4 +144,61 @@ void				deleteWindow(IDisplay *window) {
 	OpenGL	*win = static_cast<OpenGL *>(window);
 
 	delete win;
+}
+
+/*
+** Private Functions
+*/
+void	renderScene(void) {
+	logger.log_step_in("OpenGL| drawMap() Called", IMPORTANT);
+	glClearColor(0.0f, 0.0f, 0.0f, 3.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glLoadIdentity();
+
+	gluLookAt(
+		0.0, 1.0, 0.0,
+		0.0, 1.0, 1.0,
+		0.0, 2.0, 0.0);
+	
+	glBegin(GL_QUADS);
+		glVertex3f(20, 0, 15);
+		glVertex3f(20, 0, 15);
+		glVertex3f(20, 0, 15);
+		glVertex3f(20, 0, 15);
+	glEnd();
+
+	// (void)map;//FIXME
+
+	glutSwapBuffers();
+	logger.log_step_out("OpenGL| drawMap() Completed", IMPORTANT);
+}
+
+void	changeSize(int width, int height)
+{
+	float		ratio;
+
+	if (height == 0)
+		height = 1;
+	ratio = ((float)width * 1.0f) / (float)height;
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glViewport(0, 0, width, height);
+	gluPerspective(45.0, ratio, 1.0, 150.0);
+	glMatrixMode(GL_MODELVIEW);
+	// g_win.height = height;
+	// g_win.width = width;
+}
+
+void			pressKey(int key, int x, int y) {
+	lastKeyPress = key;
+	(void)x;
+	(void)y;
+}
+
+void			*startGlutLoop(void *threadID) {
+	logger.log("OpenGL| starGlutLoop() Called", CRITICAL);
+	(void)threadID;
+	glutMainLoop();
+
+	return (NULL);
 }

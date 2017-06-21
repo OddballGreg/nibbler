@@ -10,11 +10,26 @@
 # endif
 
 # include <unistd.h> //debug
+# include <pthread.h>
 
 # define WIN_WIDTH    720
 # define WIN_HEIGHT   720
 # define WIN_X        200
 # define WIN_Y        200
+
+# ifdef OPENGL_FILE
+
+bool		listen = false;
+bool		glLoop = false;
+int			lastKeyPress = 0;
+
+# else
+
+extern bool	listen;
+extern bool glLoop;
+extern int	lastKeyPress;
+
+# endif
 
 # include "../../shared/IDisplay.hpp"
 
@@ -42,5 +57,11 @@ class OpenGL : public IDisplay {
 		virtual Direction	getDirection(void);
 		virtual Coord		getWindowSize(void);
 };
+
+void			pressKey(int key, int x, int y);
+void			renderScene(void);
+void			changeSize(int width, int height);
+
+void			*startGlutLoop(void *threadID);
 
 #endif
