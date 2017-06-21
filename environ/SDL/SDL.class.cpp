@@ -1,4 +1,4 @@
-#define OPENGL_FILE
+#define SDL_FILE
 #include "SDL.class.hpp"
 
 MAP		glMap;
@@ -69,7 +69,28 @@ void		SDL::drawGameOver(int finalScore) {
 */
 void		SDL::initWindow(void) {
 	logger.log_step_in("SDL| initWindow() Called", CRITICAL);
-	//
+	
+	char		*av[1];
+	int			ac = 1;
+	pthread_t	thread;
+	int			ret;
+
+	av [0] = strdup ("nibbler");
+
+//	if (!glLoop) {
+		glLoop = true;
+
+		if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
+			glLoop = false;
+		if ((surfDisplay = SDL_SetVideoMode(WIN_WIDTH, WIN_HEIGHT, 32, SDL_HWSURFACE | SDL_DOUBLEBUF)) == NULL)
+			glLoop = false;
+
+//		ret = pthread_create(&thread, NULL, startGlutLoop, (void *)1);
+//		if (ret)
+//			throw std::runtime_error("Unable to create new thread");
+//	}
+//	free(av[0]);
+
 	logger.log_step_out("SDL| initWindow() Completed", CRITICAL);
 }
 

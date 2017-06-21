@@ -1,7 +1,9 @@
 #ifndef SDL_WINDOW_HPP
 # define SDL_WINDOW_HPP
 
-# include "/Library/Frameworks/SDL.framework/Versions/Current/Headers/SDL.h"
+
+# include <SDL/SDL_main.h>
+# include <SDL/SDL.h>
 # include <unistd.h> //debug
 # include <pthread.h>
 
@@ -10,6 +12,20 @@
 # define WIN_X        200
 # define WIN_Y        200
 
+# ifdef SDL_FILE
+
+bool		listen = false;
+bool		glLoop = false;
+int			lastKeyPress = 0;
+
+# else
+
+extern bool	listen;
+extern bool glLoop;
+extern int	lastKeyPress;
+
+# endif
+
 # include "../../shared/IDisplay.hpp"
 
 class SDL : public IDisplay {
@@ -17,6 +33,7 @@ class SDL : public IDisplay {
 	private:
 		Coord				_size;
 		Direction			_direction;
+		SDL_Surface*		surfDisplay;
 
 	public:
 		SDL(void);
