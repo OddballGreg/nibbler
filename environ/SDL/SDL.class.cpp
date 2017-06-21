@@ -69,35 +69,85 @@ void		SDL::drawGameOver(int finalScore) {
 */
 void		SDL::initWindow(void) {
 	logger.log_step_in("SDL| initWindow() Called", CRITICAL);
-	
-	char		*av[1];
-	int			ac = 1;
-	pthread_t	thread;
-	int			ret;
 
-	av [0] = strdup ("nibbler");
+	bool	run(true);
 
-//	if (!glLoop) {
-		glLoop = true;
+	if (setupWindow()) {
 
-		if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
-			glLoop = false;
-		if ((surfDisplay = SDL_SetVideoMode(WIN_WIDTH, WIN_HEIGHT, 32, SDL_HWSURFACE | SDL_DOUBLEBUF)) == NULL)
-			glLoop = false;
+		SDL_Event	Event;
 
-//		ret = pthread_create(&thread, NULL, startGlutLoop, (void *)1);
-//		if (ret)
-//			throw std::runtime_error("Unable to create new thread");
-//	}
-//	free(av[0]);
+		/*
+		**	Setup an event for the window to open.
+		*/
+
+		while (run) {
+			while (SDL_PollEvent(&Event) != 0) {
+				if (Event.type == SDL_QUIT)
+					run = false;
+			}
+			renderWindow();
+			SDL_Delay(1);
+		}
+
+	} else {
+		logger.log_step_in("SDL: failed to open a window", CRITICAL);
+	}
 
 	logger.log_step_out("SDL| initWindow() Completed", CRITICAL);
 }
 
 void		SDL::exitWindow(void) {
 	logger.log_step_in("SDL| exitWindow() Called", CRITICAL);
-	//
+	
+	if (Renderer) {
+		SDL_DestroyRenderer(Renderer);
+		Renderer = NULL;
+	}
+
+	if (Window) {
+		SDL_DestroyWindow(Window);
+		Window = NULL;
+	}
+
+	SDL_Quit();
+
 	logger.log_step_out("SDL| exitWindow() Completed", CRITICAL);
+}
+
+bool		SDL::setupWindow(void) {
+
+	logger.log_step_in("SDL| setupWindow() Called", AVERAGE);
+
+	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
+		logger.log_step_out("SDL| SDL_INIT failed", CRITICAL);
+		return false;
+	}
+	if ((Window = SDL_CreateWindow(
+		"Nibbler Kinky Snaky",
+		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_SHOWN)
+	) == NULL ) {
+		logger.log_step_out("SDL| SDL_WINDOW failed", CRITICAL);
+		return false;
+	}
+	
+	primaryDisplay = SDL_GetWindowSurface(Window);
+	
+	if ((Renderer = SDL_CreateRenderer(Window, -1, SDL_RENDERER_ACCELERATED)) == NULL) {
+		logger.log_step_out("SDL| SDL_RENDERER failed", CRITICAL);
+		return false;
+	}
+
+	SDL_SetRenderDrawColor(Renderer, 0x00, 0x00, 0x00, 0xFF);
+
+	logger.log_step_in("SDL| setupWindow() Completed", AVERAGE);
+	
+	return true;
+
+}
+
+void		SDL::renderWindow(void) {
+	SDL_RenderClear(Renderer);
+	SDL_RenderPresent(Renderer);
 }
 
 /*
