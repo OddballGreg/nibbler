@@ -1,5 +1,5 @@
-#ifndef OPENGL_WINDOW_HPP
-# define OPENGL_WINDOW_HPP
+#ifndef SDL_WINDOW_HPP
+# define SDL_WINDOW_HPP
 
 # ifdef __APPLE__
 #  include <OpenGL/gl.h>
@@ -17,34 +17,20 @@
 # define WIN_X        200
 # define WIN_Y        200
 
-# ifdef OPENGL_FILE
-
-bool		listen = false;
-bool		glLoop = false;
-int			lastKeyPress = 0;
-
-# else
-
-extern bool	listen;
-extern bool glLoop;
-extern int	lastKeyPress;
-
-# endif
-
 # include "../../shared/IDisplay.hpp"
 
-class OpenGL : public IDisplay {
+class SDL : public IDisplay {
 
 	private:
 		Coord				_size;
 		Direction			_direction;
 
 	public:
-		OpenGL(void);
-		virtual ~OpenGL(void);
+		SDL(void);
+		virtual ~SDL(void);
 	
-		OpenGL(const OpenGL &obj);
-		virtual OpenGL operator = (const OpenGL &obj);
+		SDL(const SDL &obj);
+		virtual SDL operator = (const SDL &obj);
 	
 		virtual void		drawMap(MAP map);
 		virtual void		drawScore(int score);
@@ -57,11 +43,5 @@ class OpenGL : public IDisplay {
 		virtual Direction	getDirection(void);
 		virtual Coord		getWindowSize(void);
 };
-
-void			pressKey(int key, int x, int y);
-void			renderScene(void);
-void			changeSize(int width, int height);
-
-void			*startGlutLoop(void *threadID);
 
 #endif
