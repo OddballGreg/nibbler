@@ -4,25 +4,24 @@
 ** Constructors and Destructors
 */
 OpenGL::OpenGL(void) {
-	int x, y;
+	// glutInit(NULL, NULL);
+	// glutInitDisplayMode(GLUT_DEPTH | GLUT_MULTISAMPLE | GLUT_RGBA | GLUT_DOUBLE);
+	// glutInitWindowPosition(WIN_X, WIN_Y);
+	// glutInitWindowSize(WIN_WIDTH, WIN_HEIGHT);
+	// glutCreateWindow("Nibbler");
 
-	getmaxyx(stdscr, y, x);
+	// // glutDisplayFunc(render_scene);
+	// // glutReshapeFunc(change_size);
+	// // glutIdleFunc(render_scene);
+	// // glutSpecialFunc(press_key);
 
-	_size = Coord(x - 2, y - 2);
-	_direction = Direction(EAST);
-
-	_win = NULL;
-	_panel = NULL;
+	// glEnable(GL_LIGHTING);
+	// glEnable(GL_COLOR_MATERIAL);
+	// glEnable(GL_DEPTH_TEST);
 }
 
 OpenGL::~OpenGL(void) {
-	// _map.clear();
-
-	if (_win)
-		delwin(this->_win);
-
-	// if (_panel)
-	// 	del_panel(this->_panel);
+	//
 }
 
 /*
@@ -31,19 +30,11 @@ OpenGL::~OpenGL(void) {
 OpenGL::OpenGL(const OpenGL &obj) {
 	this->_size = obj._size;
 	this->_direction = obj._direction;
-	// this->_map = obj._map;
-
-	this->_win = obj._win;
-	this->_panel = obj._panel;
 }
 
 OpenGL OpenGL::operator = (const OpenGL &obj) {
 	this->_size = obj._size;
 	this->_direction = obj._direction;
-	// this->_map = obj._map;
-
-	this->_win = obj._win;
-	this->_panel = obj._panel;
 
 	return (*this);
 }
@@ -52,40 +43,48 @@ OpenGL OpenGL::operator = (const OpenGL &obj) {
 ** Draw Functions
 */
 void		OpenGL::drawMap(MAP map) {
+	// glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	// glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	// glLoadIdentity();
+
+	// gluLookAt(
+	// 	0.0, 1.0, 0.0,
+	// 	0.0, 1.0, 1.0,
+	// 	0.0, 2.0, 0.0);
 	
+	// glBegin(GL_QUADS);
+	// 	glVertex3f(0, 0, 15);
+	// 	glVertex3f(0, 0, 15);
+	// 	glVertex3f(0, 0, 15);
+	// 	glVertex3f(0, 0, 15);
+	// glEnd();
+
+	(void)map;//FIXME
+
+	// glutSwapBuffers();
 }
 
 void		OpenGL::drawScore(int score) {
-	std::stringstream s;
-	s << "Score: " << score << "            ";
-
-	std::string str = s.str();
-	str.resize(20);
-
-	mvwaddstr(this->_win, this->_size.getY() - 2, 2, str.c_str());
+	(void)score;//FIXME
 }
 
 void		OpenGL::drawPause(void) {
-	mvwaddstr(this->_win, this->_size.getY() - 2, 2, "-PAUSED-            ");
+	//
 }
 
 void		OpenGL::drawGameOver(int finalScore) {
-	std::stringstream s;
-	s << "-GAMEOVER- [score: " << finalScore << "]            ";
-
-	std::string str = s.str();
-	mvwaddstr(this->_win, this->_size.getY() - 2, 2, str.c_str());
+	(void)finalScore;//FIXME
 }
 
 /*
 ** Window Specialities
 */
 void		OpenGL::initWindow(void) {
-	
+	//
 }
 
 void		OpenGL::exitWindow(void) {
-	
+	//
 }
 
 /*
@@ -96,7 +95,7 @@ Direction	OpenGL::getDirection(void) {
 }
 
 Coord		OpenGL::getWindowSize(void) {
-	//
+	return (this->_size);
 }
 
 /*
@@ -107,5 +106,8 @@ IDisplay			*createWindow(void) {
 }
 
 void				deleteWindow(IDisplay *window) {
-	delete window;
+	logger.log("Ncurses Window| deleteWindow() called", CRITICAL);
+	OpenGL	*win = static_cast<OpenGL *>(window);
+
+	delete win;
 }

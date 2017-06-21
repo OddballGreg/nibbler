@@ -15,6 +15,8 @@ FLAGS= -Wall -Wextra -Werror -Wno-unused -Wno-deprecated -Wconversion --std=c++1
 
 NCURSES=./environ/ncurses/NcursesWindow.cpp
 
+OPENGL=./environ/OpenGL/OpenGL.class.cpp
+
 # I'll include the entire 3.5GB library if I want to. Ha Ha.
 VTK_DIR=./lib/VTK
 CXXFLAG=-I$(VTK_DIR)/include/
@@ -35,7 +37,8 @@ endif
 $(NAME):
 	# bash ./lib/install.sh
 	g++ $(FLAGS) -shared -fPIC $(SHARED) -I ./shared/ -o Shared.so
-	g++ $(FLAGS) -shared -fPIC -lpanel -lncurses Shared.so -o NcursesWindow.so $(NCURSES) 
+	g++ $(FLAGS) -shared -fPIC -lpanel -lncurses Shared.so -o NcursesWindow.so $(NCURSES)
+	g++ $(FLAGS) -shared -fPIC -framework OpenGL -framework GLUT Shared.so -o OpenGL.so $(OPENGL) 
 	g++ $(FLAGS) -c $(SRC) $(END_FLAGS)
 	g++ $(FLAGS) -o $(NAME) $(OBJ) Shared.so $(END_FLAGS)
 
