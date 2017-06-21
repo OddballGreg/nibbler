@@ -9,7 +9,7 @@ MAP		glMap;
 OpenGL::OpenGL(void) {
 	logger.log_step_in("OpenGl| Constructor Called {", CRITICAL);
 	
-	_size = Coord(25, 25);
+	_size = Coord(GRID_WIDTH, GRID_HEIGHT);
 
 	logger.log_step_out("} OpenGL| Constructor Completed", CRITICAL);
 }
@@ -156,13 +156,13 @@ void	renderScene(void) {
 	glLoadIdentity();
 
 	gluLookAt(
-		0.0, 1.0, 0.0,
-		0.0, 1.0, 0.0,
-		0.0, 2.0, 0.0);
-	
-	glutSolidTeapot(1.0f);
+		0.0, 0.0, 1.0,
+		0.0, 0.0, 0.0,
+		0.0, 1.0, 0.0);
 
-	// (void)map;//FIXME
+	for (int k = 0; k < GRID_WIDTH; k++)
+		for (int l = 0; l < GRID_HEIGHT; l++)
+			drawSquare(k, l, glMap[k][l]);
 
 	glutSwapBuffers();
 	logger.log_step_out("OpenGL| drawMap() Completed", IMPORTANT);
@@ -196,4 +196,42 @@ void			*startGlutLoop(void *threadID) {
 	glutMainLoop();
 
 	return (NULL);
+}
+
+/*
+** Private Function
+*/
+void				drawSquare(int x, int y, char colour) {
+	float	new_x, new_y;
+
+	new_x = (((2.0f / GRID_WIDTH) * x) + (1.0f / GRID_WIDTH)) - 1;
+	new_y = 1.0f - (((2.0f / GRID_HEIGHT) * y) + (1.0f / GRID_WIDTH));
+
+	switch (colour) {
+		case MAP_EMPTY :
+			glColor3f(0.0f, 0.0f, 0.0f);
+			break;
+		case MAP_OBSTICLE :
+			glColor3f(1.0f, 0.0f, 0.0f);
+			break;
+		case MAP_HEAD :
+			glColor3f(0.0f, 0.0f, 1.0f);
+			break;
+		case MAP_BODY :
+			glColor3f(0.0f, 0.0f, 5.0f);
+			break;
+		case MAP_FOOD :
+			glColor3f(0.0f, 1.0f, 0.0f);
+			break;
+		default :
+			glColor3f(0.0f, 0.0f, 0.0f);
+			break;
+	}
+
+	// std::cout << "new_x = " << new_x << "; new_y = " << new_y << std::endl;
+
+	glPushMatrix();
+	glTranslatef(new_x, new_y, 0);
+	glutSolidCube((GRID_WIDTH < GRID_HEIGHT) ? (2.0f / GRID_WIDTH) : (2.0f / GRID_WIDTH));
+	glPopMatrix();
 }

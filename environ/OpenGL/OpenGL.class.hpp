@@ -12,10 +12,13 @@
 # include <unistd.h> //debug
 # include <pthread.h>
 
-# define WIN_WIDTH    600
-# define WIN_HEIGHT   600
-# define WIN_X        200
-# define WIN_Y        200
+# define WIN_WIDTH		600
+# define WIN_HEIGHT		600
+# define WIN_X			200
+# define WIN_Y			200
+
+# define GRID_WIDTH		20
+# define GRID_HEIGHT	20
 
 # ifdef OPENGL_FILE
 
@@ -63,5 +66,6 @@ void			renderScene(void);
 void			changeSize(int width, int height);
 
 void			*startGlutLoop(void *threadID);
+void			drawSquare(int x, int y, char colour);
 
 #endif
