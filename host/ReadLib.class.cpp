@@ -90,10 +90,13 @@ void		ReadLib::callRun( void ) {
 
 	IDisplay* display = (IDisplay*)create();
 	display->initWindow();
-	this->runGame(display);
-	sleep(2);
+	while (!(display->isClosed())) {
+		
+		this->runGame(display);
+		sleep(2);
+		
+	}
 	display->exitWindow();
-	
 	destroy( display );
 
 	logger.log_step_out("ReadLib| callRun() Completed", CRITICAL);

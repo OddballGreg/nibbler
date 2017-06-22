@@ -41,6 +41,7 @@ class OpenGL : public IDisplay {
 	private:
 		Coord				_size;
 		Direction			_direction;
+		bool				_closed = false;
 
 	public:
 		OpenGL(void);
@@ -59,6 +60,7 @@ class OpenGL : public IDisplay {
 	
 		virtual Direction	getDirection(void);
 		virtual Coord		getWindowSize(void);
+		inline bool 		isClosed() { return _closed; };
 };
 
 void			pressKey(int key, int x, int y);

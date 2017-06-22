@@ -56,6 +56,7 @@ public:
 	virtual Direction		getDirection(void);
 	virtual Coord			getWindowSize(void);
 
+	inline bool 			isClosed( void ) { return _closed; };
 	// virtual NcursesWindow* 	createObject();
 	// virtual void 			destroyObject( NcursesWindow* object );	
 
@@ -63,7 +64,8 @@ private:
 	Coord					_size;
 	Direction				_direction;
 	// MAP					_map;
-	
+	bool					_closed = false;
+
 	WINDOW					*_win;
 	PANEL					*_panel;
 
@@ -71,6 +73,7 @@ private:
 	void					drawTitle(void);
 	bool					drawChar(int y, int x, const int c);
 	void					keyListener(void);
+
 };
 
 void						*keyLoop(void *threadID);

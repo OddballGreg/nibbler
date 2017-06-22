@@ -11,6 +11,7 @@ SDL::SDL(void) {
 	
 	_size = Coord(25, 25);
 
+
 	logger.log_step_out("} SDL| Constructor Completed", CRITICAL);
 }
 

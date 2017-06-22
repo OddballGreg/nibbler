@@ -52,6 +52,8 @@ public:
 	virtual Direction	getDirection(void) = 0;
 	virtual Coord		getWindowSize(void) = 0;
 
+	virtual bool		isClosed( void ) = 0;
+
 };
 
 extern "C" {
