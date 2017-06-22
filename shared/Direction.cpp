@@ -218,3 +218,45 @@ Direction	Direction::opposite(void) const {
 	
 	return (Direction(LOST));
 }
+
+void		Direction::tangent(Direction *dir1, Direction *dir2) {
+	char	direction = this->getDirection();
+
+	switch (direction) {
+		case NORTH :
+			*dir1 = Direction(NORTH_WEST);
+			*dir2 = Direction(NORTH_EAST);
+			break;
+		case EAST :
+			*dir2 = Direction(NORTH_EAST);
+			*dir1 = Direction(SOUTH_EAST);
+			break;
+		case SOUTH :
+			*dir2 = Direction(SOUTH_EAST);
+			*dir1 = Direction(SOUTH_WEST);
+			break;
+		case WEST :
+			*dir2 = Direction(SOUTH_WEST);
+			*dir1 = Direction(NORTH_WEST);
+			break;
+		case NORTH_EAST :
+			*dir1 = Direction(NORTH);
+			*dir2 = Direction(EAST);
+			break;
+		case NORTH_WEST :
+			*dir2 = Direction(WEST);
+			*dir1 = Direction(NORTH);
+			break;
+		case SOUTH_EAST :
+			*dir1 = Direction(EAST);
+			*dir2 = Direction(SOUTH);
+			break;
+		case SOUTH_WEST :
+			*dir1 = Direction(SOUTH);
+			*dir2 = Direction(WEST);
+			break;
+		default :
+			*dir1 = Direction(LOST);
+			*dir2 = Direction(LOST);
+	}
+}

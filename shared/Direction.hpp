@@ -56,6 +56,7 @@ public:
 
 	Coord		moveCoord(Coord coord) const;
 	Direction	opposite(void) const;
+	void		tangent(Direction *dir1, Direction *dir2);
 
 private:
 	char	_x;
