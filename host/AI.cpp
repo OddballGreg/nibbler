@@ -60,10 +60,10 @@ void		AI::run(GameState &gamestate) {
 
 		a.getTangent(&b, &c);
 
-		pos = c.moveCoord(gamestate.getSnakeHeadPos());
+		pos = a.moveCoord(gamestate.getSnakeHeadPos());
 		map_content = gamestate.getMap()[pos.getX()][pos.getY()];
 		if (map_content == MAP_EMPTY || map_content == MAP_FOOD) {
-			dir = c;
+			dir = a;
 		}
 		else {
 			pos = b.moveCoord(gamestate.getSnakeHeadPos());
@@ -73,11 +73,11 @@ void		AI::run(GameState &gamestate) {
 				dir = b;
 			}
 			else {
-				pos = a.moveCoord(gamestate.getSnakeHeadPos());
+				pos = c.moveCoord(gamestate.getSnakeHeadPos());
 				map_content = gamestate.getMap()[pos.getX()][pos.getY()];
 
 				if (map_content == MAP_EMPTY || map_content == MAP_FOOD)
-					dir = a;
+					dir = c;
 				else
 					dir = Direction(LOST);
 			}
