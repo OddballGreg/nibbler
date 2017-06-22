@@ -31,7 +31,7 @@ GameState::GameState(Coord size) {
 	logger.log_step_in("Gamestate| Coord Constructor Called", CRITICAL);
 	logger.log("Gamestate| Passed Size =", size, CRITICAL);
 	_size = size;
-	_snake = Snake();
+	_snake = Snake(Coord(size.getX() / 2 + 2, size.getY() / 2), Direction(WEST));
 	_mode = MODE_PLAY;
 	_score = 0;
 
@@ -45,7 +45,7 @@ GameState::GameState(int width, int height) {
 	logger.log("Gamestate| Passed width = " + std::to_string(width), CRITICAL);
 	logger.log("Gamestate| Passed height = " + std::to_string(height), CRITICAL);
 	_size = Coord(width, height);
-	_snake = Snake();
+	_snake = Snake(Coord(width / 2 + 2, height / 2), Direction(WEST));
 	_mode = MODE_PLAY;
 	_score = 0;
 
