@@ -302,3 +302,16 @@ void		Direction::getTangent(Direction *dir1, Direction *dir2) const {
 			*dir2 = Direction(LOST);
 	}
 }
+
+Direction	Direction::getComprised(Direction dir) const {
+	return (Direction(this->_x + dir.getX(), this->_y + dir.getY()));
+}
+
+/*
+** OStream
+*/
+std::ostream& operator << (std::ostream &o, const Direction &direction) {
+	o << "Direction: " << direction.getDirectionString();
+
+	return (o);
+}

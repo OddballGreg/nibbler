@@ -48,6 +48,7 @@ public:
 	std::string getDirectionString(void) const;
 	void		getTangent(Direction *dir1, Direction *dir2) const;
 	void		getAdjacent(Direction *dir1, Direction *dir2) const;
+	Direction	getComprised(Direction dir) const;
 
 	void		setX(char x);
 	void		setY(char y);
@@ -65,6 +66,6 @@ private:
 
 };
 
-std::ostream& operator << (std::ostream &o, const Direction &Direction);
+std::ostream& operator << (std::ostream &o, const Direction &direction);
 
 #endif

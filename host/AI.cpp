@@ -51,26 +51,38 @@ void		AI::run(GameState &gamestate) {
 
 	Direction dir = moveSnake(gamestate, gamestate.getFood().getX() - snake_head.getX(), gamestate.getFood().getY() - snake_head.getY());
 	Direction temp_dir;
-	char map_content = gamestate.getMap()[dir.moveCoord(snake_head).getY()][dir.moveCoord(snake_head).getX()];
-	if (map_content != MAP_EMPTY && map_content != MAP_FOOD && (dir == SOUTH || dir == NORTH))
-	{
-		temp_dir = WEST;
-		map_content = gamestate.getMap()[dir.moveCoord(snake_head).getY()][dir.moveCoord(snake_head).getX()];
-		if (map_content != MAP_EMPTY && map_content != MAP_FOOD)
-			dir = WEST;
-		else
-			dir = EAST;
-	}
-	else if (map_content != MAP_EMPTY && map_content != MAP_FOOD && (dir == WEST || dir == EAST))
-	{
-		temp_dir = NORTH;
-		map_content = gamestate.getMap()[dir.moveCoord(snake_head).getY()][dir.moveCoord(snake_head).getX()];
-		if (map_content != MAP_EMPTY && map_content != MAP_FOOD)
-			dir = NORTH;
-		else
-			dir = SOUTH;
-	}
+	char map_content = gamestate.getMap()[dir.moveCoord(snake_head).getX()][dir.moveCoord(snake_head).getY()];
+	if (map_content != MAP_EMPTY && map_content != MAP_FOOD) {
+		Direction	a = gamestate.getSnakeDir();
+		Direction	b;
+		Direction	c;
+		Coord		pos;
 
+		a.getTangent(&b, &c);
+
+		pos = c.moveCoord(gamestate.getSnakeHeadPos());
+		map_content = gamestate.getMap()[pos.getX()][pos.getY()];
+		if (map_content == MAP_EMPTY || map_content == MAP_FOOD) {
+			dir = c;
+		}
+		else {
+			pos = b.moveCoord(gamestate.getSnakeHeadPos());
+			map_content = gamestate.getMap()[pos.getX()][pos.getY()];
+
+			if (map_content == MAP_EMPTY || map_content == MAP_FOOD) {
+				dir = b;
+			}
+			else {
+				pos = a.moveCoord(gamestate.getSnakeHeadPos());
+				map_content = gamestate.getMap()[pos.getX()][pos.getY()];
+
+				if (map_content == MAP_EMPTY || map_content == MAP_FOOD)
+					dir = a;
+				else
+					dir = Direction(LOST);
+			}
+		}
+	}
 
 	log.log("direction chosen: ", dir, CRITICAL);
 	if (dir == gamestate.getSnakeDir() || dir.getDirection() == LOST || dir == gamestate.getSnakeDir().opposite())
