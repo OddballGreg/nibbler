@@ -4,6 +4,8 @@
 
 # include <SDL2/SDL.h>
 # include <SDL2/SDL_main.h>
+# include <SDL/SDL.h>
+# include <SDL/SDL_main.h>
 
 # include <unistd.h> //debug
 # include <pthread.h>
@@ -27,6 +29,9 @@ extern int	lastKeyPress;
 
 # endif
 
+# include <cstring>
+# include <string>
+
 # include "../../shared/IDisplay.hpp"
 
 class SDL : public IDisplay {
@@ -34,9 +39,10 @@ class SDL : public IDisplay {
 	private:
 		Coord				_size;
 		Direction			_direction;
-		SDL_Window*			Window;
-		SDL_Renderer*		Renderer;
-		SDL_Surface*		primaryDisplay;
+		SDL_Window*			_window = nullptr;
+		SDL_Renderer*		_renderer;
+		SDL_Surface*		_primaryDisplay;
+		bool				_closed = false;
 
 	public:
 		SDL(void);
@@ -52,11 +58,15 @@ class SDL : public IDisplay {
 	
 		virtual	void		initWindow(void);
 				bool		setupWindow(void);
+				void		pollEvents( void );
 				void		renderWindow(void);
 		virtual void		exitWindow(void);
 	
 		virtual Direction	getDirection(void);
 		virtual Coord		getWindowSize(void);
+		void				displayBMP(char *file_name);
+
+		inline bool isClosed() { return _closed; };
 };
 
 #endif
