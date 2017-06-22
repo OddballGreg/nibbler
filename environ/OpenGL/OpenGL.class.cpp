@@ -9,7 +9,7 @@ MAP		glMap;
 OpenGL::OpenGL(void) {
 	logger.log_step_in("OpenGl| Constructor Called {", CRITICAL);
 	
-	_size = Coord(25, 25);
+	_size = Coord(GRID_WIDTH, GRID_HEIGHT);
 
 	logger.log_step_out("} OpenGL| Constructor Completed", CRITICAL);
 }
@@ -90,6 +90,7 @@ void		OpenGL::initWindow(void) {
 		glutReshapeFunc(changeSize);
 		// glutIdleFunc(renderScene);
 		glutSpecialFunc(pressKey);
+		glutSpecialUpFunc(pressKey);//test
 
 		// glEnable(GL_LIGHTING);
 		// glEnable(GL_COLOR_MATERIAL);
@@ -115,6 +116,23 @@ void		OpenGL::exitWindow(void) {
 */
 Direction	OpenGL::getDirection(void) {
 	logger.log("OpenGL| getDirection() Called", AVERAGE);
+
+	lastKeyPress = getchar();
+
+	if (lastKeyPress) {
+		if ((lastKeyPress == 'd') && this->_direction.getDirection() != WEST)
+			this->_direction = Direction(EAST);
+		else if ((lastKeyPress == 'a') && this->_direction.getDirection() != EAST)
+			this->_direction = Direction(WEST);
+		else if ((lastKeyPress == 'w') && this->_direction.getDirection() != NORTH)
+			this->_direction = Direction(SOUTH);
+		else if ((lastKeyPress == 's') && this->_direction.getDirection() != SOUTH)
+			this->_direction = Direction(NORTH);
+		lastKeyPress = 0;
+	 }
+
+	 logger.log("OpenGL| getDirection() Direction = ", this->_direction, UNIMPORTANT);
+
 	return (this->_direction);
 }
 
@@ -156,13 +174,13 @@ void	renderScene(void) {
 	glLoadIdentity();
 
 	gluLookAt(
-		0.0, 1.0, 0.0,
-		0.0, 1.0, 0.0,
-		0.0, 2.0, 0.0);
-	
-	glutSolidTeapot(1.0f);
+		0.0, 0.0, 1.0,
+		0.0, 0.0, 0.0,
+		0.0, 1.0, 0.0);
 
-	// (void)map;//FIXME
+	for (int k = 0; k < GRID_WIDTH; k++)
+		for (int l = 0; l < GRID_HEIGHT; l++)
+			drawSquare(k, l, glMap[k][l]);
 
 	glutSwapBuffers();
 	logger.log_step_out("OpenGL| drawMap() Completed", IMPORTANT);
@@ -185,6 +203,7 @@ void	changeSize(int width, int height)
 }
 
 void			pressKey(int key, int x, int y) {
+	logger.log("OpenGL| pressKey() Called", IMPORTANT);
 	lastKeyPress = key;
 	(void)x;
 	(void)y;
@@ -196,4 +215,45 @@ void			*startGlutLoop(void *threadID) {
 	glutMainLoop();
 
 	return (NULL);
+}
+
+/*
+** Private Function
+*/
+void				drawSquare(int x, int y, char colour) {
+	float	new_x, new_y;
+
+	new_x = (((2.0f / GRID_WIDTH) * x) + (1.0f / GRID_WIDTH)) - 1;
+	new_y = 1.0f - (((2.0f / GRID_HEIGHT) * y) + (1.0f / GRID_WIDTH));
+
+	switch (colour) {
+		case MAP_EMPTY :
+			glColor3f(0.0f, 0.0f, 0.0f);
+			break;
+		case MAP_OBSTICLE :
+			glColor3f(1.0f, 0.0f, 0.0f);
+			break;
+		case MAP_HEAD :
+			glColor3f(0.0f, 0.0f, 1.0f);
+			break;
+		case MAP_BODY :
+			glColor3f(0.0f, 0.0f, 0.5f);
+			break;
+		case MAP_FOOD :
+			glColor3f(0.0f, 1.0f, 0.0f);
+			break;
+		default :
+			glColor3f(0.0f, 0.0f, 0.0f);
+			break;
+	}
+
+	// std::cout << "new_x = " << new_x << "; new_y = " << new_y << std::endl;
+
+	glPushMatrix();
+	glTranslatef(new_x, new_y, 0);
+	if (colour != MAP_FOOD)
+		glutSolidCube((GRID_WIDTH < GRID_HEIGHT) ? (2.0f / GRID_WIDTH) : (2.0f / GRID_WIDTH));
+	else
+		glutSolidSphere((GRID_WIDTH < GRID_HEIGHT) ? (2.0f / GRID_WIDTH) : (2.0f / GRID_WIDTH) * 0.5, 25, 25);
+	glPopMatrix();
 }

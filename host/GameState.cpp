@@ -16,74 +16,79 @@
 ** Constructors and Destructors
 */
 GameState::GameState(void) {
-	logger.log_step_in("Gamestate| Constructor Called", CRITICAL);
+	Log log("Gamestate", "Constructor", CRITICAL);
 	_size = Coord(DEFAULT_HEIGHT, DEFAULT_WIDTH);
 	// _snake = Snake();
 	_mode = MODE_PLAY;
 	_score = 0;
+	_AI = new AI();
+	_AI_flag = true;
 
 	resetMap();
 	generateFood();
-	logger.log_step_out("Gamestate| Constructor Completed", CRITICAL);
 }
 
 GameState::GameState(Coord size) {
-	logger.log_step_in("Gamestate| Coord Constructor Called", CRITICAL);
-	logger.log("Gamestate| Passed Size =", size, CRITICAL);
+	Log log("Gamestate", "Copy Constructor", CRITICAL);
+	log.log("Passed Size =", size, CRITICAL);
 	_size = size;
-	_snake = Snake();
+	_snake = Snake(Coord(size.getX() / 2 + 2, size.getY() / 2), Direction(WEST));
 	_mode = MODE_PLAY;
 	_score = 0;
+	_AI = new AI();
+	_AI_flag = true;
 
 	resetMap();
 	generateFood();
-	logger.log_step_out("Gamestate| Coord Constructor Completed", CRITICAL);
 }
 
 GameState::GameState(int width, int height) {
-	logger.log_step_in("Gamestate| Height Width Constructor Called", CRITICAL);
-	logger.log("Gamestate| Passed width = " + std::to_string(width), CRITICAL);
-	logger.log("Gamestate| Passed height = " + std::to_string(height), CRITICAL);
+	Log log("Gamestate", "Width Height Constructor", CRITICAL);
+	log.log("Passed width = " + std::to_string(width), UNIMPORTANT);
+	log.log("Passed height = " + std::to_string(height), UNIMPORTANT);
 	_size = Coord(width, height);
-	_snake = Snake();
+	_snake = Snake(Coord(width / 2 + 2, height / 2), Direction(WEST));
 	_mode = MODE_PLAY;
 	_score = 0;
+	_AI = new AI();
+	_AI_flag = true;
 
 	resetMap();
 	generateFood();
-	logger.log_step_out("Gamestate| Height Width Constructor Completed", CRITICAL);
 }
 
 GameState::~GameState(void) {
-	logger.log_step_in("Gamestate| Deconstructor Called", CRITICAL);
+	Log log("Gamestate", "Deconstructor", CRITICAL);
 	_map.clear();
-	logger.log_step_out("Gamestate| Deconstructor Completed", CRITICAL);
+	delete _AI;
 }
 
 /*
 ** Copying
 */
 GameState::GameState(const GameState &obj) {
-	logger.log_step_in("Gamestate| Copy Constructor Called", CRITICAL);
+	Log log("Gamestate", "Copy Constructor", CRITICAL);
 	this->_snake = obj._snake;
 	this->_map = obj._map;
 	this->_food = obj._food;
 	this->_size = obj._size;
 	this->_mode = obj._mode;
 	this->_score = obj._score;
-	logger.log_step_out("Gamestate| Copy Constructor Completed", CRITICAL);
+	this->_AI = obj._AI;
+	this->_AI_flag = obj._AI_flag;
 }
 
 GameState GameState::operator = (const GameState &obj) {
-	logger.log_step_in("Gamestate| = Operator Called", CRITICAL);
+	Log log("Gamestate", "= operator", CRITICAL);
 	this->_snake = obj._snake;
 	this->_map = obj._map;
 	this->_food = obj._food;
 	this->_size = obj._size;
 	this->_mode = obj._mode;
 	this->_score = obj._score;
+	this->_AI = obj._AI;
+	this->_AI_flag = obj._AI_flag;
 
-	logger.log_step_out("Gamestate| = Operator Completed", CRITICAL);
 	return (*this);
 }
 
@@ -91,76 +96,96 @@ GameState GameState::operator = (const GameState &obj) {
 ** Getters
 */
 MAP		GameState::getMap(void) const {
-	logger.log("Gamestate| getMap() called", CRITICAL);
+	Log log("Gamestate", "getMap()", UNIMPORTANT);
 	return (this->_map);
 }
 
 Snake	GameState::getSnake(void) const {
-	logger.log("Gamestate| getSnake() called", CRITICAL);
+	Log log("Gamestate", "getSnake()", UNIMPORTANT);
 	return (this->_snake);
 }
 
 Coord	GameState::getSize(void) const {
-	logger.log("Gamestate| getSize() called", CRITICAL);
+	Log log("Gamestate", "getSize()", UNIMPORTANT);
 	return (this->_size);
 }
 
 int		GameState::getWidth(void) const {
-	logger.log("Gamestate| getWidth() called", CRITICAL);
+	Log log("Gamestate", "getWidth()", UNIMPORTANT);
 	return (this->_size.getX());
 }
 
 int		GameState::getHeight(void) const {
-	logger.log("Gamestate| getHeight() called", CRITICAL);
+	Log log("Gamestate", "getHeight()", UNIMPORTANT);
 	return (this->_size.getY());
 }
 
 Direction	GameState::getSnakeDir(void) const {
-	logger.log("Gamestate| getSnakeDir() called", CRITICAL);
+	Log log("Gamestate", "getSnakeDir()", CRITICAL);
 	return (this->_snake.getDirection());
 }
 
 char		GameState::getMode(void) const {
-	logger.log("Gamestate| getMode() called", CRITICAL);
+	Log log("Gamestate", "getMode()", UNIMPORTANT);
 	return (this->_mode);
 }
 
 int			GameState::getScore(void) const {
-	logger.log("Gamestate| getScore() called", CRITICAL);
+	Log log("Gamestate", "getScore()", UNIMPORTANT);
 	return (this->_score);
+}
+
+Coord	GameState::getFood(void) const {
+	Log log("Gamestate", "getFood()", UNIMPORTANT);
+	return (this->_food);
+}
+
+Coord	GameState::getSnakeHeadPos(void) const {
+	Log log("Gamestate", "getSnakeHeadPos()", UNIMPORTANT);
+	return (this->_snake.getHeadPos());
+}
+
+bool	GameState::getAIFlag(void) const {
+	Log log("Gamestate", "getAIFlag()", UNIMPORTANT);
+	return (this->_AI_flag);
 }
 
 /*
 ** Setters
 */
 void	GameState::setSize(Coord size) {
-	logger.log("Gamestate| setSize() called", CRITICAL);
+	Log log("Gamestate", "setSize(Coord size)", UNIMPORTANT);
 	this->_size = size;
 }
 
 void	GameState::setWidth(int width) {
-	logger.log("Gamestate| setWidth() called", CRITICAL);
+	Log log("Gamestate", "setWidth(int width)", UNIMPORTANT);
 	this->_size.setX(width);
 }
 
 void	GameState::setHeight(int height) {
-	logger.log("Gamestate| setHeight() called", CRITICAL);
+	Log log("Gamestate", "setHeight(int height)", UNIMPORTANT);
 	this->_size.setY(height);
 }
+
 void	GameState::setSnakeDir(char direction) {
-	logger.log("Gamestate| setSnakeDir() called", CRITICAL);
+	Log log("Gamestate", "setSnakeDir(char)", CRITICAL);
+	this->_snake.setDirection(direction);
+}
+
+void	GameState::setSnakeDir(Direction direction) {
+	Log log("Gamestate", "setSnakeDir(Directiono)", CRITICAL);
 	this->_snake.setDirection(direction);
 }
 
 void	GameState::setMode(char mode) {
-	logger.log_step_in("Gamestate| setMode() called", CRITICAL);
+	Log log("Gamestate", "setMode(char mode)", UNIMPORTANT);
 	if (this->_mode == MODE_END && (mode == MODE_PLAY || mode == MODE_PAUSE)) {
 		resetGame();
 		this->_mode = mode;
 	}
 	else if (mode == MODE_PLAY || mode == MODE_PAUSE || mode == MODE_END)
 		this->_mode = mode;
-	logger.log_step_out("Gamestate| setMode() completed", CRITICAL);
 }
 
 /*
@@ -168,49 +193,56 @@ void	GameState::setMode(char mode) {
 */
 
 bool		GameState::runIteration(void) {
-	logger.log_step_in("Gamestate| runIteration() called", CRITICAL);
+	Log log("Gamestate", "runIteration()", CRITICAL);
 	if (this->_mode != MODE_PLAY)
 		return (false);
 	
+	if (this->_AI_flag == true)
+		this->_AI->run(*this);
+
+	log.log("Snake direction after moving: ", this->getSnakeDir(), CRITICAL);
 	moveSnake();
+	log.log("Snake direction after moving: ", this->getSnakeDir(), CRITICAL);
 
 	if ((this->_mode == MODE_PLAY) ? true : false)
-		logger.log("Gamestate| runIteration() will return true", CRITICAL);
+		log.log("runIteration() will return true", CRITICAL);
 	else
-		logger.log("Gamestate| runIteration() will return false", CRITICAL);
+		log.log("runIteration() will return false", CRITICAL);
 		
-	logger.log_step_out("Gamestate| runIteration() completed", CRITICAL);
 	return ((this->_mode == MODE_PLAY) ? true : false);
 }
 
 void		GameState::resetGame(void) {
-	logger.log_step_in("Gamestate| resetGame() called", CRITICAL);
+	Log log("Gamestate", "resetGame()", CRITICAL);
 	_map.clear();
 
 	*this = GameState();
-	logger.log_step_out("Gamestate| resetGame() completed", CRITICAL);
+}
+
+void		GameState::updateMap(void) {
+	resetMap();
+	loadSnake();
+	loadFood();
 }
 
 /*
 ** Private Functions
 */
 void		GameState::resetMap(void) {
-	logger.log_step_in("Gamestate| resetMap() called", CRITICAL);
+	Log log("Gamestate", "resetMap()", CRITICAL);
 	for (int k = 0; k < this->_size.getY(); k++)
 		for (int l = 0; l < this->_size.getX(); l++)
 			this->_map[l][k] = MAP_EMPTY;
-	logger.log_step_out("Gamestate| resetMap() completed", CRITICAL);
 }
 
 void		GameState::resetSnake(void) {
-	logger.log_step_in("Gamestate| resetSnake() called", CRITICAL);
+	Log log("Gamestate", "resetSnake()", CRITICAL);
 	this->_snake.resetSnake();
-	logger.log_step_out("Gamestate| resetSnake() completed", CRITICAL);
 }
 
 /* Requires other assets to be loaded into the map first */
 void		GameState::generateFood(void) {
-	logger.log_step_in("Gamestate| generateFood() called", CRITICAL);
+	Log log("Gamestate", "generateFood()", CRITICAL);
 	bool	found = false;
 	Coord	pos;
 	int		max_runs = 0;
@@ -240,11 +272,10 @@ food_found:
 		this->_mode = MODE_END;
 	else
 		loadFood();
-	logger.log_step_out("Gamestate| generateFood() completed", CRITICAL);
 }
 
 void		GameState::loadSnake(void) {
-	logger.log_step_in("Gamestate| loadSnake() called", CRITICAL);
+	Log log("Gamestate", "loadSnake()", CRITICAL);
 	std::list<Part>	body = this->_snake.getBody();
 	Coord			pos;
 
@@ -254,22 +285,20 @@ void		GameState::loadSnake(void) {
 	}
 	pos = this->_snake.getHeadPos();
 	this->_map[pos.getX()][pos.getY()] = MAP_HEAD;
-	logger.log_step_out("Gamestate| loadSnake() completed", CRITICAL);
 }
 
 void		GameState::loadFood(void) {
-	logger.log_step_in("Gamestate| loadFood() called", CRITICAL);
-	char	c = this->_map[this->_food.getX()][this->_food.getY()];
+	Log log("Gamestate", "loadFood()", CRITICAL);
+	int	c = this->_map[this->_food.getX()][this->_food.getY()];
 
 	if (c == MAP_EMPTY)
 		this->_map[this->_food.getX()][this->_food.getY()] = MAP_FOOD;
 	else if (c != MAP_FOOD)
 		throw std::runtime_error("Food has been incorrectly generated");
-	logger.log_step_out("Gamestate| loadFood() completed", CRITICAL);
 }
 
 void		GameState::moveSnake(void) {
-	logger.log_step_in("Gamestate| moveSnake() called", CRITICAL);
+	Log log("Gamestate", "moveSnake()", CRITICAL);
 	Coord		pos;
 
 	pos = this->_snake.getTailPos();
@@ -282,17 +311,17 @@ void		GameState::moveSnake(void) {
 	if (pos.getX() < 0 || this->_size.getX() <= pos.getX())
 	{
 		this->_mode = MODE_END;
-		logger.log("Gamestate| moveSnake has moved the snake out of X bounds. Game Was End Set.", CRITICAL);
+		log.log("has moved the snake out of X bounds. Game Was End Set.", AVERAGE);
 	}
 	else if (pos.getY() < 0 || this->_size.getY() <= pos.getY())
 	{
 		this->_mode = MODE_END;
-		logger.log("Gamestate| moveSnake has moved the snake out of Y bounds. Game Was End Set.", CRITICAL);
+		log.log("has moved the snake out of Y bounds. Game Was End Set.", AVERAGE);
 	}
 	else if (this->_map[pos.getX()][pos.getY()] == MAP_EMPTY)
 	{
 		this->_map[pos.getX()][pos.getY()] = MAP_HEAD;
-		logger.log("Gamestate| moveSnake has succesfully moved.", CRITICAL);
+		log.log("has succesfully moved.", AVERAGE);
 	}
 	else if (this->_map[pos.getX()][pos.getY()] == MAP_FOOD) 
 	{
@@ -300,13 +329,13 @@ void		GameState::moveSnake(void) {
 		this->_snake.eat();
 		++this->_score;
 		generateFood();
-		logger.log("Gamestate| moveSnake has succesfully moved and eaten food.", CRITICAL);
+		log.log("has succesfully moved and eaten food.", AVERAGE);
 	}
 	else
-	{
+	{	
+		log.log("map position contents: " + std::to_string(this->_map[pos.getX()][pos.getY()]), CRITICAL);
 		this->_mode = MODE_END;
-		logger.log("Gamestate| moveSnake met no conditions. Game End Was Set.", CRITICAL);
+		log.log("met no conditions. Game End Was Set.", CRITICAL);
 	}
-	logger.log("Gamestate| moveSnake set mode to: " + std::to_string(this->_mode), CRITICAL);
-	logger.log_step_out("Gamestate| moveSnake() completed", CRITICAL);
+	log.log("set mode to: " + std::to_string(this->_mode), CRITICAL);
 }

@@ -19,8 +19,9 @@
 # include <sys/time.h>
 
 # include "../shared/Coord.hpp"
-# include "../shared/Logger.hpp"
+# include "../shared/Log.hpp"
 # include "Snake.hpp"
+# include "AI.hpp"
 
 # define DEFAULT_HEIGHT	20
 # define DEFAULT_WIDTH	20
@@ -37,11 +38,13 @@
 # define MODE_PLAY		1
 # define MODE_END		2
 
-# define DELAY 90000
+# define DELAY 120000
 
 # ifndef MAP
 #  define MAP std::map<int, std::map<int, char> >
 # endif
+
+class AI;
 
 class GameState {
 public:
@@ -61,15 +64,20 @@ public:
 	Direction	getSnakeDir(void) const;
 	char		getMode(void) const;
 	int			getScore(void) const;
+	Coord		getFood(void) const;
+	Coord		getSnakeHeadPos(void) const;
+	bool		getAIFlag(void) const;
 
 	void		setSize(Coord size);
 	void		setWidth(int width);
 	void		setHeight(int height);
 	void		setSnakeDir(char direction);
+	void		setSnakeDir(Direction direction);
 	void		setMode(char mode);
 
 	bool		runIteration(void);
 	void		resetGame(void);
+	void		updateMap(void);
 
 private:
 	void		resetMap(void);
@@ -84,6 +92,8 @@ private:
 	Coord		_food;
 	char		_mode;
 	int			_score;
+	bool		_AI_flag;
+	AI			*_AI;
 
 	Coord		_size;
 

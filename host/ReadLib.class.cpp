@@ -134,9 +134,12 @@ void		ReadLib::runGame(IDisplay *window) const {
 		window->drawScore(game.getScore());
 		window->drawMap(game.getMap());
 
-		dir = window->getDirection();
-		if (dir.getDirection() != LOST)
-			game.setSnakeDir(dir.getDirection());
+		if (game.getAIFlag() != true)
+		{
+			dir = window->getDirection();
+			if (dir.getDirection() != LOST)
+				game.setSnakeDir(dir.getDirection());
+		}
 
 		gettimeofday(&now, NULL);
 

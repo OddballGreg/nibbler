@@ -2,8 +2,12 @@
 
 //void puts(std::string message) { std::cout << message << std::endl; }
 
-int				main( void )
+int				main( int argc, char **argv )
 {
+	if (argc > 1)
+		if (std::atoi(argv[1]) >= NONE && std::atoi(argv[1]) <= ALL)
+			logger.setVerbosity(std::atoi(argv[1]));
+
 	logger.log("", CRITICAL);
 	logger.log("----------------------------------------------------", CRITICAL);
 	logger.log("Program Started", CRITICAL);
@@ -46,5 +50,6 @@ int				main( void )
 	}
 
 	logger.log("Graceful Exit", CRITICAL);
+	exit(0);
 	return 0;
 }
