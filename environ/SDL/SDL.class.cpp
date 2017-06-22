@@ -16,7 +16,7 @@ SDL::SDL(void) {
 
 SDL::~SDL(void) {
 	logger.log_step_in("SDL| Deconstructing", CRITICAL);
-	//
+	
 	logger.log_step_out("SDL| Deconstructed", CRITICAL);
 }
 
@@ -70,28 +70,8 @@ void		SDL::drawGameOver(int finalScore) {
 void		SDL::initWindow(void) {
 	logger.log_step_in("SDL| initWindow() Called", CRITICAL);
 
-	bool	run(true);
-
-	if (setupWindow()) {
-
-		SDL_Event	Event;
-
-		/*
-		**	Setup an event for the window to open.
-		*/
-
-		while (run) {
-			while (SDL_PollEvent(&Event) != 0) {
-				if (Event.type == SDL_QUIT)
-					run = false;
-			}
-			renderWindow();
-			SDL_Delay(1);
-		}
-
-	} else {
-		logger.log_step_in("SDL: failed to open a window", CRITICAL);
-	}
+	if (!setupWindow())
+		_closed = true;
 
 	logger.log_step_out("SDL| initWindow() Completed", CRITICAL);
 }
@@ -99,14 +79,14 @@ void		SDL::initWindow(void) {
 void		SDL::exitWindow(void) {
 	logger.log_step_in("SDL| exitWindow() Called", CRITICAL);
 	
-	if (Renderer) {
-		SDL_DestroyRenderer(Renderer);
-		Renderer = NULL;
+	if (_renderer) {
+		SDL_DestroyRenderer(_renderer);
+		_renderer = NULL;
 	}
 
-	if (Window) {
-		SDL_DestroyWindow(Window);
-		Window = NULL;
+	if (_window) {
+		SDL_DestroyWindow(_window);
+		_window = NULL;
 	}
 
 	SDL_Quit();
@@ -118,26 +98,32 @@ bool		SDL::setupWindow(void) {
 
 	logger.log_step_in("SDL| setupWindow() Called", AVERAGE);
 
-	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
+	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
 		logger.log_step_out("SDL| SDL_INIT failed", CRITICAL);
 		return false;
 	}
-	if ((Window = SDL_CreateWindow(
+	
+	_window = SDL_CreateWindow(
 		"Nibbler Kinky Snaky",
-		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_SHOWN)
-	) == NULL ) {
+		SDL_WINDOWPOS_CENTERED,
+		SDL_WINDOWPOS_CENTERED,
+		WIN_WIDTH, WIN_HEIGHT,
+		0
+	);
+	
+	if (_window == nullptr) {
 		logger.log_step_out("SDL| SDL_WINDOW failed", CRITICAL);
 		return false;
 	}
 	
-	primaryDisplay = SDL_GetWindowSurface(Window);
+	_primaryDisplay = SDL_GetWindowSurface(_window);
 	
-	if ((Renderer = SDL_CreateRenderer(Window, -1, SDL_RENDERER_ACCELERATED)) == NULL) {
+	if ((_renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED)) == NULL) {
 		logger.log_step_out("SDL| SDL_RENDERER failed", CRITICAL);
 		return false;
 	}
 
-	SDL_SetRenderDrawColor(Renderer, 0x00, 0x00, 0x00, 0xFF);
+	SDL_SetRenderDrawColor(_renderer, 0x00, 0x00, 0x00, 0xFF);
 
 	logger.log_step_in("SDL| setupWindow() Completed", AVERAGE);
 	
@@ -146,8 +132,23 @@ bool		SDL::setupWindow(void) {
 }
 
 void		SDL::renderWindow(void) {
-	SDL_RenderClear(Renderer);
-	SDL_RenderPresent(Renderer);
+	SDL_RenderClear(_renderer);
+	SDL_RenderPresent(_renderer);
+}
+
+void		SDL::pollEvents( void ) {
+	SDL_Event	event;
+
+	if (SDL_PollEvent(&event)) {
+		switch (event.type) {
+			case SDL_QUIT:
+				_closed = true;
+				break;
+
+			default:
+				break;
+		}
+	}
 }
 
 /*
