@@ -43,54 +43,54 @@ AI AI::operator = (const AI &obj) {
 // Methods
 void		AI::run(GameState &gamestate) {
 	Log log("AI", "run()", CRITICAL);
-	Coord map_size = gamestate.getSize();
-	log.log("Map Size Obtained: ", map_size , CRITICAL);
-	MAP map;
+	// Coord map_size = gamestate.getSize();
+	// log.log("Map Size Obtained: ", map_size , CRITICAL);
+	// MAP map;
 	Coord temp;
-	int best(-100);
+	// int best(-100);
 	Coord snake_head = gamestate.getSnakeHeadPos();
-	log.log("Snake Head Postion Obtained: ", snake_head, CRITICAL);
+	// log.log("Snake Head Postion Obtained: ", snake_head, CRITICAL);
 
-	for (int k = 0; k < map_size.getY(); k++)
-		for (int l = 0; l < map_size.getX(); l++)
-		{
-			temp.setX(k); 
-			temp.setY(l);
-			map[k][l] = static_cast<char>((map_size.getY() * map_size.getX()) - static_cast<char>((gamestate.getFood().distTo(temp))));
-		}
-	log.log("Map Weighted based on food position: ", gamestate.getFood(), CRITICAL);
+	// for (int k = 0; k < map_size.getY(); k++)
+	// 	for (int l = 0; l < map_size.getX(); l++)
+	// 	{
+	// 		temp.setX(k); 
+	// 		temp.setY(l);
+	// 		map[k][l] = static_cast<char>((map_size.getY() * map_size.getX()) - static_cast<char>((gamestate.getFood().distTo(temp))));
+	// 	}
+	// log.log("Map Weighted based on food position: ", gamestate.getFood(), CRITICAL);
 
-	for (int k = snake_head.getY() - 1; k <= snake_head.getY() + 1; k++)
-		for (int l = snake_head.getX() - 1; l <= snake_head.getX() + 1; l++)
-		{
-			log.log("Querying Position " + std::to_string(k) + " " +  std::to_string(l) + " with weight: " + std::to_string(map[k][l]), CRITICAL);
-			if (l < 0 || k < 0 || l > map_size.getX() || k > map_size.getY() || (l == snake_head.getX() && k == snake_head.getY()) )
-				map[k][l] = -100;
-			else if (map[k][l] > best && (gamestate.getMap()[k][l] == 0 || gamestate.getMap()[k][l] == 4))
-			{
-				temp.setX(l); 
-				temp.setY(k);
-				best = map[k][l];
-				log.log("New best: " + std::to_string(best) + " at: ", temp, CRITICAL);
-			}
-		}
+	// for (int k = snake_head.getY() - 1; k <= snake_head.getY() + 1; k++)
+	// 	for (int l = snake_head.getX() - 1; l <= snake_head.getX() + 1; l++)
+	// 	{
+	// 		log.log("Querying Position " + std::to_string(k) + " " +  std::to_string(l) + " with weight: " + std::to_string(map[k][l]), CRITICAL);
+	// 		if (l < 0 || k < 0 || l > map_size.getX() || k > map_size.getY() || (l == snake_head.getX() && k == snake_head.getY()) )
+	// 			map[k][l] = -100;
+	// 		else if (map[k][l] > best && (gamestate.getMap()[k][l] == 0 || gamestate.getMap()[k][l] == 4))
+	// 		{
+	// 			temp.setX(l); 
+	// 			temp.setY(k);
+	// 			best = map[k][l];
+	// 			log.log("New best: " + std::to_string(best) + " at: ", temp, CRITICAL);
+	// 		}
+	// 	}
 	log.log("Best coord to move to selected: ", temp, CRITICAL);
 	log.log("Current Snake Direction: ", gamestate.getSnakeDir(), CRITICAL);
 
-	char x = static_cast<char>(temp.getX() - snake_head.getX());
-	char y = static_cast<char>(temp.getY() - snake_head.getY());
-	log.log("dir x: " + std::to_string(x), CRITICAL);
-	log.log("dir y: " + std::to_string(y), CRITICAL);
+	// char x = static_cast<char>(temp.getX() - snake_head.getX());
+	// char y = static_cast<char>(temp.getY() - snake_head.getY());
+	// log.log("dir x: " + std::to_string(x), CRITICAL);
+	// log.log("dir y: " + std::to_string(y), CRITICAL);
 	
-	Direction dir;
-	if (x > 0 && gamestate.getSnakeDir() != WEST && dir.moveCoord(Coord(snake_head)).getX() > -1 && dir.moveCoord(Coord(snake_head)).getX() < map_size.getX())
-		dir = Direction(x, 0);
-	else if (x < 0 && gamestate.getSnakeDir() != EAST && dir.moveCoord(Coord(snake_head)).getX() > -1 && dir.moveCoord(Coord(snake_head)).getX() < map_size.getX())
-		dir = Direction(x, 0);
-	else if (y < 0 && gamestate.getSnakeDir() != NORTH && dir.moveCoord(Coord(snake_head)).getY() > -1 && dir.moveCoord(Coord(snake_head)).getY() < map_size.getY())
-		dir = Direction(0, y);
-	else if (y > 0 && gamestate.getSnakeDir() != SOUTH && dir.moveCoord(Coord(snake_head)).getY() > -1 && dir.moveCoord(Coord(snake_head)).getY() < map_size.getY())
-		dir = Direction(0, y);
+	Direction dir = moveSnake(gamestate, gamestate.getFood().getX() - snake_head.getX(), gamestate.getFood().getY() - snake_head.getY());
+	// if (x > 0 && gamestate.getSnakeDir() != WEST && dir.moveCoord(Coord(snake_head)).getX() > -1 && dir.moveCoord(Coord(snake_head)).getX() < map_size.getX())
+	// 	dir = Direction(x, 0);
+	// else if (x < 0 && gamestate.getSnakeDir() != EAST && dir.moveCoord(Coord(snake_head)).getX() > -1 && dir.moveCoord(Coord(snake_head)).getX() < map_size.getX())
+	// 	dir = Direction(x, 0);
+	// else if (y < 0 && gamestate.getSnakeDir() != NORTH && dir.moveCoord(Coord(snake_head)).getY() > -1 && dir.moveCoord(Coord(snake_head)).getY() < map_size.getY())
+	// 	dir = Direction(0, y);
+	// else if (y > 0 && gamestate.getSnakeDir() != SOUTH && dir.moveCoord(Coord(snake_head)).getY() > -1 && dir.moveCoord(Coord(snake_head)).getY() < map_size.getY())
+	// 	dir = Direction(0, y);
 
 	log.log("direction chosen: ", dir, CRITICAL);
 	if (dir == gamestate.getSnakeDir() || dir.getDirection() == LOST || dir == gamestate.getSnakeDir().opposite())
@@ -145,11 +145,11 @@ void		AI::run(GameState &gamestate) {
 /*
 ** Private
 */
-Direction	moveSnake(GameState &gamestate, int delta_x, int delta_y) {
+Direction	AI::moveSnake(GameState &gamestate, int delta_x, int delta_y) {
 	static	Direction	dir;
 	char				tmp = 0;
 
-	if (dir != LOST && dir.getDirection() <= WEST) {
+	if (dir != LOST && dir.getDirection() <= WEST && dir != gamestate.getSnakeDir().opposite()) {
 			tmp = dir.getDirection();
 			dir = Direction(LOST);
 			return (Direction(tmp));
@@ -164,6 +164,20 @@ Direction	moveSnake(GameState &gamestate, int delta_x, int delta_y) {
 		delta_y = -1;
 	dir = Direction(static_cast<char>(delta_x), static_cast<char>(delta_y));
 
+	if (dir == gamestate.getSnakeDir().opposite()) {
+		Direction	dir1;
+		Direction	dir2;
+		Coord		pos;
+
+		dir.getTangent(&dir1, &dir2);
+		pos = dir1.moveCoord(gamestate.getSnakeHeadPos());
+		if (tmp == MAP_EMPTY || tmp == MAP_FOOD)
+			return (dir1);
+		pos = dir2.moveCoord(gamestate.getSnakeHeadPos());
+		if (tmp == MAP_EMPTY || tmp == MAP_FOOD)
+			return (dir2);
+	}
+
 	if (dir.getDirection() <= WEST) {
 		tmp = dir.getDirection();
 		dir = Direction(LOST);
@@ -174,8 +188,7 @@ Direction	moveSnake(GameState &gamestate, int delta_x, int delta_y) {
 		Direction	dir2;
 		Coord		pos;
 
-		dir.tangent(&dir1, &dir2);
-
+		dir.getAdjacent(&dir1, &dir2);
 		pos = dir1.moveCoord(gamestate.getSnakeHeadPos());
 		tmp = gamestate.getMap()[pos.getX()][pos.getY()];
 		if (tmp == MAP_EMPTY || tmp == MAP_FOOD) {
