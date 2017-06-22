@@ -17,16 +17,20 @@
 
 # include "Coord.hpp"
 
-# define LOST   0
-# define NORTH 	1
-# define EAST  	2
-# define SOUTH 	3
-# define WEST  	4
+# define LOST   	0
+# define NORTH 		1
+# define EAST  		2
+# define SOUTH 		3
+# define WEST  		4
+# define NORTH_EAST	5
+# define NORTH_WEST	6
+# define SOUTH_EAST	7
+# define SOUTH_WEST	8
 
-# define LEFT  -1
-# define RIGHT  1
-# define UP     1
-# define DOWN  -1
+# define LEFT	   -1
+# define RIGHT  	1
+# define UP     	1
+# define DOWN	   -1
 
 class Direction {
 public:

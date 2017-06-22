@@ -20,19 +20,17 @@ Direction::Direction(void): _x(0), _y(0) {
 }
 
 Direction::Direction(char x, char y) {
-	if (x > 0)
-		_x = 1;
-	else if (x < 0)
-		_x = -1;
-	else
-		_x = 0;
+	if (x > 1)
+		x = 1;
+	else if (x < -1)
+		x = -1;
+	_x = x;
 
-	if (y > 0)
-		_y = 1;
-	else if (y < 0)
+	if (y > 1)
+		y = 1;
+	else if (y < -1)
 		_y = -1;
-	else
-		_y = 0;
+	_y = y;
 }
 
 Direction::Direction(char direction) {
@@ -79,6 +77,15 @@ char	Direction::getDirection(void) const {
 	if (this->_x == -1 && this->_y == 0)
 		return (WEST);
 
+	if (this->_x == -1 && this->_y == -1)
+		return (SOUTH_WEST);
+	if (this->_x == 1 && this->_y == -1)
+		return (SOUTH_EAST);
+	if (this->_x == -1 && this->_y == 1)
+		return (NORTH_WEST);
+	if (this->_x == 1 && this->_y == 1)
+		return (NORTH_EAST);
+
 	return (LOST);
 }
 
@@ -92,6 +99,15 @@ std::string Direction::getDirectionString(void) const {
 	if (this->_x == -1 && this->_y == 0)
 		return ("WEST");
 
+	if (this->_x == -1 && this->_y == -1)
+		return ("SOUTH_WEST");
+	if (this->_x == 1 && this->_y == -1)
+		return ("SOUTH_EAST");
+	if (this->_x == -1 && this->_y == 1)
+		return ("NORTH_WEST");
+	if (this->_x == 1 && this->_y == 1)
+		return ("NORTH_EAST");
+
 	return ("LOST");
 }
 
@@ -101,11 +117,15 @@ std::string Direction::getDirectionString(void) const {
 void	Direction::setX(char x) {
 	if (-1 <= x && x <= 1)
 		this->_x = x;
+	else
+		x = (x > 0) ? 1 : -1;
 }
 
 void	Direction::setY(char y) {
 	if (-1 <= y && y <= 1)
 		this->_y = y;
+	else
+		y = (y > 0) ? 1 : -1;
 }
 
 void	Direction::setDirection(char direction) {
@@ -126,6 +146,22 @@ void	Direction::setDirection(char direction) {
 			_x = -1;
 			_y = 0;
 			break;
+		case NORTH_EAST :
+			_x = 1;
+			_y = 1;
+			break;
+		case NORTH_WEST :
+			_x = -1;
+			_y = 1;
+			break;
+		case SOUTH_EAST :
+			_x = 1;
+			_y = -1;
+			break;
+		case SOUTH_WEST :
+			_x = -1;
+			_y = -1;
+			break;
 		default :
 			_x = 0;
 			_y = 0;
@@ -137,15 +173,11 @@ void	Direction::setDirection(char direction) {
 */
 
 bool Direction::operator != (const Direction &obj) {
-	if (this->_x != obj._x || this->_y != obj._y)
-		return true;
-	return false;
+	return  (this->_x != obj._x && this->_y != obj._y);
 }
 
 bool Direction::operator == (const Direction &obj) {
-	if (this->_x == obj._x && this->_y == obj._y)
-		return true;
-	return false;
+	return (this->_x == obj._x && this->_y == obj._y);
 }
 
 /*
@@ -174,6 +206,15 @@ Direction	Direction::opposite(void) const {
 		return (Direction(NORTH));
 	if (this->_x == -1 && this->_y == 0)
 		return (Direction(EAST));
+
+	if (this->_x == 1 && this->_y == 1)
+		return (Direction(NORTH_EAST));
+	if (this->_x == -1 && this->_y == 1)
+		return (Direction(NORTH_WEST));
+	if (this->_x == 1 && this->_y == -1)
+		return (Direction(SOUTH_EAST));
+	if (this->_x == -1 && this->_y == -1)
+		return (Direction(SOUTH_WEST));
 	
 	return (Direction(LOST));
 }

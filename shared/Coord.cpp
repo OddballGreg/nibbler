@@ -105,6 +105,17 @@ Coord Coord::operator -- (void) {
 }
 
 /*
+** Comparisons
+*/
+bool Coord::operator != (const Coord &obj) {
+	return (this->_x != obj._x && this->_y != obj._y);
+}
+
+bool Coord::operator == (const Coord &obj) {
+	return (this->_x == obj._x && this->_y == obj._y);
+}
+
+/*
 ** Getters
 */
 int		Coord::getX(void) const {

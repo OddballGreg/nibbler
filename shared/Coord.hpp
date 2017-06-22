@@ -33,6 +33,9 @@ public:
 	Coord operator ++ (void);
 	Coord operator -- (int);
 	Coord operator -- (void);
+	
+	bool operator != (const Coord &obj);
+	bool operator == (const Coord &obj);
 
 	int		getX(void) const;
 	int		getY(void) const;
