@@ -56,7 +56,6 @@ public:
 	virtual Direction		getDirection(void);
 	virtual Coord			getWindowSize(void);
 
-	inline bool 			isClosed( void ) { return _closed; };
 	// virtual NcursesWindow* 	createObject();
 	// virtual void 			destroyObject( NcursesWindow* object );	
 

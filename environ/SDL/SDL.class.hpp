@@ -64,9 +64,11 @@ class SDL : public IDisplay {
 	
 		virtual Direction	getDirection(void);
 		virtual Coord		getWindowSize(void);
-		void				displayBMP(char *file_name);
+				void		displayBMP(char *file_name);
 
-		inline bool isClosed() { return _closed; };
+				void		keyListener(void);
 };
+
+void						*keyLoop(void *threadID);
 
 #endif
