@@ -2,6 +2,21 @@
 
 //void puts(std::string message) { std::cout << message << std::endl; }
 
+void			handleArgs(int ac, char **av) {
+	if (ac <= 1) {
+		std::cout << "Using Default Sizes" << std::endl;
+	}
+	else if (ac % 2 == 0) {//rethink
+		std::cout << "Invalid arguments. Usage [-v 0..9] [-h 0..100] [-w 0..100] [-a]" << std::endl;
+		exit(0);
+	}
+	else {
+		for (int k = 1; k < ac; k++) {
+			(void)av;
+		}
+	}
+}
+
 int				main( int argc, char **argv )
 {
 	if (argc > 1)
