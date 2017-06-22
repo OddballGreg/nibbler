@@ -77,6 +77,7 @@ public:
 
 	bool		runIteration(void);
 	void		resetGame(void);
+	void		updateMap(void);
 
 private:
 	void		resetMap(void);

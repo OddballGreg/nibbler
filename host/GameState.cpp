@@ -219,6 +219,12 @@ void		GameState::resetGame(void) {
 	*this = GameState();
 }
 
+void		GameState::updateMap(void) {
+	resetMap();
+	loadSnake();
+	loadFood();
+}
+
 /*
 ** Private Functions
 */
