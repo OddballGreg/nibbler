@@ -173,15 +173,11 @@ void	Direction::setDirection(char direction) {
 */
 
 bool Direction::operator != (const Direction &obj) {
-	if (this->_x != obj._x && this->_y != obj._y)
-		return true;
-	return false;
+	return  (this->_x != obj._x && this->_y != obj._y);
 }
 
 bool Direction::operator == (const Direction &obj) {
-	if (this->_x == obj._x && this->_y == obj._y)
-		return true;
-	return false;
+	return (this->_x == obj._x && this->_y == obj._y);
 }
 
 /*
