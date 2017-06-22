@@ -90,12 +90,8 @@ void		ReadLib::callRun( void ) {
 
 	IDisplay* display = (IDisplay*)create();
 	display->initWindow();
-	while (!(display->isClosed())) {
-		
-		this->runGame(display);
-		sleep(2);
-		
-	}
+	this->runGame(display);
+	sleep(2);
 	display->exitWindow();
 	destroy( display );
 
