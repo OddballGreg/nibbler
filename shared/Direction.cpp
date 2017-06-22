@@ -19,8 +19,20 @@ Direction::Direction(void): _x(0), _y(0) {
 	//
 }
 
-Direction::Direction(char x, char y): _x(x), _y(y) {
-	//
+Direction::Direction(char x, char y) {
+	if (x > 0)
+		_x = 1;
+	else if (x < 0)
+		_x = -1;
+	else
+		_x = 0;
+
+	if (y > 0)
+		_y = 1;
+	else if (y < 0)
+		_y = -1;
+	else
+		_y = 0;
 }
 
 Direction::Direction(char direction) {
@@ -118,6 +130,22 @@ void	Direction::setDirection(char direction) {
 			_x = 0;
 			_y = 0;
 	}
+}
+
+/*
+** Operators
+*/
+
+bool Direction::operator != (const Direction &obj) {
+	if (this->_x != obj._x || this->_y != obj._y)
+		return true;
+	return false;
+}
+
+bool Direction::operator == (const Direction &obj) {
+	if (this->_x == obj._x && this->_y == obj._y)
+		return true;
+	return false;
 }
 
 /*

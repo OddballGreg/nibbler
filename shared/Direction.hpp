@@ -47,6 +47,9 @@ public:
 	void		setY(char y);
 	void		setDirection(char direction);
 
+	bool operator != (const Direction &obj);
+	bool operator == (const Direction &obj);
+
 	Coord		moveCoord(Coord coord) const;
 	Direction	opposite(void) const;
 

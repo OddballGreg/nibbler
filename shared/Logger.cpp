@@ -13,6 +13,8 @@
 #define  LOGGER_GLOBAL
 #include "Logger.hpp"
 
+//Constructors
+
 Logger::Logger(std::string filename, int verbosity)
 {
 	this->_logfile = new std::ofstream(filename, std::ofstream::out | std::ofstream::app);
@@ -44,6 +46,11 @@ Logger &Logger::operator =(const Logger &obj)
 	return *this;
 }
 
+// Setters
+void Logger::setVerbosity(int verbosity) { this->_verbosity = verbosity; }
+
+
+// Methods
 void Logger::log(std::string message, int verbosity)
 {	
 	if (verbosity > this->_verbosity)
@@ -106,7 +113,7 @@ void Logger::log(std::string message, Coord coord, int verbosity)
 	int i = -1;
 	while (++i < this->_depth + 1)
 		*this->_logfile << "\t";
-	*this->_logfile << message << coord.getX() << " " << coord.getY() << std::endl;
+	*this->_logfile << message << "X:" << coord.getX() << " Y:" << coord.getY() << std::endl;
 	pthread_mutex_unlock(&this->_log_lock);
 }
 

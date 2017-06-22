@@ -146,6 +146,17 @@ void	Coord::decY(void) {
 }
 
 /*
+** Calculations
+*/
+
+unsigned int Coord::distTo(Coord &obj) {
+	unsigned int top = static_cast<unsigned int>( this->_x > obj.getX() ? this->_x - obj.getX() : obj.getX() - this->_x );
+	unsigned int bottom = static_cast<unsigned int>( this->_y > obj.getY() ? this->_y - obj.getY() : obj.getY() - this->_y );
+
+	return ( top + bottom );
+}
+
+/*
 ** Display
 */
 std::ostream& operator << (std::ostream &o, const Coord &coord) {
