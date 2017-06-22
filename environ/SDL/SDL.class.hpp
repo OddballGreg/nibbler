@@ -66,9 +66,6 @@ class SDL : public IDisplay {
 		virtual Coord		getWindowSize(void);
 				void		displayBMP(char *file_name);
 
-				void		keyListener(void);
 };
-
-void						*keyLoop(void *threadID);
 
 #endif
