@@ -3,7 +3,7 @@ NAME_LIB=nibbler NcursesWindow.so
 
 DEFD=DDEBUG
 
-HOST= $(addprefix host/, ReadLib.class.cpp main.cpp GameState.cpp Part.cpp Snake.cpp)
+HOST= $(addprefix host/, ReadLib.class.cpp main.cpp GameState.cpp Part.cpp Snake.cpp AI.cpp)
 
 SRC= $(HOST)
 
@@ -31,7 +31,8 @@ VTK_FUCKTON= $(addprefix $(VTK_DIR), *.dylib)
 
 SHARED= ./shared/Coord.cpp \
 		./shared/Direction.cpp \
-		./shared/Logger.cpp
+		./shared/Logger.cpp \
+		./shared/Log.cpp
 
 BOOL= 0
 
@@ -40,7 +41,7 @@ END_FLAGS = -ldl
 endif
 
 $(NAME):
-	bash ./lib/install.sh
+	# bash ./lib/install.sh
 	g++ $(FLAGS) -shared -fPIC $(SHARED) -I ./shared/ -o Shared.so
 	g++ $(FLAGS) -shared -fPIC -lpanel -lncurses Shared.so -o NcursesWindow.so $(NCURSES)
 	g++ $(FLAGS) -shared -fPIC -framework SDL2 Shared.so -o SDL.so $(SDL)
@@ -60,7 +61,7 @@ clean:
 	/bin/rm -rf Shared.so
 	/bin/rm -rf NcursesWindow.so
 	/bin/rm -rf OpenGL.so
-	/bin/rm -rf nibbler_log.txt 
+	# /bin/rm -rf nibbler_log.txt 
 
 fclean: clean
 	/bin/rm -rf $(NAME)

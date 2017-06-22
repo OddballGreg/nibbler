@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Logger.hpp                                         :+:      :+:    :+:   */
+/*   Log.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghavenga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,15 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LOGGER_HPP
-# define LOGGER_HPP
-
-# include <iostream>
-# include <fstream>
-# include <pthread.h>
+#ifndef LOG_HPP
+# define LOG_HPP
 
 # include "Direction.hpp"
 # include "Coord.hpp"
+# include "Logger.hpp"
 
 # define NONE        0
 # define CRITICAL    1
@@ -27,16 +24,16 @@
 # define UNIMPORTANT 4
 # define ALL         5
 
-class Logger
+class Log
 {
 	public:
 		// Constructors & Destructors
-		Logger(std::string logfile, int verbosity);
-		Logger(const Logger &obj);
-		~Logger();
+		Log(std::string class_name, std::string function_name, int verbosity);
+		Log(const Log &obj);
+		~Log();
 
 		// Operators Overloads
-		Logger& operator =(const Logger &obj);
+		Log& operator =(const Log &obj);
 
 		// Setters
 		void setVerbosity(int verbosity);
@@ -51,20 +48,9 @@ class Logger
 		void die(std::string message, int verbosity);
 
 	private:
-		pthread_mutex_t _log_lock = PTHREAD_MUTEX_INITIALIZER;
-		int  _verbosity;
-		int  _depth;
-		std::ofstream* _logfile;
+		int         _verbosity;
+		std::string _class;
+		std::string _function;
 };
-
-# ifdef LOGGER_GLOBAL
-
-Logger		logger("nibbler_log.txt", NONE);
-
-# else
-
-extern Logger	logger;
-
-# endif
 
 #endif

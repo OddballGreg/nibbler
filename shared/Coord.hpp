@@ -45,6 +45,8 @@ public:
 	void	decX(void);
 	void	decY(void);
 
+	unsigned int	distTo(Coord &obj);
+
 private:
 	int		_x;
 	int		_y;
