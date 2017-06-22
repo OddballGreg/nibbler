@@ -46,6 +46,8 @@ public:
 	char		getY(void) const;
 	char		getDirection(void) const;
 	std::string getDirectionString(void) const;
+	void		getTangent(Direction *dir1, Direction *dir2) const;
+	void		getAdjacent(Direction *dir1, Direction *dir2) const;
 
 	void		setX(char x);
 	void		setY(char y);
@@ -56,7 +58,6 @@ public:
 
 	Coord		moveCoord(Coord coord) const;
 	Direction	opposite(void) const;
-	void		tangent(Direction *dir1, Direction *dir2);
 
 private:
 	char	_x;
