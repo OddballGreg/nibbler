@@ -60,7 +60,6 @@ class OpenGL : public IDisplay {
 	
 		virtual Direction	getDirection(void);
 		virtual Coord		getWindowSize(void);
-		inline bool 		isClosed() { return _closed; };
 };
 
 void			pressKey(int key, int x, int y);

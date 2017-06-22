@@ -124,7 +124,7 @@ bool		SDL::setupWindow(void) {
 		return false;
 	}
 
-	SDL_SetRenderDrawColor(_renderer, 0x00, 0x00, 0x00, 0xFF);
+	SDL_SetRenderDrawColor(_renderer, 0x70, 0x07, 0x06, 0xFF);
 
 	logger.log_step_in("SDL| setupWindow() Completed", AVERAGE);
 	
