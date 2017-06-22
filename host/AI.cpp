@@ -142,4 +142,51 @@ void		AI::run(GameState &gamestate) {
 	log.log("Current Snake Direction after setting: ", gamestate.getSnakeDir(), CRITICAL);
 }
 
+/*
+** Private
+*/
+Direction	moveSnake(GameState &gamestate, int delta_x, int delta_y) {
+	static	Direction	dir;
+	char				tmp = 0;
 
+	if (dir != LOST && dir.getDirection() <= WEST) {
+			tmp = dir.getDirection();
+			dir = Direction(LOST);
+			return (Direction(tmp));
+	}
+	if (delta_x > 1)
+		delta_x = 1;
+	else if (delta_x < -1)
+		delta_x = -1;
+	if (delta_y > 1)
+		delta_y = 1;
+	else if (delta_y < -1)
+		delta_y = -1;
+	dir = Direction(static_cast<char>(delta_x), static_cast<char>(delta_y));
+
+	if (dir.getDirection() <= WEST) {
+		tmp = dir.getDirection();
+		dir = Direction(LOST);
+		return (Direction(tmp));
+	}
+	else {
+		Direction	dir1;
+		Direction	dir2;
+		Coord		pos;
+
+		dir.tangent(&dir1, &dir2);
+
+		pos = dir1.moveCoord(gamestate.getSnakeHeadPos());
+		tmp = gamestate.getMap()[pos.getX()][pos.getY()];
+		if (tmp == MAP_EMPTY || tmp == MAP_FOOD) {
+			dir = dir2;
+			return (dir1);
+		}
+		else {
+			dir = dir1;
+			return (dir2);
+		}
+	}
+
+	return dir;
+}

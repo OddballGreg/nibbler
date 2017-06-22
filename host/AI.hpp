@@ -35,6 +35,8 @@ public:
 private:
 	bool _run;
 
+	Direction	moveSnake(GameState &gamestate, int x, int y);
+
 };
 
 #endif
