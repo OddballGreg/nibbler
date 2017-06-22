@@ -11,7 +11,6 @@ SDL::SDL(void) {
 	
 	_size = Coord(25, 25);
 
-
 	logger.log_step_out("} SDL| Constructor Completed", CRITICAL);
 }
 
@@ -71,8 +70,16 @@ void		SDL::drawGameOver(int finalScore) {
 void		SDL::initWindow(void) {
 	logger.log_step_in("SDL| initWindow() Called", CRITICAL);
 
+	pthread_t	thread;
+	int			ret;
+
 	if (!setupWindow())
 		_closed = true;
+
+	ret = pthread_create(&thread, NULL, startRenderLoop, (void *)1);
+	if (ret)
+	throw std::runtime_error("Unable to create new thread");
+
 
 	logger.log_step_out("SDL| initWindow() Completed", CRITICAL);
 }
@@ -119,12 +126,12 @@ bool		SDL::setupWindow(void) {
 	
 	_primaryDisplay = SDL_GetWindowSurface(_window);
 	
-	if ((_renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED)) == NULL) {
-		logger.log_step_out("SDL| SDL_RENDERER failed", CRITICAL);
+	_renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED);
+
+	if (_renderer == nullptr) {
+		logger.log_step_out("SDL| renderer failed()", CRITICAL);
 		return false;
 	}
-
-	SDL_SetRenderDrawColor(_renderer, 0x70, 0x07, 0x06, 0xFF);
 
 	logger.log_step_in("SDL| setupWindow() Completed", AVERAGE);
 	
@@ -133,7 +140,19 @@ bool		SDL::setupWindow(void) {
 }
 
 void		SDL::renderWindow(void) {
+	SDL_SetRenderDrawColor(_renderer, 0, 0, 200, 255);
 	SDL_RenderClear(_renderer);
+	
+	SDL_Rect	rect;
+
+	rect.w = 120;
+	rect.h = 120;
+	rect.x = (WIN_WIDTH / 2) - (rect.w / 2);
+	rect.y = (WIN_HEIGHT / 2) - (rect.h / 2);
+
+	SDL_SetRenderDrawColor(_renderer, 200, 0, 200, 255);
+	SDL_RenderFillRect(_renderer, &rect);
+
 	SDL_RenderPresent(_renderer);
 }
 
@@ -163,6 +182,20 @@ Direction	SDL::getDirection(void) {
 Coord		SDL::getWindowSize(void) {
 	logger.log("SDL| getWindowSize() Called", AVERAGE);
 	return (this->_size);
+}
+
+void			*startRenderLoop(void *threadID) {
+	logger.log("OpenGL| starGlutLoop() Called", CRITICAL);
+	(void)threadID;
+	
+	SDL*	sdl = new SDL();
+
+	while (!sdl->isClosed()) {
+		sdl->pollEvents();
+		sdl->renderWindow();
+	}
+
+	return (NULL);
 }
 
 /*
