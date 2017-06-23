@@ -49,3 +49,4 @@ lib/glsl-optimiser
 .tmp.c
 .vscode
 nibbler_log.txt
+tmp.cpp
