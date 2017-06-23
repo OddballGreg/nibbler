@@ -68,8 +68,6 @@ NcursesWindow NcursesWindow::operator = (const NcursesWindow &obj) {
 */
 void		NcursesWindow::drawMap(MAP map) {
 	logger.log_step_in("NcursesWindow| drawMap() Called", IMPORTANT);
-	// this->_map.clear();
-	// this->_map = map;
 
 	for (int k = 0; k < this->_size.getY(); k++)
 		for (int l = 0; l < this->_size.getX(); l++) {

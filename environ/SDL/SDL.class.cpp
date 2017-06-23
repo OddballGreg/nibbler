@@ -42,6 +42,30 @@ void		SDL::drawMap(MAP map) {
 	logger.log_step_in("SDL| drawMap() Called", IMPORTANT);
 	glMap = map;
 
+	//for (int k = 0; k < this->_size.getY(); k++)
+	//for (int l = 0; l < this->_size.getX(); l++) {
+	//	switch (map[l][k]) {
+	//		case MAP_EMPTY :
+	//			drawChar(k, l, ' ');
+	//			break;
+	//		case MAP_OBSTICLE :
+	//			drawChar(k, l, '#');
+	//			break;
+	//		case MAP_HEAD :
+	//			drawChar(k, l, '0');
+	//			break;
+	//		case MAP_BODY :
+	//			drawChar(k, l, 'o');
+	//			break;
+	//		case MAP_FOOD :
+	//			drawChar(k, l, 'x');
+	//			break;
+	//		default :
+	//			drawChar(k, l, ' ');
+	//			break;
+	//	}
+	//}
+
 	//renderScene();
 	logger.log_step_in("SDL| drawMap() Called", IMPORTANT);
 }
@@ -89,8 +113,28 @@ void		SDL::initWindow(void) {
     	    SDL_RenderDrawLine(_renderer, 320, 200, 300, 240);
     	    SDL_RenderDrawLine(_renderer, 300, 240, 340, 240);
     	    SDL_RenderDrawLine(_renderer, 340, 240, 320, 200);
-    	    SDL_RenderPresent(_renderer);
 		
+			// Set render color to red ( background will be rendered in this color )
+		    SDL_SetRenderDrawColor( _renderer, 30, 30, 30, 50 );
+		
+		    // Clear winow
+		    SDL_RenderClear( _renderer );
+		
+		    // Creat a rect at pos ( 50, 50 ) that's 50 pixels wide and 50 pixels high.
+		    SDL_Rect r;
+		    r.x = 50;
+		    r.y = 50;
+		    r.w = 10;
+		    r.h = 10;
+		
+		    // Set render color to blue ( rect will be rendered in this color )
+		    SDL_SetRenderDrawColor( _renderer, 230, 10, 100, 200 );
+		
+		    // Render rect
+		    SDL_RenderFillRect( _renderer, &r );
+
+			SDL_RenderPresent(_renderer);
+
 			this->pollEvents();
 
 		}
