@@ -157,6 +157,7 @@ void		SDL::renderWindow(void) {
 }
 
 void		SDL::pollEvents( void ) {
+
 	SDL_Event	event;
 
 	if (SDL_PollEvent(&event)) {
@@ -164,11 +165,19 @@ void		SDL::pollEvents( void ) {
 			case SDL_QUIT:
 				_closed = false;
 				break;
-
+			case SDL_KEYDOWN:
+				switch (event.key.keysym.sym) {
+					case SDLK_ESCAPE:
+						_closed = false;
+						break;
+					default:
+						break;
+				}
 			default:
 				break;
 		}
 	}
+
 }
 
 /*
