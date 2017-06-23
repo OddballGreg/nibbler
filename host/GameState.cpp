@@ -315,7 +315,7 @@ void		GameState::generateObstacles(void) {
 	Log log("Gamestate", "loadObstacles()", CRITICAL);
 	Coord	pos;
 
-	while (static_cast<int>(this->_obstacles.size()) < (this->getHeight() * this->getWidth() * 2))
+	while (static_cast<int>(this->_obstacles.size()) < (this->getHeight() * this->getWidth() * 2) / 10)
 	{
 		srand(static_cast<unsigned int>(time(NULL)));
 		pos = Coord(rand() % (this->_size.getX() * this->getWidth()), rand() % (this->_size.getY() * this->getWidth()));
