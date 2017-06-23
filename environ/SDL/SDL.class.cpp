@@ -1,7 +1,7 @@
 #define SDL_FILE
 #include "SDL.class.hpp"
 
-MAP		glMap;
+//MAP		glMap;
 
 /*
 ** Constructors and Destructors
@@ -40,39 +40,45 @@ SDL SDL::operator = (const SDL &obj) {
 */
 void		SDL::drawMap(MAP map) {
 	logger.log_step_in("SDL| drawMap() Called", IMPORTANT);
-	glMap = map;
+	//glMap = map;
 
-	//for (int k = 0; k < this->_size.getY(); k++)
-	//for (int l = 0; l < this->_size.getX(); l++) {
-	//	switch (map[l][k]) {
-	//		case MAP_EMPTY :
-	//			drawChar(k, l, ' ');
-	//			break;
-	//		case MAP_OBSTICLE :
-	//			drawChar(k, l, '#');
-	//			break;
-	//		case MAP_HEAD :
-	//			drawChar(k, l, '0');
-	//			break;
-	//		case MAP_BODY :
-	//			drawChar(k, l, 'o');
-	//			break;
-	//		case MAP_FOOD :
-	//			drawChar(k, l, 'x');
-	//			break;
-	//		default :
-	//			drawChar(k, l, ' ');
-	//			break;
-	//	}
-	//}
+	if (SDL_CreateWindowAndRenderer(WIN_WIDTH, WIN_HEIGHT, 0, &_window, &_renderer) == 0) {
 
-	//renderScene();
+		for (int k = 0; k < this->_size.getY(); k++) {
+			for (int l = 0; l < this->_size.getX(); l++) {
+				switch (map[l][k]) {
+					case MAP_EMPTY :
+						drawBlank(k, l, 0, 1);
+						break;
+					case MAP_OBSTICLE :
+						drawBlock(k, l, 2);
+						break;
+					case MAP_HEAD :
+						drawBlock(k, l, 3);
+						break;
+					case MAP_BODY :
+						drawBlock(k, l, 4);
+						break;
+					case MAP_FOOD :
+						drawBlock(k, l, 5);
+						break;
+					default :
+						drawBlock(k, l, 6);
+						break;
+				}
+			}
+		}
+	
+		//this->pollEvents();
+
+	}
+
 	logger.log_step_in("SDL| drawMap() Called", IMPORTANT);
 }
 
 void		SDL::drawScore(int score) {
 	logger.log_step_in("SDL| drawScore() Called", IMPORTANT);
-	(void)score;//FIXME
+	(void)score;
 	logger.log_step_out("SDL| drawScore() Completed", IMPORTANT);
 }
 
@@ -84,61 +90,88 @@ void		SDL::drawPause(void) {
 
 void		SDL::drawGameOver(int finalScore) {
 	logger.log_step_in("SDL| drawGameOver() Called", IMPORTANT);
-	(void)finalScore;//FIXME
+	(void)finalScore;
 	logger.log_step_out("SDL| drawGameOver() Completed", IMPORTANT);
 }
+
+void		SDL::drawBlock(int x, int y, int i) {
+	// Creat a rect at pos ( x, y ) that's 10 pixels wide and 10 pixels high.
+	SDL_Rect r;
+
+	r.x = x;
+	r.y = y;
+	r.w = 200;
+	r.h = 200;
+
+	SDL_SetRenderDrawColor( _renderer, _colors[i].r, _colors[i].g, _colors[i].b, 200 );
+	
+	// Render rect
+	SDL_RenderFillRect( _renderer, &r );
+
+	//SDL_RenderClear(_renderer);
+};
+
+void		SDL::drawBlank(int x, int y, int i, int j) {
+	// Create a rect at pos ( x, y ) that's 10 pixels wide and 10 pixels high.
+	SDL_Rect r;
+
+	r.x = x;
+	r.y = y;
+	r.w = 200;
+	r.h = 200;
+
+	SDL_SetRenderDrawColor( _renderer, _colors[i].r, _colors[i].g, _colors[i].b, 200 );
+	
+	// Render rect
+	SDL_RenderFillRect( _renderer, &r );
+
+	SDL_SetRenderDrawColor( _renderer, _colors[j].r, _colors[j].g, _colors[j].b, 200 );
+
+	//SDL_RenderClear(_renderer);
+};
+
+void		SDL::setPalette( void ) {
+	// White
+	_colors[0].r=255,_colors[0].g=255,_colors[0].b=255;
+	// Black
+	_colors[1].r=0,_colors[1].g=0,_colors[1].b=0;
+	// Dark Grey
+	_colors[2].r=30,_colors[2].g=30,_colors[2].b=30;
+	// Pink
+	_colors[3].r=230,_colors[3].g=10,_colors[3].b=100;
+	// Purple
+	_colors[4].r=163,_colors[4].g=112,_colors[4].b=220;
+	// Green
+	_colors[5].r=16,_colors[5].g=234,_colors[5].b=45;
+	// Blue
+	_colors[6].r=16,_colors[6].g=150,_colors[6].b=234;
+	// Whatever
+	_colors[7].r=200,_colors[7].g=150,_colors[7].b=56;
+};
 
 /*
 ** Window Specialities
 */
 void		SDL::initWindow(void) {
 	logger.log_step_in("SDL| initWindow() Called", CRITICAL);
-
-	//if (!setupWindow())
-	//	_closed = true;
-
-	if (SDL_CreateWindowAndRenderer(640, 480, 0, &_window, &_renderer) == 0) {
 		
 		_closed = true;
 
-		while (this->isClosed()) {
-			//this->renderWindow();
-			//SDL_RenderClear(_renderer);
-    	    //SDL_RenderCopy(_renderer, _bitmapTex, NULL, NULL);
-    	    //SDL_RenderPresent(_renderer);
-			SDL_SetRenderDrawColor(_renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
+		this->setPalette();
+
+		//while (this->isClosed()) {
+
     	    SDL_RenderClear(_renderer);
-		
-   			SDL_SetRenderDrawColor(_renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
-    	    SDL_RenderDrawLine(_renderer, 320, 200, 300, 240);
-    	    SDL_RenderDrawLine(_renderer, 300, 240, 340, 240);
-    	    SDL_RenderDrawLine(_renderer, 340, 240, 320, 200);
-		
 			// Set render color to red ( background will be rendered in this color )
 		    SDL_SetRenderDrawColor( _renderer, 30, 30, 30, 50 );
 		
-		    // Clear winow
-		    SDL_RenderClear( _renderer );
-		
-		    // Creat a rect at pos ( 50, 50 ) that's 50 pixels wide and 50 pixels high.
-		    SDL_Rect r;
-		    r.x = 50;
-		    r.y = 50;
-		    r.w = 10;
-		    r.h = 10;
-		
-		    // Set render color to blue ( rect will be rendered in this color )
-		    SDL_SetRenderDrawColor( _renderer, 230, 10, 100, 200 );
-		
-		    // Render rect
-		    SDL_RenderFillRect( _renderer, &r );
+			//this->drawMap(map);
 
 			SDL_RenderPresent(_renderer);
+	
+			
+		//}
 
-			this->pollEvents();
-
-		}
-	}
 
 	logger.log_step_out("SDL| initWindow() Completed", CRITICAL);
 }
@@ -164,43 +197,6 @@ void		SDL::exitWindow(void) {
 	SDL_Quit();
 
 	logger.log_step_out("SDL| exitWindow() Completed", CRITICAL);
-}
-
-bool		SDL::setupWindow(void) {
-
-	logger.log_step_in("SDL| setupWindow() Called", AVERAGE);
-
-	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
-		logger.log_step_out("SDL| SDL_INIT failed", CRITICAL);
-		return false;
-	}
-	
-	_window = SDL_CreateWindow(
-		"Nibbler Kinky Snaky",
-		SDL_WINDOWPOS_CENTERED,
-		SDL_WINDOWPOS_CENTERED,
-		WIN_WIDTH, WIN_HEIGHT,
-		0
-	);
-	
-	if (_window == nullptr) {
-		logger.log_step_out("SDL| SDL_WINDOW failed", CRITICAL);
-		return false;
-	}
-	
-	_primaryDisplay = SDL_GetWindowSurface(_window);
-	
-	//this->renderWindow();
-
-	if (_renderer == nullptr) {
-		logger.log_step_out("SDL| renderer failed()", CRITICAL);
-		return false;
-	}
-
-	logger.log_step_in("SDL| setupWindow() Completed", AVERAGE);
-	
-	return true;
-
 }
 
 void		SDL::renderWindow(void) {

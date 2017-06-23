@@ -42,7 +42,9 @@ class SDL : public IDisplay {
 		SDL_Window*			_window = nullptr;
 		SDL_Renderer*		_renderer = nullptr;
 		SDL_Surface*		_primaryDisplay = nullptr;
-		SDL_Texture*		_bitmapTex = NULL;
+		SDL_Texture*		_bitmapTex = nullptr;
+		SDL_Color			_colors[8];
+
 		bool				_closed = false;
 
 	public:
@@ -57,6 +59,11 @@ class SDL : public IDisplay {
 		virtual void		drawPause(void);
 		virtual void		drawGameOver(int finalScore);
 	
+				void		drawBlock(int x, int y, int i);
+				void		drawBlank(int x, int y, int i, int j);
+
+				void		setPalette( void );
+
 		virtual	void		initWindow(void);
 				bool		setupWindow(void);
 				void		pollEvents( void );
