@@ -1,3 +1,4 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -199,7 +200,7 @@ Direction	NcursesWindow::getDirection(void) {
 
 Coord		NcursesWindow::getWindowSize(void) {
 	logger.log("Ncurses Window| getWindowSize() Called", AVERAGE);
-	return (Coord(this->_size.getX() - 3, this->_size.getY() - 6));
+	return (Coord(this->_size.getX() - 4, this->_size.getY() - 8));
 }
 
 /*
@@ -230,10 +231,10 @@ void		NcursesWindow::drawTitle(void) {
 }
 
 bool		NcursesWindow::drawChar(int y, int x, const int c) {
-	x += 1;
-	y += 3;
+	x += 2;
+	y += 4;
 
-	if ((0 < x && x < this->_size.getX() - 2) && (0 < y && y < this->_size.getY() - 3)) {
+	if ((1 < x && x < this->_size.getX() - 2) && (1 < y && y < this->_size.getY() - 3)) {
 		mvwaddch(this->_win, y, x, c);
 		return (true);
 	}
