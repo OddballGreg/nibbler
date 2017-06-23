@@ -8,8 +8,6 @@ MAP		*glMap;
 */
 OpenGL::OpenGL(void) {
 	logger.log_step_in("OpenGl| Constructor Called {", CRITICAL);
-	
-	_size = Coord(GRID_WIDTH, GRID_HEIGHT);
 
 	logger.log_step_out("} OpenGL| Constructor Completed", CRITICAL);
 }
@@ -24,12 +22,10 @@ OpenGL::~OpenGL(void) {
 ** Copying
 */
 OpenGL::OpenGL(const OpenGL &obj) {
-	this->_size = obj._size;
 	this->_direction = obj._direction;
 }
 
 OpenGL OpenGL::operator = (const OpenGL &obj) {
-	this->_size = obj._size;
 	this->_direction = obj._direction;
 
 	return (*this);
@@ -68,7 +64,7 @@ void		OpenGL::drawGameOver(int finalScore) {
 ** Window Specialities
 */
 void		OpenGL::initWindow(void) {
-	initWindow(this->_size);
+	initWindow(winSize);
 }
 
 void		OpenGL::initWindow(Coord size) {
@@ -80,7 +76,7 @@ void		OpenGL::initWindow(Coord size) {
 	int			ret;
 
 	av [0] = strdup ("nibbler");
-	this->_size = size;
+	winSize = size;
 
 	if (!glLoop) {
 		glLoop = true;
@@ -143,14 +139,14 @@ Direction	OpenGL::getDirection(void) {
 
 Coord		OpenGL::getWindowSize(void) {
 	logger.log("OpenGL| getWindowSize() Called", AVERAGE);
-	return (this->_size);
+	return (winSize);
 }
 
 /*
 ** Setters
 */
 void		OpenGL::setWindowSize(Coord size) {
-	this->_size = size;
+	winSize = size;
 }
 
 /*
@@ -190,8 +186,8 @@ void	renderScene(void) {
 		0.0, 0.0, 0.0,
 		0.0, 1.0, 0.0);
 
-	for (int k = 0; k < GRID_WIDTH; k++)
-		for (int l = 0; l < GRID_HEIGHT; l++)
+	for (int k = 0; k < winSize.getX(); k++)
+		for (int l = 0; l < winSize.getY(); l++)
 			drawSquare(k, l, (*glMap)[k][l]);
 
 	glutSwapBuffers();
@@ -235,8 +231,8 @@ void			*startGlutLoop(void *threadID) {
 void				drawSquare(int x, int y, char colour) {
 	float	new_x, new_y;
 
-	new_x = (((2.0f / GRID_WIDTH) * x) + (1.0f / GRID_WIDTH)) - 1;
-	new_y = 1.0f - (((2.0f / GRID_HEIGHT) * y) + (1.0f / GRID_WIDTH));
+	new_x = (((2.0f / winSize.getX()) * x) + (1.0f / winSize.getX())) - 1;
+	new_y = 1.0f - (((2.0f / winSize.getY()) * y) + (1.0f / winSize.getX()));
 
 	switch (colour) {
 		case MAP_EMPTY :
@@ -264,8 +260,8 @@ void				drawSquare(int x, int y, char colour) {
 	glPushMatrix();
 	glTranslatef(new_x, new_y, 0);
 	if (colour != MAP_FOOD)
-		glutSolidCube((GRID_WIDTH < GRID_HEIGHT) ? (2.0f / GRID_WIDTH) : (2.0f / GRID_WIDTH));
+		glutSolidCube((winSize.getX() < winSize.getY()) ? (2.0f / winSize.getX()) : (2.0f / winSize.getX()));
 	else
-		glutSolidSphere((GRID_WIDTH < GRID_HEIGHT) ? (2.0f / GRID_WIDTH) : (2.0f / GRID_WIDTH) * 0.5, 25, 25);
+		glutSolidSphere((winSize.getX() < winSize.getY()) ? (2.0f / winSize.getX()) : (2.0f / winSize.getX()) * 0.5, 25, 25);
 	glPopMatrix();
 }

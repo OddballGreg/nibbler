@@ -121,14 +121,15 @@ std::string		ReadLib::execute( const char* cmd ) {
 */
 void		ReadLib::runGame(IDisplay *window) const {
 	logger.log_step_in("ReadLib| runGame() Called", CRITICAL);
-	GameState	game;
-	Direction	dir;
+	GameState		game;
+	Direction		dir;
 	struct timeval	now, reff;
 	unsigned int	utime;
 
 	logger.log("Readlib runGame() called", CRITICAL);
 	game.setAIFlag(g_ai_flag);
-	game.setSize(window->getWindowSize());
+	window->setWindowSize(Coord(g_width, g_height));
+	game.setSize(Coord(g_width, g_height));
 	gettimeofday(&reff, NULL);
 
 	while (game.runIteration()) {
