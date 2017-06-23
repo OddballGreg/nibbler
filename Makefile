@@ -45,12 +45,7 @@ $(NAME):
 	bash ./lib/install.sh
 	g++ $(FLAGS) -shared -fPIC $(SHARED) -I ./shared/ -o Shared.so
 	g++ $(FLAGS) -shared -fPIC -lpanel -lncurses Shared.so -o NcursesWindow.so $(NCURSES)
-<<<<<<< HEAD
 	g++ $(FLAGS) -shared -fPIC -framework SDL2 Shared.so -o SDL.so $(SDL)
-=======
-	g++ $(FLAGS) -shared -fPIC -lpanel -lncurses Shared.so -o NcursesFSWindow.so $(NCURSESFS)
-	# g++ $(FLAGS) -shared -fPIC -framework SDL2 Shared.so -o SDL.so $(SDL)
->>>>>>> e69e209118581a6794428c9265a64174213f0adf
 ifeq ($(SYS), OSX)
 	g++ $(FLAGS) -shared -fPIC -framework OpenGL -framework GLUT Shared.so -o OpenGL.so $(OPENGL)
 else

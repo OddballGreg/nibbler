@@ -126,7 +126,7 @@ bool		SDL::setupWindow(void) {
 	
 	_primaryDisplay = SDL_GetWindowSurface(_window);
 	
-	_renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED);
+	_renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_PRESENTVSYNC);
 
 	if (_renderer == nullptr) {
 		logger.log_step_out("SDL| renderer failed()", CRITICAL);
