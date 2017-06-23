@@ -12,6 +12,8 @@
 # include <unistd.h> //debug
 # include <pthread.h>
 
+# include "../../shared/IDisplay.hpp"
+
 # define WIN_WIDTH		720
 # define WIN_HEIGHT		720
 # define WIN_X			200
@@ -22,24 +24,23 @@
 
 # ifdef OPENGL_FILE
 
-bool		listen = false;
-bool		glLoop = false;
-int			lastKeyPress = 0;
+bool			listen = false;
+bool			glLoop = false;
+int				lastKeyPress = 0;
+Coord			winSize = Coord(GRID_WIDTH, GRID_HEIGHT);
 
 # else
 
-extern bool	listen;
-extern bool glLoop;
-extern int	lastKeyPress;
+extern bool		listen;
+extern bool 	glLoop;
+extern int		lastKeyPress;
+extern Coord	winSize;
 
 # endif
-
-# include "../../shared/IDisplay.hpp"
 
 class OpenGL : public IDisplay {
 
 	private:
-		Coord				_size;
 		Direction			_direction;
 		bool				_closed = false;
 
