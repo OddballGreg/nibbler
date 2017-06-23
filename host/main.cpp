@@ -9,10 +9,11 @@ void			parseArgs(int ac, char **av) {
 
 		desc.add_options()
 		("help", "Print out help messages")
-		("verbose,v", boost::program_options::value<int>(&g_verbosity), "runs logs with a verbosity of 0 to 10")
+		("verbose,v", boost::program_options::value<int>(&g_verbosity), "runs logs with a verbosity of 0 to 5")
 		("height,h", boost::program_options::value<int>(&g_height)->required(), "sets the window height")
 		("width,w", boost::program_options::value<int>(&g_width)->required(), "sets the window width")
 		("ai,a", "enables the AI")
+		("delay,d", boost::program_options::value<int>(&g_delay), "Sets the timmers delay, default 30000usec")
 		("verse_ai,b", "allows the player to play against the AI");
 
 		boost::program_options::variables_map	vm;
@@ -32,6 +33,12 @@ void			parseArgs(int ac, char **av) {
 				throw boost::program_options::error("height can not be greater than 100, or less than 10");
 			if (g_width < 10 || g_width > 100)
 				throw boost::program_options::error("width can not be greater than 100, or less than 10");
+
+			logger.setVerbosity(g_verbosity);
+
+			if (vm.count("ai"))
+				g_ai_flag = true;
+
 		}
 		catch (boost::program_options::error& e) {
 			std::cerr << "ERROR: " << e.what() << std::endl;

@@ -1,3 +1,4 @@
+#define READ_LIB_FILE
 #include "./ReadLib.class.hpp"
 
 /*
@@ -126,6 +127,7 @@ void		ReadLib::runGame(IDisplay *window) const {
 	unsigned int	utime;
 
 	logger.log("Readlib runGame() called", CRITICAL);
+	game.setAIFlag(g_ai_flag);
 	game.setSize(window->getWindowSize());
 	gettimeofday(&reff, NULL);
 

@@ -188,6 +188,10 @@ void	GameState::setMode(char mode) {
 		this->_mode = mode;
 }
 
+void	GameState::setAIFlag(bool flag) {
+	this->_AI_flag = flag;
+}
+
 /*
 ** Functions
 */
