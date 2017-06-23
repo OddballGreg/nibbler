@@ -103,10 +103,10 @@ void		SDL::drawGameOver(int finalScore) {
 void		SDL::drawBlock(int x, int y, int i) {
 	SDL_Rect r;
 
-	r.x = this->_size.getX() * x;
-	r.y = this->_size.getY() * y;
-	r.w = this->_size.getX();
-	r.h = this->_size.getY();
+	r.x = this->_size.getX() + x;
+	r.y = this->_size.getY() + y;
+	r.w = this->_size.getX() / 10;
+	r.h = this->_size.getY() / 10;
 
 	SDL_SetRenderDrawColor( _renderer, _colors[i].r, _colors[i].g, _colors[i].b, 200 );
 	SDL_RenderFillRect( _renderer, &r );
@@ -115,10 +115,10 @@ void		SDL::drawBlock(int x, int y, int i) {
 void		SDL::drawBlank(int x, int y, int i, int j) {
 	SDL_Rect r;
 
-	r.x = this->_size.getX() * x;
-	r.y = this->_size.getY() * y;
-	r.w = this->_size.getX();
-	r.h = this->_size.getY();
+	r.x = this->_size.getX() + x;
+	r.y = this->_size.getY() + y;
+	r.w = this->_size.getX() / 10;
+	r.h = this->_size.getY() / 10;
 
 	SDL_SetRenderDrawColor( _renderer, _colors[i].r, _colors[i].g, _colors[i].b, 200 );
 	SDL_RenderFillRect( _renderer, &r );
