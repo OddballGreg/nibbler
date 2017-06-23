@@ -143,7 +143,19 @@ extern "C" void destroyObject( NcursesWindow* object ) {
 ** Window Specialities
 */
 void		NcursesWindow::initWindow(void) {
-	int x, y;
+	// int		x, y;
+	// Coord	size;
+
+	// getmaxyx(stdscr, y, x);
+
+	// size = Coord(x - 2, y - 2);
+	// initWindow(size);
+
+	initWindow(Coord(0, 0));
+}
+
+void		NcursesWindow::initWindow(Coord size) {
+	int 	x, y;
 
 	logger.log_step_in("Ncurses Window| initWindow() Called", CRITICAL);
 	initscr();
@@ -157,10 +169,18 @@ void		NcursesWindow::initWindow(void) {
     cbreak();
     noecho();
 
+	/* Set Size */
 	getmaxyx(stdscr, y, x);
 
-	_size = Coord(x - 2, y - 2);
+	if (size.getX() == 0 && size.getY() == 0)
+		size = Coord(x - 2, y - 2);
 
+	if (x <= size.getX() || y <= size.getY())
+		throw std::runtime_error("Error The terminal is too small for the specified size");
+
+	_size = size;
+
+	// _size = Coord(x - 2, y - 2);
 	_win  = newwin(this->_size.getY(), this->_size.getX(), 1, 1);
 	_panel = new_panel(_win);
 
@@ -178,10 +198,11 @@ void		NcursesWindow::exitWindow(void) {
 		delwin(this->_win);
 		this->_win = NULL;
 	}
-	//if (_panel) {
-	//	del_panel(this->_panel);
-	//	this->_panel = NULL;
-	//}
+
+	// if (_panel) {
+	// 	del_panel(this->_panel);
+	// 	this->_panel = NULL;
+	// }
 
 	endwin();
 
@@ -201,6 +222,13 @@ Direction	NcursesWindow::getDirection(void) {
 Coord		NcursesWindow::getWindowSize(void) {
 	logger.log("Ncurses Window| getWindowSize() Called", AVERAGE);
 	return (Coord(this->_size.getX() - 4, this->_size.getY() - 8));
+}
+
+/*
+** Setters
+*/
+void			NcursesWindow::setWindowSize(Coord size) {
+	this->_size = size;
 }
 
 /*

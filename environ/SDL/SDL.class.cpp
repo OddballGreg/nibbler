@@ -153,7 +153,20 @@ void		SDL::setPalette( void ) {
 ** Window Specialities
 */
 void		SDL::initWindow(void) {
+	initWindow(this->_size);
+}
+
+void		SDL::initWindow(Coord size) {
 	logger.log_step_in("SDL| initWindow() Called", CRITICAL);
+<<<<<<< HEAD
+=======
+
+	//if (!setupWindow())
+	//	_closed = true;
+	this->_size = size;
+
+	if (SDL_CreateWindowAndRenderer(640, 480, 0, &_window, &_renderer) == 0) {
+>>>>>>> a463da8030126ad0472aaf991fee718dcf06f8b1
 		
 		_closed = true;
 
@@ -256,6 +269,13 @@ Direction	SDL::getDirection(void) {
 Coord		SDL::getWindowSize(void) {
 	logger.log("SDL| getWindowSize() Called", AVERAGE);
 	return (this->_size);
+}
+
+/*
+** Setters
+*/
+void		SDL::setWindowSize(Coord size) {
+	this->_size = size;
 }
 
 /*

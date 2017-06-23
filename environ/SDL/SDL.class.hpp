@@ -65,6 +65,7 @@ class SDL : public IDisplay {
 				void		setPalette( void );
 
 		virtual	void		initWindow(void);
+		virtual void		initWindow(Coord size);
 				bool		setupWindow(void);
 				void		pollEvents( void );
 				void		renderWindow(void);
@@ -72,8 +73,10 @@ class SDL : public IDisplay {
 	
 		virtual Direction	getDirection(void);
 		virtual Coord		getWindowSize(void);
-				void		displayBMP(char *file_name);
 
+		virtual void		setWindowSize(Coord size);
+
+				void		displayBMP(char *file_name);
 		inline bool			isClosed() const { return _closed; };
 };
 
