@@ -17,8 +17,8 @@
 # define WIN_X			200
 # define WIN_Y			200
 
-# define GRID_WIDTH		50
-# define GRID_HEIGHT	50
+# define GRID_WIDTH		100
+# define GRID_HEIGHT	100
 
 # ifdef OPENGL_FILE
 
@@ -56,10 +56,13 @@ class OpenGL : public IDisplay {
 		virtual void		drawGameOver(int finalScore);
 	
 		virtual	void		initWindow(void);
+		virtual void		initWindow(Coord size);
 		virtual void		exitWindow(void);
 	
 		virtual Direction	getDirection(void);
 		virtual Coord		getWindowSize(void);
+
+		virtual void		setWindowSize(Coord size);
 };
 
 void			pressKey(int key, int x, int y);

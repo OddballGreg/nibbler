@@ -68,6 +68,10 @@ void		OpenGL::drawGameOver(int finalScore) {
 ** Window Specialities
 */
 void		OpenGL::initWindow(void) {
+	initWindow(this->_size);
+}
+
+void		OpenGL::initWindow(Coord size) {
 	logger.log_step_in("OpenGL| initWindow() Called", CRITICAL);
 
 	char		*av[1];
@@ -76,6 +80,7 @@ void		OpenGL::initWindow(void) {
 	int			ret;
 
 	av [0] = strdup ("nibbler");
+	this->_size = size;
 
 	if (!glLoop) {
 		glLoop = true;
@@ -83,7 +88,7 @@ void		OpenGL::initWindow(void) {
 		glutInit(&ac, av);
 		glutInitDisplayMode(GLUT_DEPTH | GLUT_MULTISAMPLE | GLUT_RGBA | GLUT_DOUBLE);
 		glutInitWindowPosition(WIN_X, WIN_Y);
-		glutInitWindowSize(WIN_WIDTH, WIN_HEIGHT);
+		glutInitWindowSize(this->_size.getY(), this->_size.getX());
 		glutCreateWindow("Nibbler");
 
 		glutDisplayFunc(renderScene);
@@ -139,6 +144,13 @@ Direction	OpenGL::getDirection(void) {
 Coord		OpenGL::getWindowSize(void) {
 	logger.log("OpenGL| getWindowSize() Called", AVERAGE);
 	return (this->_size);
+}
+
+/*
+** Setters
+*/
+void		OpenGL::setWindowSize(Coord size) {
+	this->_size = size;
 }
 
 /*

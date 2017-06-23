@@ -47,10 +47,13 @@ public:
 	virtual void		drawGameOver(int finalScore) = 0;
 
 	virtual	void		initWindow(void) = 0;
+	virtual void		initWindow(Coord size) = 0;
 	virtual void		exitWindow(void) = 0;
 
 	virtual Direction	getDirection(void) = 0;
 	virtual Coord		getWindowSize(void) = 0;
+
+	virtual void		setWindowSize(Coord size) = 0;
 
 };
 
