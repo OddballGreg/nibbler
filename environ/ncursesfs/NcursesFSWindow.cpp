@@ -168,10 +168,12 @@ void		NcursesFSWindow::initWindow(Coord size) {
 	/* Set Size */
 	getmaxyx(stdscr, y, x);
 
-	if (x > size.getX() || y > size.getY())
-		throw std::runtime_error("Error The terminal is too small for the specified window");
+	// if (x > size.getX() || y > size.getY())
+	// 	throw std::runtime_error("Error The terminal is too small for the specified window");
 
-	_size = Coord(size.getX(), size.getY());
+	size.setX(x);
+	size.setY(y);
+	_size = Coord(size.getX() - 2, size.getY() - 2);
 
 	_win  = newwin(0, 0, 0, 0);
 	wbkgd(_win, COLOR_PAIR(1));
