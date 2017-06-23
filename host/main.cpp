@@ -29,9 +29,10 @@ int				main( int argc, char **argv )
 	std::string	input;
 	int			run(1);
 
-	ReadLib* lib = new ReadLib();
+	while (run) {
 
-	/*while (run)*/ {
+		ReadLib* lib = new ReadLib();
+
 		// Asks the user for input
 		std::cout << "\n\n1: VTK" << std::endl;
 		std::cout << "2: OpenGL" << std::endl;
@@ -62,6 +63,8 @@ int				main( int argc, char **argv )
 			std::cout << "You have entered an invalid command. Please try again."
 			"\n" << std::endl;
 		}
+
+		delete lib;
 	}
 
 	logger.log("Graceful Exit", CRITICAL);

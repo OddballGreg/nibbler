@@ -76,10 +76,10 @@ void		SDL::initWindow(void) {
 	if (!setupWindow())
 		_closed = true;
 
-	ret = pthread_create(&thread, NULL, startRenderLoop, (void *)1);
-	if (ret)
-	throw std::runtime_error("Unable to create new thread");
-
+	while (this->isClosed()) {
+		this->pollEvents();
+		this->renderWindow();
+	}
 
 	logger.log_step_out("SDL| initWindow() Completed", CRITICAL);
 }
@@ -162,7 +162,7 @@ void		SDL::pollEvents( void ) {
 	if (SDL_PollEvent(&event)) {
 		switch (event.type) {
 			case SDL_QUIT:
-				_closed = true;
+				_closed = false;
 				break;
 
 			default:
@@ -182,20 +182,6 @@ Direction	SDL::getDirection(void) {
 Coord		SDL::getWindowSize(void) {
 	logger.log("SDL| getWindowSize() Called", AVERAGE);
 	return (this->_size);
-}
-
-void			*startRenderLoop(void *threadID) {
-	logger.log("OpenGL| starGlutLoop() Called", CRITICAL);
-	(void)threadID;
-	
-	SDL*	sdl = new SDL();
-
-	while (!sdl->isClosed()) {
-		sdl->pollEvents();
-		sdl->renderWindow();
-	}
-
-	return (NULL);
 }
 
 /*

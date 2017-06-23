@@ -96,7 +96,7 @@ void		NcursesWindow::drawMap(MAP map) {
 
 	update_panels();
 	doupdate();
-	wmove(this->_win, 3, 1);// used to move
+	wmove(this->_win, 3, 1);
 	logger.log_step_out("NcursesWindow| drawMap() Completed", IMPORTANT);
 }
 
@@ -179,11 +179,13 @@ void		NcursesWindow::exitWindow(void) {
 		delwin(this->_win);
 		this->_win = NULL;
 	}
+	//if (_panel) {
+	//	del_panel(this->_panel);
+	//	this->_panel = NULL;
+	//}
+
 	endwin();
-	// if (_panel) {
-	// 	del_panel(this->_panel);
-	// 	this->_panel = NULL;
-	// }
+
 	logger.log_step_out("Ncurses Window| exitWindow() Completed", CRITICAL);
 }
 
