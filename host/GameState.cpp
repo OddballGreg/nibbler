@@ -200,9 +200,7 @@ bool		GameState::runIteration(void) {
 	if (this->_AI_flag == true)
 		this->_AI->run(*this);
 
-	log.log("Snake direction after moving: ", this->getSnakeDir(), CRITICAL);
 	moveSnake();
-	log.log("Snake direction after moving: ", this->getSnakeDir(), CRITICAL);
 
 	if ((this->_mode == MODE_PLAY) ? true : false)
 		log.log("runIteration() will return true", CRITICAL);
@@ -223,6 +221,14 @@ void		GameState::updateMap(void) {
 	resetMap();
 	loadSnake();
 	loadFood();
+}
+
+bool		GameState::inBounds(Coord pos) const {
+	if (pos.getX() < 0 || pos.getY() < 0)
+		return (false);
+	if (pos.getX() >= this->_size.getX() || pos.getY() >= this->_size.getY())
+		return (false);
+	return (true);
 }
 
 /*

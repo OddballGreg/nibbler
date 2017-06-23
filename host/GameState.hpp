@@ -80,6 +80,8 @@ public:
 	void		resetGame(void);
 	void		updateMap(void);
 
+	bool		inBounds(Coord pos) const;
+
 private:
 	void		resetMap(void);
 	void		resetSnake(void);
