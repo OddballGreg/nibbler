@@ -70,15 +70,30 @@ void		SDL::drawGameOver(int finalScore) {
 void		SDL::initWindow(void) {
 	logger.log_step_in("SDL| initWindow() Called", CRITICAL);
 
-	pthread_t	thread;
-	int			ret;
+	//if (!setupWindow())
+	//	_closed = true;
 
-	if (!setupWindow())
+	if (SDL_CreateWindowAndRenderer(640, 480, 0, &_window, &_renderer) == 0) {
+		
 		_closed = true;
 
-	while (this->isClosed()) {
-		this->pollEvents();
-		this->renderWindow();
+		while (this->isClosed()) {
+			//this->renderWindow();
+			//SDL_RenderClear(_renderer);
+    	    //SDL_RenderCopy(_renderer, _bitmapTex, NULL, NULL);
+    	    //SDL_RenderPresent(_renderer);
+			SDL_SetRenderDrawColor(_renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
+    	    SDL_RenderClear(_renderer);
+		
+   			SDL_SetRenderDrawColor(_renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
+    	    SDL_RenderDrawLine(_renderer, 320, 200, 300, 240);
+    	    SDL_RenderDrawLine(_renderer, 300, 240, 340, 240);
+    	    SDL_RenderDrawLine(_renderer, 340, 240, 320, 200);
+    	    SDL_RenderPresent(_renderer);
+		
+			this->pollEvents();
+
+		}
 	}
 
 	logger.log_step_out("SDL| initWindow() Completed", CRITICAL);
@@ -87,6 +102,11 @@ void		SDL::initWindow(void) {
 void		SDL::exitWindow(void) {
 	logger.log_step_in("SDL| exitWindow() Called", CRITICAL);
 	
+	if (_bitmapTex) {
+		SDL_DestroyTexture(_bitmapTex);
+		_bitmapTex = NULL;
+	}
+
 	if (_renderer) {
 		SDL_DestroyRenderer(_renderer);
 		_renderer = NULL;
@@ -126,7 +146,7 @@ bool		SDL::setupWindow(void) {
 	
 	_primaryDisplay = SDL_GetWindowSurface(_window);
 	
-	_renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_PRESENTVSYNC);
+	//this->renderWindow();
 
 	if (_renderer == nullptr) {
 		logger.log_step_out("SDL| renderer failed()", CRITICAL);
@@ -140,9 +160,13 @@ bool		SDL::setupWindow(void) {
 }
 
 void		SDL::renderWindow(void) {
-	SDL_SetRenderDrawColor(_renderer, 0, 0, 200, 0);
-	SDL_RenderClear(_renderer);
 	
+	_renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_PRESENTVSYNC);
+		
+	//SDL_FreeSurface(_primaryDisplay);
+
+	SDL_SetRenderDrawColor(_renderer, 0, 0, 200, 0);
+		
 	SDL_Rect	rect;
 
 	rect.w = 120;
@@ -151,6 +175,7 @@ void		SDL::renderWindow(void) {
 	rect.y = (WIN_HEIGHT / 2) - (rect.h / 2);
 
 	SDL_SetRenderDrawColor(_renderer, 200, 0, 200, 0);
+	SDL_RenderClear(_renderer);
 	SDL_RenderFillRect(_renderer, &rect);
 
 	SDL_RenderPresent(_renderer);

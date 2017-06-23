@@ -40,8 +40,9 @@ class SDL : public IDisplay {
 		Coord				_size;
 		Direction			_direction;
 		SDL_Window*			_window = nullptr;
-		SDL_Renderer*		_renderer;
-		SDL_Surface*		_primaryDisplay;
+		SDL_Renderer*		_renderer = nullptr;
+		SDL_Surface*		_primaryDisplay = nullptr;
+		SDL_Texture*		_bitmapTex = NULL;
 		bool				_closed = false;
 
 	public:
