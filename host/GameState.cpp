@@ -26,6 +26,7 @@ GameState::GameState(void) {
 
 	resetMap();
 	generateFood();
+	generateObstacles();
 }
 
 GameState::GameState(Coord size) {
@@ -40,6 +41,7 @@ GameState::GameState(Coord size) {
 
 	resetMap();
 	generateFood();
+	generateObstacles();
 }
 
 GameState::GameState(int width, int height) {
@@ -55,6 +57,7 @@ GameState::GameState(int width, int height) {
 
 	resetMap();
 	generateFood();
+	generateObstacles();
 }
 
 GameState::~GameState(void) {
@@ -221,6 +224,7 @@ void		GameState::updateMap(void) {
 	resetMap();
 	loadSnake();
 	loadFood();
+	generateObstacles();
 }
 
 bool		GameState::inBounds(Coord pos) const {
@@ -301,6 +305,23 @@ void		GameState::loadFood(void) {
 		this->_map[this->_food.getX()][this->_food.getY()] = MAP_FOOD;
 	else if (c != MAP_FOOD)
 		throw std::runtime_error("Food has been incorrectly generated");
+}
+
+void		GameState::generateObstacles(void) {
+	Log log("Gamestate", "loadObstacles()", CRITICAL);
+	Coord	pos;
+
+	while (static_cast<int>(this->_obstacles.size()) < (this->getHeight() * this->getWidth() * 2))
+	{
+		srand(static_cast<unsigned int>(time(NULL)));
+		pos = Coord(rand() % (this->_size.getX() * this->getWidth()), rand() % (this->_size.getY() * this->getWidth()));
+		
+		while (this->_map[pos.getX()][pos.getY()] != MAP_EMPTY)
+			pos = Coord(rand() % (this->_size.getX() * this->getHeight()), rand() % (this->_size.getY() * this->getHeight()));
+
+		this->_obstacles.push_back(pos);
+		this->_map[pos.getX()][pos.getY()] = MAP_OBSTICLE;
+	}
 }
 
 void		GameState::moveSnake(void) {

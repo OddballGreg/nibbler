@@ -152,7 +152,7 @@ void		NcursesFSWindow::initWindow(void) {
 	keypad(stdscr, TRUE);
 	// timeout(25);
 	start_color();
-	init_pair(1, COLOR_GREEN, COLOR_RED);
+	init_pair(1, COLOR_GREEN, COLOR_BLACK);
 	nodelay(stdscr, TRUE);
 	curs_set(0);
     cbreak();
