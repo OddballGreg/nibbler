@@ -88,7 +88,7 @@ void		OpenGL::initWindow(Coord size) {
 		glutInit(&ac, av);
 		glutInitDisplayMode(GLUT_DEPTH | GLUT_MULTISAMPLE | GLUT_RGBA | GLUT_DOUBLE);
 		glutInitWindowPosition(WIN_X, WIN_Y);
-		glutInitWindowSize(this->_size.getY(), this->_size.getX());
+		glutInitWindowSize(WIN_WIDTH, WIN_WIDTH);
 		glutCreateWindow("Nibbler");
 
 		glutDisplayFunc(renderScene);

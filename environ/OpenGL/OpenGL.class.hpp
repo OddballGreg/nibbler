@@ -17,8 +17,8 @@
 # define WIN_X			200
 # define WIN_Y			200
 
-# define GRID_WIDTH		100
-# define GRID_HEIGHT	100
+# define GRID_WIDTH		50
+# define GRID_HEIGHT	50
 
 # ifdef OPENGL_FILE
 
