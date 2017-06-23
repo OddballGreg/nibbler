@@ -146,8 +146,8 @@ void		ReadLib::runGame(IDisplay *window) const {
 
 		utime = static_cast<unsigned int>(abs(reff.tv_usec - now.tv_usec));
 
-		if (utime < DELAY)
-			usleep(DELAY - utime);
+		if (utime < g_delay)
+			usleep(g_delay - utime);
 
 		gettimeofday(&reff, NULL);
 	}

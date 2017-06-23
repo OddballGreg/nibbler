@@ -39,7 +39,7 @@
 # define MODE_END		2
 
 // # define DELAY 120000
-# define DELAY 1
+// # define DELAY 1
 
 # ifndef MAP
 #  define MAP std::map<int, std::map<int, char> >
