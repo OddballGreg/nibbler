@@ -225,6 +225,14 @@ void		GameState::updateMap(void) {
 	loadFood();
 }
 
+bool		GameState::inBounds(Coord pos) const {
+	if (pos.getX() < 0 || pos.getY() < 0)
+		return (false);
+	if (pos.getX() >= this->_size.getX() || pos.getY() >= this->_size.getY())
+		return (false);
+	return (true);
+}
+
 /*
 ** Private Functions
 */

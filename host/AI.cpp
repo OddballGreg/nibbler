@@ -46,13 +46,13 @@ void		AI::run(GameState &gamestate) {
 	Coord temp;
 	Coord snake_head = gamestate.getSnakeHeadPos();
 
-	log.log("Best coord to move to selected: ", temp, CRITICAL);
 	log.log("Current Snake Direction: ", gamestate.getSnakeDir(), CRITICAL);
 
 	Direction dir = moveSnake(gamestate, gamestate.getFood().getX() - snake_head.getX(), gamestate.getFood().getY() - snake_head.getY());
 	Direction temp_dir;
-	char map_content = gamestate.getMap()[dir.moveCoord(snake_head).getX()][dir.moveCoord(snake_head).getY()];
-	if (map_content != MAP_EMPTY && map_content != MAP_FOOD) {
+	temp = dir.moveCoord(snake_head);
+	char map_content = gamestate.getMap()[temp.getX()][temp.getY()];
+	if ((map_content != MAP_EMPTY && map_content != MAP_FOOD) || !gamestate.inBounds(temp)) {
 		Direction	a = gamestate.getSnakeDir();
 		Direction	b;
 		Direction	c;
@@ -62,21 +62,21 @@ void		AI::run(GameState &gamestate) {
 
 		pos = a.moveCoord(gamestate.getSnakeHeadPos());
 		map_content = gamestate.getMap()[pos.getX()][pos.getY()];
-		if (map_content == MAP_EMPTY || map_content == MAP_FOOD) {
+		if ((map_content == MAP_EMPTY || map_content == MAP_FOOD) && gamestate.inBounds(pos)) {
 			dir = a;
 		}
 		else {
 			pos = b.moveCoord(gamestate.getSnakeHeadPos());
 			map_content = gamestate.getMap()[pos.getX()][pos.getY()];
 
-			if (map_content == MAP_EMPTY || map_content == MAP_FOOD) {
+			if ((map_content == MAP_EMPTY || map_content == MAP_FOOD)  && gamestate.inBounds(pos)) {
 				dir = b;
 			}
 			else {
 				pos = c.moveCoord(gamestate.getSnakeHeadPos());
 				map_content = gamestate.getMap()[pos.getX()][pos.getY()];
 
-				if (map_content == MAP_EMPTY || map_content == MAP_FOOD)
+				if ((map_content == MAP_EMPTY || map_content == MAP_FOOD)  && gamestate.inBounds(pos))
 					dir = c;
 				else
 					dir = Direction(LOST);
