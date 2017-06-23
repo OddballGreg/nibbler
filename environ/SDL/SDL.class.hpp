@@ -40,8 +40,11 @@ class SDL : public IDisplay {
 		Coord				_size;
 		Direction			_direction;
 		SDL_Window*			_window = nullptr;
-		SDL_Renderer*		_renderer;
-		SDL_Surface*		_primaryDisplay;
+		SDL_Renderer*		_renderer = nullptr;
+		SDL_Surface*		_primaryDisplay = nullptr;
+		SDL_Texture*		_bitmapTex = nullptr;
+		SDL_Color			_colors[8];
+
 		bool				_closed = false;
 
 	public:
@@ -56,7 +59,13 @@ class SDL : public IDisplay {
 		virtual void		drawPause(void);
 		virtual void		drawGameOver(int finalScore);
 	
+				void		drawBlock(int x, int y, int i);
+				void		drawBlank(int x, int y, int i, int j);
+
+				void		setPalette( void );
+
 		virtual	void		initWindow(void);
+		virtual void		initWindow(Coord size);
 				bool		setupWindow(void);
 				void		pollEvents( void );
 				void		renderWindow(void);
@@ -64,9 +73,10 @@ class SDL : public IDisplay {
 	
 		virtual Direction	getDirection(void);
 		virtual Coord		getWindowSize(void);
-				void		displayBMP(char *file_name);
 
-		void				*startRenderLoop(void *threadID);
+		virtual void		setWindowSize(Coord size);
+
+				void		displayBMP(char *file_name);
 		inline bool			isClosed() const { return _closed; };
 };
 

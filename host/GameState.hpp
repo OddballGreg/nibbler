@@ -40,7 +40,7 @@
 # define MODE_END		2
 
 // # define DELAY 120000
-# define DELAY 1
+// # define DELAY 1
 
 # ifndef MAP
 #  define MAP std::map<int, std::map<int, char> >
@@ -76,6 +76,7 @@ public:
 	void		setSnakeDir(char direction);
 	void		setSnakeDir(Direction direction);
 	void		setMode(char mode);
+	void		setAIFlag(bool flag);
 
 	bool		runIteration(void);
 	void		resetGame(void);

@@ -1,3 +1,4 @@
+#define READ_LIB_FILE
 #include "./ReadLib.class.hpp"
 
 /*
@@ -126,6 +127,7 @@ void		ReadLib::runGame(IDisplay *window) const {
 	unsigned int	utime;
 
 	logger.log("Readlib runGame() called", CRITICAL);
+	game.setAIFlag(g_ai_flag);
 	game.setSize(window->getWindowSize());
 	gettimeofday(&reff, NULL);
 
@@ -144,8 +146,8 @@ void		ReadLib::runGame(IDisplay *window) const {
 
 		utime = static_cast<unsigned int>(abs(reff.tv_usec - now.tv_usec));
 
-		if (utime < DELAY)
-			usleep(DELAY - utime);
+		if (utime < g_delay)
+			usleep(g_delay - utime);
 
 		gettimeofday(&reff, NULL);
 	}

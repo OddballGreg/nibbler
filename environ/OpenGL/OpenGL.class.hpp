@@ -56,10 +56,13 @@ class OpenGL : public IDisplay {
 		virtual void		drawGameOver(int finalScore);
 	
 		virtual	void		initWindow(void);
+		virtual void		initWindow(Coord size);
 		virtual void		exitWindow(void);
 	
 		virtual Direction	getDirection(void);
 		virtual Coord		getWindowSize(void);
+
+		virtual void		setWindowSize(Coord size);
 };
 
 void			pressKey(int key, int x, int y);

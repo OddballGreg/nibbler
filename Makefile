@@ -46,14 +46,16 @@ $(NAME):
 	g++ $(FLAGS) -shared -fPIC $(SHARED) -I ./shared/ -o Shared.so
 	g++ $(FLAGS) -shared -fPIC -lpanel -lncurses Shared.so -o NcursesWindow.so $(NCURSES)
 	g++ $(FLAGS) -shared -fPIC -lpanel -lncurses Shared.so -o NcursesFSWindow.so $(NCURSESFS)
-	# g++ $(FLAGS) -shared -fPIC -framework SDL2 Shared.so -o SDL.so $(SDL)
+	g++ $(FLAGS) -shared -fPIC -framework SDL2 Shared.so -o SDL.so $(SDL)
 ifeq ($(SYS), OSX)
 	g++ $(FLAGS) -shared -fPIC -framework OpenGL -framework GLUT Shared.so -o OpenGL.so $(OPENGL)
+	g++ $(FLAGS) -c $(SRC) $(END_FLAGS) -I ~/.brew/include/
+	g++ $(FLAGS) -o $(NAME) $(OBJ) Shared.so $(END_FLAGS) -I ~/.brew/include/ ~/.brew/Cellar/boost/1.64.0_1/lib/libboost_program_options.a 
 else
 	g++ $(FLAGS) -shared -fPIC -lGLU -lGL -lglut Shared.so -o OpenGL.so $(OPENGL)
-endif
 	g++ $(FLAGS) -c $(SRC) $(END_FLAGS)
 	g++ $(FLAGS) -o $(NAME) $(OBJ) Shared.so $(END_FLAGS)
+endif
 
 all: $(NAME)
 

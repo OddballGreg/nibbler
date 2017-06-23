@@ -1,7 +1,7 @@
 #define SDL_FILE
 #include "SDL.class.hpp"
 
-MAP		glMap;
+//MAP		glMap;
 
 /*
 ** Constructors and Destructors
@@ -40,15 +40,45 @@ SDL SDL::operator = (const SDL &obj) {
 */
 void		SDL::drawMap(MAP map) {
 	logger.log_step_in("SDL| drawMap() Called", IMPORTANT);
-	glMap = map;
+	//glMap = map;
 
-	//renderScene();
+	if (SDL_CreateWindowAndRenderer(WIN_WIDTH, WIN_HEIGHT, 0, &_window, &_renderer) == 0) {
+
+		for (int k = 0; k < this->_size.getY(); k++) {
+			for (int l = 0; l < this->_size.getX(); l++) {
+				switch (map[l][k]) {
+					case MAP_EMPTY :
+						drawBlank(k, l, 0, 1);
+						break;
+					case MAP_OBSTICLE :
+						drawBlock(k, l, 2);
+						break;
+					case MAP_HEAD :
+						drawBlock(k, l, 3);
+						break;
+					case MAP_BODY :
+						drawBlock(k, l, 4);
+						break;
+					case MAP_FOOD :
+						drawBlock(k, l, 5);
+						break;
+					default :
+						drawBlock(k, l, 6);
+						break;
+				}
+			}
+		}
+	
+		//this->pollEvents();
+
+	}
+
 	logger.log_step_in("SDL| drawMap() Called", IMPORTANT);
 }
 
 void		SDL::drawScore(int score) {
 	logger.log_step_in("SDL| drawScore() Called", IMPORTANT);
-	(void)score;//FIXME
+	(void)score;
 	logger.log_step_out("SDL| drawScore() Completed", IMPORTANT);
 }
 
@@ -60,25 +90,100 @@ void		SDL::drawPause(void) {
 
 void		SDL::drawGameOver(int finalScore) {
 	logger.log_step_in("SDL| drawGameOver() Called", IMPORTANT);
-	(void)finalScore;//FIXME
+	(void)finalScore;
 	logger.log_step_out("SDL| drawGameOver() Completed", IMPORTANT);
 }
+
+void		SDL::drawBlock(int x, int y, int i) {
+	// Creat a rect at pos ( x, y ) that's 10 pixels wide and 10 pixels high.
+	SDL_Rect r;
+
+	r.x = x;
+	r.y = y;
+	r.w = 200;
+	r.h = 200;
+
+	SDL_SetRenderDrawColor( _renderer, _colors[i].r, _colors[i].g, _colors[i].b, 200 );
+	
+	// Render rect
+	SDL_RenderFillRect( _renderer, &r );
+
+	//SDL_RenderClear(_renderer);
+};
+
+void		SDL::drawBlank(int x, int y, int i, int j) {
+	// Create a rect at pos ( x, y ) that's 10 pixels wide and 10 pixels high.
+	SDL_Rect r;
+
+	r.x = x;
+	r.y = y;
+	r.w = 200;
+	r.h = 200;
+
+	SDL_SetRenderDrawColor( _renderer, _colors[i].r, _colors[i].g, _colors[i].b, 200 );
+	
+	// Render rect
+	SDL_RenderFillRect( _renderer, &r );
+
+	SDL_SetRenderDrawColor( _renderer, _colors[j].r, _colors[j].g, _colors[j].b, 200 );
+
+	//SDL_RenderClear(_renderer);
+};
+
+void		SDL::setPalette( void ) {
+	// White
+	_colors[0].r=255,_colors[0].g=255,_colors[0].b=255;
+	// Black
+	_colors[1].r=0,_colors[1].g=0,_colors[1].b=0;
+	// Dark Grey
+	_colors[2].r=30,_colors[2].g=30,_colors[2].b=30;
+	// Pink
+	_colors[3].r=230,_colors[3].g=10,_colors[3].b=100;
+	// Purple
+	_colors[4].r=163,_colors[4].g=112,_colors[4].b=220;
+	// Green
+	_colors[5].r=16,_colors[5].g=234,_colors[5].b=45;
+	// Blue
+	_colors[6].r=16,_colors[6].g=150,_colors[6].b=234;
+	// Whatever
+	_colors[7].r=200,_colors[7].g=150,_colors[7].b=56;
+};
 
 /*
 ** Window Specialities
 */
 void		SDL::initWindow(void) {
+	initWindow(this->_size);
+}
+
+void		SDL::initWindow(Coord size) {
 	logger.log_step_in("SDL| initWindow() Called", CRITICAL);
+<<<<<<< HEAD
+=======
 
-	pthread_t	thread;
-	int			ret;
+	//if (!setupWindow())
+	//	_closed = true;
+	this->_size = size;
 
-	if (!setupWindow())
+	if (SDL_CreateWindowAndRenderer(640, 480, 0, &_window, &_renderer) == 0) {
+>>>>>>> a463da8030126ad0472aaf991fee718dcf06f8b1
+		
 		_closed = true;
 
-	ret = pthread_create(&thread, NULL, startRenderLoop, (void *)1);
-	if (ret)
-	throw std::runtime_error("Unable to create new thread");
+		this->setPalette();
+
+		//while (this->isClosed()) {
+
+    	    SDL_RenderClear(_renderer);
+			// Set render color to red ( background will be rendered in this color )
+		    SDL_SetRenderDrawColor( _renderer, 30, 30, 30, 50 );
+		
+			//this->drawMap(map);
+
+			SDL_RenderPresent(_renderer);
+	
+			
+		//}
 
 
 	logger.log_step_out("SDL| initWindow() Completed", CRITICAL);
@@ -87,6 +192,11 @@ void		SDL::initWindow(void) {
 void		SDL::exitWindow(void) {
 	logger.log_step_in("SDL| exitWindow() Called", CRITICAL);
 	
+	if (_bitmapTex) {
+		SDL_DestroyTexture(_bitmapTex);
+		_bitmapTex = NULL;
+	}
+
 	if (_renderer) {
 		SDL_DestroyRenderer(_renderer);
 		_renderer = NULL;
@@ -102,47 +212,14 @@ void		SDL::exitWindow(void) {
 	logger.log_step_out("SDL| exitWindow() Completed", CRITICAL);
 }
 
-bool		SDL::setupWindow(void) {
-
-	logger.log_step_in("SDL| setupWindow() Called", AVERAGE);
-
-	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
-		logger.log_step_out("SDL| SDL_INIT failed", CRITICAL);
-		return false;
-	}
-	
-	_window = SDL_CreateWindow(
-		"Nibbler Kinky Snaky",
-		SDL_WINDOWPOS_CENTERED,
-		SDL_WINDOWPOS_CENTERED,
-		WIN_WIDTH, WIN_HEIGHT,
-		0
-	);
-	
-	if (_window == nullptr) {
-		logger.log_step_out("SDL| SDL_WINDOW failed", CRITICAL);
-		return false;
-	}
-	
-	_primaryDisplay = SDL_GetWindowSurface(_window);
-	
-	_renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED);
-
-	if (_renderer == nullptr) {
-		logger.log_step_out("SDL| renderer failed()", CRITICAL);
-		return false;
-	}
-
-	logger.log_step_in("SDL| setupWindow() Completed", AVERAGE);
-	
-	return true;
-
-}
-
 void		SDL::renderWindow(void) {
-	SDL_SetRenderDrawColor(_renderer, 0, 0, 200, 255);
-	SDL_RenderClear(_renderer);
 	
+	_renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_PRESENTVSYNC);
+		
+	//SDL_FreeSurface(_primaryDisplay);
+
+	SDL_SetRenderDrawColor(_renderer, 0, 0, 200, 0);
+		
 	SDL_Rect	rect;
 
 	rect.w = 120;
@@ -150,25 +227,35 @@ void		SDL::renderWindow(void) {
 	rect.x = (WIN_WIDTH / 2) - (rect.w / 2);
 	rect.y = (WIN_HEIGHT / 2) - (rect.h / 2);
 
-	SDL_SetRenderDrawColor(_renderer, 200, 0, 200, 255);
+	SDL_SetRenderDrawColor(_renderer, 200, 0, 200, 0);
+	SDL_RenderClear(_renderer);
 	SDL_RenderFillRect(_renderer, &rect);
 
 	SDL_RenderPresent(_renderer);
 }
 
 void		SDL::pollEvents( void ) {
+
 	SDL_Event	event;
 
 	if (SDL_PollEvent(&event)) {
 		switch (event.type) {
 			case SDL_QUIT:
-				_closed = true;
+				_closed = false;
 				break;
-
+			case SDL_KEYDOWN:
+				switch (event.key.keysym.sym) {
+					case SDLK_ESCAPE:
+						_closed = false;
+						break;
+					default:
+						break;
+				}
 			default:
 				break;
 		}
 	}
+
 }
 
 /*
@@ -184,18 +271,11 @@ Coord		SDL::getWindowSize(void) {
 	return (this->_size);
 }
 
-void			*startRenderLoop(void *threadID) {
-	logger.log("OpenGL| starGlutLoop() Called", CRITICAL);
-	(void)threadID;
-	
-	SDL*	sdl = new SDL();
-
-	while (!sdl->isClosed()) {
-		sdl->pollEvents();
-		sdl->renderWindow();
-	}
-
-	return (NULL);
+/*
+** Setters
+*/
+void		SDL::setWindowSize(Coord size) {
+	this->_size = size;
 }
 
 /*
