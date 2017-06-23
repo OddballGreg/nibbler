@@ -2,13 +2,4 @@ VTK.so
 OpenGL.so
 SDL.so
 NcursesWindow.so
-
-
-
-
-
-
-
-
-
-
+NcursesFSWindow.so

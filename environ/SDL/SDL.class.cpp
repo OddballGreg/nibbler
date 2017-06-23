@@ -140,7 +140,7 @@ bool		SDL::setupWindow(void) {
 }
 
 void		SDL::renderWindow(void) {
-	SDL_SetRenderDrawColor(_renderer, 0, 0, 200, 255);
+	SDL_SetRenderDrawColor(_renderer, 0, 0, 200, 0);
 	SDL_RenderClear(_renderer);
 	
 	SDL_Rect	rect;
@@ -150,7 +150,7 @@ void		SDL::renderWindow(void) {
 	rect.x = (WIN_WIDTH / 2) - (rect.w / 2);
 	rect.y = (WIN_HEIGHT / 2) - (rect.h / 2);
 
-	SDL_SetRenderDrawColor(_renderer, 200, 0, 200, 255);
+	SDL_SetRenderDrawColor(_renderer, 200, 0, 200, 0);
 	SDL_RenderFillRect(_renderer, &rect);
 
 	SDL_RenderPresent(_renderer);
