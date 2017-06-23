@@ -41,11 +41,22 @@ SDL SDL::operator = (const SDL &obj) {
 void		SDL::drawMap(MAP map) {
 	logger.log_step_in("SDL| drawMap() Called", IMPORTANT);
 
+	static int	suzy(0);
+
+	if (suzy == 0) {
+		SDL_CreateWindowAndRenderer(WIN_WIDTH, WIN_HEIGHT, 0, &_window, &_renderer);
+		suzy++;
+	}
+
+	_closed = true;
+	this->setPalette();
+	SDL_RenderClear(_renderer);
+	SDL_SetRenderDrawColor( _renderer, 30, 30, 30, 50 );
 	for (int k = 0; k < this->_size.getY(); k++)
 	for (int l = 0; l < this->_size.getX(); l++) {
 		switch (map[l][k]) {
 			case MAP_EMPTY :
-				drawBlank(k, l, 0, 1);
+				drawBlank(k, l, 1, 1);
 				break;
 			case MAP_OBSTICLE :
 				drawBlock(k, l, 2);
@@ -64,6 +75,12 @@ void		SDL::drawMap(MAP map) {
 				break;
 		}
 	}
+	if ( suzy == 1 ) {
+		SDL_RenderPresent(_renderer);
+		suzy++;
+	}
+	this->pollEvents();
+
 	logger.log_step_in("SDL| drawMap() Called", IMPORTANT);
 }
 
@@ -88,10 +105,10 @@ void		SDL::drawGameOver(int finalScore) {
 void		SDL::drawBlock(int x, int y, int i) {
 	SDL_Rect r;
 
-	r.x = x;
-	r.y = y;
-	r.w = 10;
-	r.h = 10;
+	r.x = this->_size.getX() * x;
+	r.y = this->_size.getY() * y;
+	r.w = this->_size.getX();
+	r.h = this->_size.getY();
 
 	SDL_SetRenderDrawColor( _renderer, _colors[i].r, _colors[i].g, _colors[i].b, 200 );
 	SDL_RenderFillRect( _renderer, &r );
@@ -100,10 +117,10 @@ void		SDL::drawBlock(int x, int y, int i) {
 void		SDL::drawBlank(int x, int y, int i, int j) {
 	SDL_Rect r;
 
-	r.x = x;
-	r.y = y;
-	r.w = 10;
-	r.h = 10;
+	r.x = this->_size.getX() * x;
+	r.y = this->_size.getY() * y;
+	r.w = this->_size.getX();
+	r.h = this->_size.getY();
 
 	SDL_SetRenderDrawColor( _renderer, _colors[i].r, _colors[i].g, _colors[i].b, 200 );
 	SDL_RenderFillRect( _renderer, &r );
@@ -139,20 +156,8 @@ void		SDL::initWindow(void) {
 void		SDL::initWindow(Coord size) {
 	logger.log_step_in("SDL| initWindow() Called", CRITICAL);
 
-	if (SDL_CreateWindowAndRenderer(WIN_WIDTH, WIN_HEIGHT, 0, &_window, &_renderer) == 0) {
-		_closed = true;
-		this->setPalette();
-
-		SDL_RenderClear(_renderer);
-		SDL_SetRenderDrawColor( _renderer, 30, 30, 30, 50 );
-		
-		// This is where the drawMap needs to loop.
-
-		SDL_RenderPresent(_renderer);
-		this->pollEvents();
-	}
-
-
+	this->_size = size;
+	
 	logger.log_step_out("SDL| initWindow() Completed", CRITICAL);
 }
 
