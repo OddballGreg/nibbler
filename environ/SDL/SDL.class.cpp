@@ -75,10 +75,8 @@ void		SDL::drawMap(MAP map) {
 				break;
 		}
 	}
-	if ( suzy == 1 ) {
-		SDL_RenderPresent(_renderer);
-		suzy++;
-	}
+	SDL_RenderPresent(_renderer);
+	
 	this->pollEvents();
 
 	logger.log_step_in("SDL| drawMap() Called", IMPORTANT);
