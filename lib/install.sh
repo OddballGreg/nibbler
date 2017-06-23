@@ -31,6 +31,11 @@ sleep 3
 
 git -C "$(brew --repo homebrew/core)" fetch
 
+unamestr=`uname`
+if [ $unamestr == 'Darwin' ]; then
+	brew install boost
+fi
+
 LIB="./lib"
 
 # Node Package Manager
