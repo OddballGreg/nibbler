@@ -57,14 +57,16 @@ int				main( int ac, char **av )
 	std::string	input;
 	int			run(1);
 
-	ReadLib* lib = new ReadLib();
+	while (run) {
 
-	/*while (run)*/ {
+		ReadLib* lib = new ReadLib();
+
 		// Asks the user for input
 		std::cout << "\n\n1: VTK" << std::endl;
 		std::cout << "2: OpenGL" << std::endl;
 		std::cout << "3: SDL" << std::endl;
 		std::cout << "4: NCurses" << std::endl;
+		std::cout << "5: NCurses Full Screen" << std::endl;
 		std::cout << "Please select a library from the list:" << std::endl;
 
 		std::cin >> input;
@@ -83,6 +85,9 @@ int				main( int ac, char **av )
 		} else if ( input.compare("4") == 0 ) {
 			std::cout << "Loading the ncurses library..." << std::endl;
 			lib->runlib(3);
+		} else if ( input.compare("5") == 0 ) {
+			std::cout << "Loading the Fullscreen ncurses library..." << std::endl;
+			lib->runlib(4);
 		} else if ( (input.compare("exit") == 0) || (input.compare("quit") == 0) || 
 			(input.compare("0") == 0) ) {
 			run = 0;
@@ -90,6 +95,8 @@ int				main( int ac, char **av )
 			std::cout << "You have entered an invalid command. Please try again."
 			"\n" << std::endl;
 		}
+
+		delete lib;
 	}
 
 	logger.log("Graceful Exit", CRITICAL);

@@ -200,9 +200,7 @@ bool		GameState::runIteration(void) {
 	if (this->_AI_flag == true)
 		this->_AI->run(*this);
 
-	log.log("Snake direction after moving: ", this->getSnakeDir(), CRITICAL);
 	moveSnake();
-	log.log("Snake direction after moving: ", this->getSnakeDir(), CRITICAL);
 
 	if ((this->_mode == MODE_PLAY) ? true : false)
 		log.log("runIteration() will return true", CRITICAL);

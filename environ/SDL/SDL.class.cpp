@@ -76,10 +76,10 @@ void		SDL::initWindow(void) {
 	if (!setupWindow())
 		_closed = true;
 
-	ret = pthread_create(&thread, NULL, startRenderLoop, (void *)1);
-	if (ret)
-	throw std::runtime_error("Unable to create new thread");
-
+	while (this->isClosed()) {
+		this->pollEvents();
+		this->renderWindow();
+	}
 
 	logger.log_step_out("SDL| initWindow() Completed", CRITICAL);
 }
@@ -126,7 +126,7 @@ bool		SDL::setupWindow(void) {
 	
 	_primaryDisplay = SDL_GetWindowSurface(_window);
 	
-	_renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED);
+	_renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_PRESENTVSYNC);
 
 	if (_renderer == nullptr) {
 		logger.log_step_out("SDL| renderer failed()", CRITICAL);
@@ -140,7 +140,7 @@ bool		SDL::setupWindow(void) {
 }
 
 void		SDL::renderWindow(void) {
-	SDL_SetRenderDrawColor(_renderer, 0, 0, 200, 255);
+	SDL_SetRenderDrawColor(_renderer, 0, 0, 200, 0);
 	SDL_RenderClear(_renderer);
 	
 	SDL_Rect	rect;
@@ -150,25 +150,34 @@ void		SDL::renderWindow(void) {
 	rect.x = (WIN_WIDTH / 2) - (rect.w / 2);
 	rect.y = (WIN_HEIGHT / 2) - (rect.h / 2);
 
-	SDL_SetRenderDrawColor(_renderer, 200, 0, 200, 255);
+	SDL_SetRenderDrawColor(_renderer, 200, 0, 200, 0);
 	SDL_RenderFillRect(_renderer, &rect);
 
 	SDL_RenderPresent(_renderer);
 }
 
 void		SDL::pollEvents( void ) {
+
 	SDL_Event	event;
 
 	if (SDL_PollEvent(&event)) {
 		switch (event.type) {
 			case SDL_QUIT:
-				_closed = true;
+				_closed = false;
 				break;
-
+			case SDL_KEYDOWN:
+				switch (event.key.keysym.sym) {
+					case SDLK_ESCAPE:
+						_closed = false;
+						break;
+					default:
+						break;
+				}
 			default:
 				break;
 		}
 	}
+
 }
 
 /*
@@ -182,20 +191,6 @@ Direction	SDL::getDirection(void) {
 Coord		SDL::getWindowSize(void) {
 	logger.log("SDL| getWindowSize() Called", AVERAGE);
 	return (this->_size);
-}
-
-void			*startRenderLoop(void *threadID) {
-	logger.log("OpenGL| starGlutLoop() Called", CRITICAL);
-	(void)threadID;
-	
-	SDL*	sdl = new SDL();
-
-	while (!sdl->isClosed()) {
-		sdl->pollEvents();
-		sdl->renderWindow();
-	}
-
-	return (NULL);
 }
 
 /*

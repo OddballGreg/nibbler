@@ -66,7 +66,6 @@ class SDL : public IDisplay {
 		virtual Coord		getWindowSize(void);
 				void		displayBMP(char *file_name);
 
-		void				*startRenderLoop(void *threadID);
 		inline bool			isClosed() const { return _closed; };
 };
 
