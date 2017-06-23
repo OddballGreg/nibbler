@@ -16,6 +16,7 @@
 # include <iostream>
 # include <map>
 # include <time.h>
+# include <vector>
 # include <sys/time.h>
 
 # include "../shared/Coord.hpp"
@@ -89,11 +90,13 @@ private:
 	void		generateFood(void);
 	void		loadSnake(void);
 	void		loadFood(void);
+	void		generateObstacles(void);
 	void		moveSnake(void);
 
 	Snake		_snake;
 	MAP			_map;
 	Coord		_food;
+	std::vector <Coord> _obstacles;
 	char		_mode;
 	int			_score;
 	bool		_AI_flag;

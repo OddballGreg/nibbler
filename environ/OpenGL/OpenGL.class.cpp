@@ -1,7 +1,7 @@
 #define OPENGL_FILE
 #include "OpenGL.class.hpp"
 
-MAP		glMap;
+MAP		*glMap;
 
 /*
 ** Constructors and Destructors
@@ -40,7 +40,7 @@ OpenGL OpenGL::operator = (const OpenGL &obj) {
 */
 void		OpenGL::drawMap(MAP map) {
 	logger.log_step_in("OpenGL| drawMap() Called", IMPORTANT);
-	glMap = map;
+	glMap = &map;
 
 	renderScene();
 	logger.log_step_in("OpenGL| drawMap() Called", IMPORTANT);
@@ -192,7 +192,7 @@ void	renderScene(void) {
 
 	for (int k = 0; k < GRID_WIDTH; k++)
 		for (int l = 0; l < GRID_HEIGHT; l++)
-			drawSquare(k, l, glMap[k][l]);
+			drawSquare(k, l, (*glMap)[k][l]);
 
 	glutSwapBuffers();
 	logger.log_step_out("OpenGL| drawMap() Completed", IMPORTANT);
