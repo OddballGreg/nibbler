@@ -56,22 +56,22 @@ void		SDL::drawMap(MAP map) {
 	for (int l = 0; l < this->_size.getX(); l++) {
 		switch (map[l][k]) {
 			case MAP_EMPTY :
-				drawBlank(k, l, 1, 1);
+				drawBlank(k, l, 0, 1);
 				break;
 			case MAP_OBSTICLE :
-				drawBlock(k, l, 2);
+				drawBlock(k, l, rand() % 8 + 1);
 				break;
 			case MAP_HEAD :
-				drawBlock(k, l, 3);
+				drawBlock(k, l, rand() % 8 + 1);
 				break;
 			case MAP_BODY :
-				drawBlock(k, l, 4);
+				drawBlock(k, l, rand() % 8 + 1);
 				break;
 			case MAP_FOOD :
-				drawBlock(k, l, 5);
+				drawBlock(k, l, rand() % 8 + 1);
 				break;
 			default :
-				drawBlock(k, l, 6);
+				drawBlock(k, l, rand() % 8 + 1);
 				break;
 		}
 	}
@@ -126,10 +126,10 @@ void		SDL::drawBlank(int x, int y, int i, int j) {
 };
 
 void		SDL::setPalette( void ) {
-	// White
-	_colors[0].r=255,_colors[0].g=255,_colors[0].b=255;
 	// Black
-	_colors[1].r=0,_colors[1].g=0,_colors[1].b=0;
+	_colors[0].r=0,_colors[0].g=0,_colors[0].b=0;
+	// White
+	_colors[1].r=255,_colors[1].g=255,_colors[1].b=255;
 	// Dark Grey
 	_colors[2].r=30,_colors[2].g=30,_colors[2].b=30;
 	// Pink
