@@ -90,7 +90,7 @@ void		ReadLib::callRun( void ) {
 	}
 
 	IDisplay* display = (IDisplay*)create();
-	display->initWindow();
+	display->initWindow(Coord(g_width, g_height));
 	this->runGame(display);
 	sleep(2);
 	display->exitWindow();
@@ -128,8 +128,8 @@ void		ReadLib::runGame(IDisplay *window) const {
 
 	logger.log("Readlib runGame() called", CRITICAL);
 	game.setAIFlag(g_ai_flag);
-	window->setWindowSize(Coord(g_width, g_height));
-	game.setSize(Coord(g_width, g_height));
+	// window->setWindowSize(Coord(g_width, g_height));
+	game.setSize(window->getWindowSize());
 	gettimeofday(&reff, NULL);
 
 	while (game.runIteration()) {

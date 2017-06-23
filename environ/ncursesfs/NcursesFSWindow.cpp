@@ -220,7 +220,7 @@ Coord		NcursesFSWindow::getWindowSize(void) {
 ** Setters
 */
 void			NcursesFSWindow::setWindowSize(Coord size) {
-	this->_size = size;
+	static_cast<void>(size);
 }
 
 /*
