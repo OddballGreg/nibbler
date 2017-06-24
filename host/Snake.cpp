@@ -50,16 +50,18 @@ Snake::~Snake(void) {
 */
 Snake::Snake(const Snake &obj) {
 	logger.log_step_in("Snake| Deconstructor Called", CRITICAL);
-	for (std::list<Part>::iterator it = obj.getBody().begin(); it != obj.getBody().end(); ++it)
-		this->_body.push_back(*it);
+	// for (std::list<Part>::iterator it = obj.getBody().begin(); it != obj.getBody().end(); ++it)
+		// this->_body.push_back(*it);
+	this->_body = obj._body;
 	this->_direction = _direction;
 	logger.log_step_out("Snake| Deconstructor Completed", CRITICAL);
 }
 
 Snake Snake::operator = (const Snake &obj) {
 	logger.log_step_in("Snake| = operator Called", CRITICAL);
-	for (std::list<Part>::iterator it = obj.getBody().begin(); it != obj.getBody().end(); ++it)
-		this->_body.push_back(*it);
+	// for (std::list<Part>::iterator it = obj.getBody().begin(); it != obj.getBody().end(); ++it)
+		// this->_body.push_back(*it);
+	this->_body = obj._body;
 	this->_direction = _direction;
 
 	return (*this);

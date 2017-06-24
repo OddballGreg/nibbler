@@ -80,6 +80,7 @@ public:
 
 	bool		runIteration(void);
 	void		resetGame(void);
+	void		resetSnake(Coord head_pos, Direction tail_dir);
 	void		updateMap(void);
 
 	bool		inBounds(Coord pos) const;

@@ -130,6 +130,7 @@ void		ReadLib::runGame(IDisplay *window) const {
 	game.setAIFlag(g_ai_flag);
 	// window->setWindowSize(Coord(g_width, g_height));
 	game.setSize(window->getWindowSize());
+	game.resetSnake(Coord((window->getWindowSize().getX() / 2), window->getWindowSize().getY() / 2), Direction(WEST));
 	gettimeofday(&reff, NULL);
 
 	while (game.runIteration()) {

@@ -18,7 +18,7 @@
 GameState::GameState(void) {
 	Log log("Gamestate", "Constructor", CRITICAL);
 	_size = Coord(DEFAULT_HEIGHT, DEFAULT_WIDTH);
-	// _snake = Snake();
+	_snake = Snake();
 	_mode = MODE_PLAY;
 	_score = 0;
 	_AI = new AI();
@@ -255,6 +255,11 @@ void		GameState::resetMap(void) {
 void		GameState::resetSnake(void) {
 	Log log("Gamestate", "resetSnake()", CRITICAL);
 	this->_snake.resetSnake();
+}
+
+void		GameState::resetSnake(Coord head_pos, Direction tail_dir) {
+	Log log("Gamestate", "resetSnake()", CRITICAL);
+	this->_snake.resetSnake(head_pos, tail_dir);
 }
 
 /* Requires other assets to be loaded into the map first */
