@@ -78,7 +78,7 @@ void		NcursesFSWindow::drawMap(MAP map) {
 					drawChar(k, l, ' ');
 					break;
 				case MAP_OBSTICLE :
-					drawChar(k, l, ACS_BOARD);
+					drawChar(k, l, ACS_CKBOARD);
 					break;
 				case MAP_HEAD :
 					drawChar(k, l, ACS_DIAMOND);

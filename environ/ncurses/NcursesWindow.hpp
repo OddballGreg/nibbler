@@ -79,7 +79,7 @@ private:
 
 	void    				drawWindowFrame(void);
 	void					drawTitle(void);
-	bool					drawChar(int y, int x, const int c);
+	bool					drawChar(int y, int x, unsigned int c);
 	void					keyListener(void);
 
 };
