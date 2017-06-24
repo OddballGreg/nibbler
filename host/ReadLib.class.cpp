@@ -102,8 +102,10 @@ void		ReadLib::callRun( void ) {
 		}
 		std::cout << e.what() << std::endl;
 	}
+
 	if (!userExit)
 		sleep(2);
+
 	destroy( display );
 
 	logger.log_step_out("ReadLib| callRun() Completed", CRITICAL);
