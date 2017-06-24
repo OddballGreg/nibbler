@@ -246,7 +246,7 @@ bool		SDL::getPaused(void) {
 }
 
 bool		SDL::getExit(void) {
-	return (this->_closed);
+	return (this->_exit);
 }
 
 /*
