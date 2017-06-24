@@ -22,6 +22,7 @@ int					g_height = 20;
 int					g_width = 20;
 int					g_verbosity = 0;
 unsigned int		g_delay = 90000;
+bool				userExit = false;
 
 # else
 
@@ -30,6 +31,7 @@ extern int			g_height;
 extern int			g_width;
 extern int			g_verbosity;
 extern unsigned int	g_delay;
+extern bool			userExit;
 
 # endif
 

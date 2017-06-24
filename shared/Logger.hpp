@@ -46,6 +46,7 @@ class Logger
 		void log(std::string message, int depth_step, int verbosity);
 		void log(std::string message, Coord coord, int verbosity);
 		void log(std::string message, Direction direction, int verbosity);
+		void log_num(std::string message, int num, int verbosity);
 		void log_step_in(std::string message, int verbosity);
 		void log_step_out(std::string message, int verbosity);
 		void die(std::string message, int verbosity);

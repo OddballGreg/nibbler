@@ -92,7 +92,8 @@ void		ReadLib::callRun( void ) {
 	IDisplay* display = (IDisplay*)create();
 	display->initWindow(Coord(g_width, g_height));
 	this->runGame(display);
-	sleep(2);
+	if (!userExit)
+		sleep(2);
 	display->exitWindow();
 	destroy( display );
 
@@ -133,7 +134,7 @@ void		ReadLib::runGame(IDisplay *window) const {
 	game.resetSnake(Coord((window->getWindowSize().getX() / 2), window->getWindowSize().getY() / 2), Direction(WEST));
 	gettimeofday(&reff, NULL);
 
-	while (game.getMode() != MODE_END) {
+	while (game.getMode() != MODE_END && !(window->getExit())) {
 
 		game.setPaused(window->getPaused());
 
@@ -162,6 +163,8 @@ void		ReadLib::runGame(IDisplay *window) const {
 
 		gettimeofday(&reff, NULL);
 	}
+	userExit = window->getExit();
+
 	window->drawGameOver(game.getScore());
 	logger.log_step_out("ReadLib| runGame() Completed", CRITICAL);
 }

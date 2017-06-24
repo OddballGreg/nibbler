@@ -217,10 +217,12 @@ Coord		NcursesFSWindow::getWindowSize(void) {
 }
 
 bool		NcursesFSWindow::getPaused(void) {
+	logger.log("Ncurses Window| getPaused() Called", AVERAGE);
 	return (paused);
 }
 
 bool		NcursesFSWindow::getExit(void) {
+	logger.log("Ncurses Window| getExit() Called", AVERAGE);
 	return (exitWin);
 }
 

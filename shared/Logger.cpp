@@ -129,6 +129,18 @@ void Logger::log(std::string message, Direction direction, int verbosity)
 	pthread_mutex_unlock(&this->_log_lock);
 }
 
+void Logger::log_num(std::string message, int num, int verbosity)
+{	
+	if (verbosity > this->_verbosity)
+		return;
+	pthread_mutex_lock(&this->_log_lock);
+	int i = -1;
+	while (++i < this->_depth + 1)
+		*this->_logfile << "\t";
+	*this->_logfile << message << num << std::endl;
+	pthread_mutex_unlock(&this->_log_lock);
+}
+
 void Logger::die(std::string message, int verbosity)
 {	
 	if (verbosity > this->_verbosity)

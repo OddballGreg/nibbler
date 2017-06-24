@@ -225,10 +225,12 @@ Coord		NcursesWindow::getWindowSize(void) {
 }
 
 bool		NcursesWindow::getPaused(void) {
+	logger.log("Ncurses Window| getPaused() Called", AVERAGE);
 	return (paused);
 }
 
 bool		NcursesWindow::getExit(void) {
+	logger.log("Ncurses Window| getExit() Called", AVERAGE);
 	return (exitWin);
 }
 
@@ -288,7 +290,10 @@ void		NcursesWindow::keyListener(void) {
 		 	throw std::runtime_error("Unable to create new thread");
 		 listen = true;
 	 }
+
 	 if (lastKeyPress) {
+		logger.log_num("Last key: ", lastKeyPress, IMPORTANT);
+
 		if ((lastKeyPress == 'a') && this->_direction.getDirection() != EAST)
 			this->_direction = Direction(WEST);
 		else if ((lastKeyPress == 'd') && this->_direction.getDirection() != WEST)
@@ -297,10 +302,6 @@ void		NcursesWindow::keyListener(void) {
 			this->_direction = Direction(SOUTH);
 		else if ((lastKeyPress == 's') && this->_direction.getDirection() != SOUTH)
 			this->_direction = Direction(NORTH);
-		else if (lastKeyPress == 'p')
-			paused = (paused) ? false : true;
-		else if (lastKeyPress == 27)
-			exitWin = true;
 		lastKeyPress = 0;
 	 }
 	logger.log("Ncurses Window| keyListener() Completed", IMPORTANT);
@@ -321,6 +322,11 @@ void		*keyLoop(void *threadID) {
 		if (((key = getch()) != ERR)) {
 			logger.log("Ncurses Window| keyLoop() - getch() = " + std::to_string(key), IMPORTANT);
 			lastKeyPress = key;
+
+			if (lastKeyPress == 27)
+				exitWin = true;
+			else if (lastKeyPress == 'p')
+				paused = (paused) ? false : true;
 		}
 	}
 	logger.log("Ncurses Window| keyLoop() - pthread exited", IMPORTANT);
