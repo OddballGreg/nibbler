@@ -220,6 +220,10 @@ bool		NcursesFSWindow::getPaused(void) {
 	return (paused);
 }
 
+bool		NcursesFSWindow::getExit(void) {
+	return (exitWin);
+}
+
 /*
 ** Setters
 */
@@ -287,6 +291,8 @@ void		NcursesFSWindow::keyListener(void) {
 			this->_direction = Direction(NORTH);
 		else if (lastKeyPress == 'p')
 			paused = (paused) ? false : true;
+		else if (lastKeyPress == 27)
+			exitWin = true;
 		lastKeyPress = 0;
 	 }
 	logger.log("Ncurses Window| keyListener() Completed", IMPORTANT);

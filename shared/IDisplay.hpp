@@ -53,6 +53,7 @@ public:
 	virtual Direction	getDirection(void) = 0;
 	virtual Coord		getWindowSize(void) = 0;
 	virtual bool		getPaused(void) = 0;
+	virtual bool		getExit(void) = 0;
 
 	virtual void		setWindowSize(Coord size) = 0;
 

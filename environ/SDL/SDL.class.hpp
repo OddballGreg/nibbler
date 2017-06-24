@@ -47,6 +47,7 @@ class SDL : public IDisplay {
 
 		bool				_closed = false;
 		bool				_paused = false;
+		bool				_exit = false;
 
 	public:
 		SDL(void);
@@ -75,6 +76,7 @@ class SDL : public IDisplay {
 		virtual Direction	getDirection(void);
 		virtual Coord		getWindowSize(void);
 		virtual bool		getPaused(void);
+		virtual bool		getExit(void);
 
 		virtual void		setWindowSize(Coord size);
 

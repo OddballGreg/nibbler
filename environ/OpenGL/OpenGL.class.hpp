@@ -29,6 +29,7 @@ bool			glLoop = false;
 bool			paused = false;
 int				lastKeyPress = 0;
 Coord			winSize = Coord(GRID_WIDTH, GRID_HEIGHT);
+bool			exitWin = false;
 
 # else
 
@@ -37,6 +38,7 @@ extern bool 	glLoop;
 extern int		lastKeyPress;
 extern Coord	winSize;
 extern bool		paused;
+extern bool 	exitWin;
 
 # endif
 
@@ -65,6 +67,7 @@ class OpenGL : public IDisplay {
 		virtual Direction	getDirection(void);
 		virtual Coord		getWindowSize(void);
 		virtual bool		getPaused(void);
+		virtual bool		getExit(void);
 
 		virtual void		setWindowSize(Coord size);
 };

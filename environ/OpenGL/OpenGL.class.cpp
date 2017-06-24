@@ -144,6 +144,8 @@ Direction	OpenGL::getDirection(void) {
 			this->_direction = Direction(NORTH);
 		else if (lastKeyPress == 'p')
 			paused = (paused) ? false : true;
+		else if (lastKeyPress == 27)
+			exitWin = true;
 		lastKeyPress = 0;
 	 }
 
@@ -159,6 +161,10 @@ Coord		OpenGL::getWindowSize(void) {
 
 bool		OpenGL::getPaused(void) {
 	return (paused);
+}
+
+bool		OpenGL::getExit(void) {
+	return (exitWin);
 }
 
 /*

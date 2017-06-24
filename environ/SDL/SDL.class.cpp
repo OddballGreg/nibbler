@@ -245,6 +245,10 @@ bool		SDL::getPaused(void) {
 	return (this->_paused);
 }
 
+bool		SDL::getExit(void) {
+	return (this->_exit);
+}
+
 /*
 ** Setters
 */
