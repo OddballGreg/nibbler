@@ -29,12 +29,10 @@ NcursesFSWindow::NcursesFSWindow(void) {
 
 NcursesFSWindow::~NcursesFSWindow(void) {
 	logger.log_step_in("Ncurses Window| Deconstructing", CRITICAL);
-	listen = false;
-	// _map.clear();
 
+	listen = false;
 	if (_win)
 		delwin(this->_win);
-
 	endwin();
 
 	if (_panel)
@@ -49,8 +47,6 @@ NcursesFSWindow::~NcursesFSWindow(void) {
 NcursesFSWindow::NcursesFSWindow(const NcursesFSWindow &obj) {
 	this->_size = obj._size;
 	this->_direction = obj._direction;
-	// this->_map = obj._map;
-
 	this->_win = obj._win;
 	this->_panel = obj._panel;
 }
@@ -58,8 +54,6 @@ NcursesFSWindow::NcursesFSWindow(const NcursesFSWindow &obj) {
 NcursesFSWindow NcursesFSWindow::operator = (const NcursesFSWindow &obj) {
 	this->_size = obj._size;
 	this->_direction = obj._direction;
-	// this->_map = obj._map;
-
 	this->_win = obj._win;
 	this->_panel = obj._panel;
 
@@ -71,8 +65,6 @@ NcursesFSWindow NcursesFSWindow::operator = (const NcursesFSWindow &obj) {
 */
 void		NcursesFSWindow::drawMap(MAP map) {
 	logger.log_step_in("NcursesFSWindow| drawMap() Called", IMPORTANT);
-	// this->_map.clear();
-	// this->_map = map;
 
 	for (int k = 0; k < this->_size.getY(); k++)
 		for (int l = 0; l < this->_size.getX(); l++) {
@@ -100,19 +92,20 @@ void		NcursesFSWindow::drawMap(MAP map) {
 
 	update_panels();
 	doupdate();
-	wmove(this->_win, 3, 1);// used to move
+	wmove(this->_win, 3, 1);
+
 	logger.log_step_out("NcursesFSWindow| drawMap() Completed", IMPORTANT);
 }
 
 void		NcursesFSWindow::drawScore(int score) {
 	logger.log_step_in("Ncurses Window| drawScore() Called", IMPORTANT);
+	
 	std::stringstream s;
 	s << "Score: " << score << "            ";
-
 	std::string str = s.str();
 	str.resize(20);
-
 	mvwaddstr(this->_win, this->_size.getY() - 2, 2, str.c_str());
+
 	logger.log_step_out("Ncurses Window| drawScore() Completed", IMPORTANT);
 }
 
@@ -124,12 +117,11 @@ void		NcursesFSWindow::drawPause(void) {
 
 void		NcursesFSWindow::drawGameOver(int finalScore) {
 	logger.log_step_in("Ncurses Window| drawGameOver() Called", IMPORTANT);
+
 	std::stringstream s;
 	s << "-GAMEOVER- [score: " << finalScore << "]            ";
-
 	std::string str = s.str();
 	mvwaddstr(this->_win, this->_size.getY() - 2, 2, str.c_str());
-
 	update_panels();
 	doupdate();
 
@@ -155,12 +147,12 @@ void		NcursesFSWindow::initWindow(void) {
 }
 
 void		NcursesFSWindow::initWindow(Coord size) {
+	logger.log_step_in("Ncurses Window| initWindow() Called", CRITICAL);
+
 	int x, y;
 
-	logger.log_step_in("Ncurses Window| initWindow() Called", CRITICAL);
 	initscr();
 	keypad(stdscr, TRUE);
-	// timeout(25);
 	start_color();
 	init_pair(1, COLOR_GREEN, COLOR_BLACK);
 	nodelay(stdscr, TRUE);
@@ -170,9 +162,6 @@ void		NcursesFSWindow::initWindow(Coord size) {
 
 	/* Set Size */
 	getmaxyx(stdscr, y, x);
-
-	// if (x > size.getX() || y > size.getY())
-	// 	throw std::runtime_error("Error The terminal is too small for the specified window");
 
 	size.setX(x);
 	size.setY(y);
@@ -185,22 +174,20 @@ void		NcursesFSWindow::initWindow(Coord size) {
 	drawWindowFrame();
 	update_panels();
 	doupdate();
-
 	keyListener();
+
 	logger.log_step_out("Ncurses Window| initWindow() Completed", CRITICAL);
 }
 
 void		NcursesFSWindow::exitWindow(void) {
 	logger.log_step_in("Ncurses Window| exitWindow() Called", CRITICAL);
+
 	if (this->_win) {
 		delwin(this->_win);
 		this->_win = NULL;
 	}
 	endwin();
-	// if (_panel) {
-	// 	del_panel(this->_panel);
-	// 	this->_panel = NULL;
-	// }
+
 	logger.log_step_out("Ncurses Window| exitWindow() Completed", CRITICAL);
 }
 
@@ -210,7 +197,6 @@ void		NcursesFSWindow::exitWindow(void) {
 Direction	NcursesFSWindow::getDirection(void) {
 	logger.log("Ncurses Window| getDirection() Called", AVERAGE);
 	keyListener();
-
 	return (this->_direction);
 }
 
@@ -241,6 +227,7 @@ void			NcursesFSWindow::setWindowSize(Coord size) {
 */
 void    	NcursesFSWindow::drawWindowFrame(void) {
 	logger.log_step_in("Ncurses Window| drawWindowFrame() Called", CRITICAL);
+	
 	box(this->_win, 0, 0);
 	mvwaddch(this->_win, 2, 0, ACS_LTEE);
 	mvwaddch(this->_win, 2, this->_size.getX(), ACS_RTEE);
@@ -248,21 +235,23 @@ void    	NcursesFSWindow::drawWindowFrame(void) {
 		mvwaddch(this->_win, 2, k, ACS_HLINE);
 		mvwaddch(this->_win, this->_size.getY() - 3, k, ACS_HLINE);
 	}
-
 	drawTitle();
 	wmove(this->_win, 3, 1);// used to move
+	
 	logger.log_step_out("Ncurses Window| drawWindowFrame() Completed", CRITICAL);
 }
 
 void		NcursesFSWindow::drawTitle(void) {
 	logger.log_step_in("Ncurses Window| drawTitle() Called", CRITICAL);
+	
 	std::string		title("NIBBLER FULL SCREEN");
-
     mvwaddstr(this->_win, 1, (this->_size.getX() - static_cast<int>(title.length())) / 2, title.c_str());
+	
 	logger.log_step_out("Ncurses Window| drawTitle() Completed", CRITICAL);
 }
 
 bool		NcursesFSWindow::drawChar(int y, int x, const unsigned c) {
+	
 	x += 2;
 	y += 3;
 
@@ -270,22 +259,22 @@ bool		NcursesFSWindow::drawChar(int y, int x, const unsigned c) {
 		mvwaddch(this->_win, y, x, c);
 		return (true);
 	}
-
 	return (false);
 }
 
 void		NcursesFSWindow::keyListener(void) {
 	logger.log("Ncurses Window| keyListener() Called", IMPORTANT);
-	 pthread_t	thread;
-	 int		ret;
-
-	 if (!listen) {
-		 ret = pthread_create(&thread, NULL, keyLoop, (void *)1);
-		 if (ret)
-		 	throw std::runtime_error("Unable to create new thread");
-		 listen = true;
-	 }
-	 if (lastKeyPress) {
+	
+	pthread_t	thread;
+	int		ret;
+	
+	if (!listen) {
+		ret = pthread_create(&thread, NULL, keyLoop, (void *)1);
+		if (ret)
+			throw std::runtime_error("Unable to create new thread");
+		listen = true;
+	}
+	if (lastKeyPress) {
 		if ((lastKeyPress == 'a') && this->_direction.getDirection() != EAST)
 			this->_direction = Direction(WEST);
 		else if ((lastKeyPress == 'd') && this->_direction.getDirection() != WEST)
@@ -300,28 +289,29 @@ void		NcursesFSWindow::keyListener(void) {
 			exitWin = true;
 		lastKeyPress = 0;
 	 }
+
 	logger.log("Ncurses Window| keyListener() Completed", IMPORTANT);
 }
 
 /*
 ** Other Functions
 */
-
 void		*keyLoop(void *threadID) {
-	int		key;
 	logger.log("Ncurses Window| keyLoop() Called", IMPORTANT);
+
+	int		key;
 
 	if (!threadID)
 		throw std::runtime_error("Calling NCurses Loop with main thread");
-
 	while (listen) {
 		if (((key = getch()) != ERR)) {
 			logger.log("Ncurses Window| keyLoop() - getch() = " + std::to_string(key), IMPORTANT);
 			lastKeyPress = key;
 		}
 	}
-	logger.log("Ncurses Window| keyLoop() - pthread exited", IMPORTANT);
 	pthread_exit(NULL);
+
+	logger.log("Ncurses Window| keyLoop() - pthread exited", IMPORTANT);
 }
 
 IDisplay			*createWindow(void) {
@@ -332,6 +322,5 @@ IDisplay			*createWindow(void) {
 void				deleteWindow(IDisplay *window) {
 	logger.log("Ncurses Window| deleteWindow() called", CRITICAL);
 	NcursesFSWindow	*win = static_cast<NcursesFSWindow *>(window);
-
 	delete win;
 }

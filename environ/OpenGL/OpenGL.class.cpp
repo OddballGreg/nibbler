@@ -89,12 +89,8 @@ void		OpenGL::initWindow(Coord size) {
 
 		glutDisplayFunc(renderScene);
 		glutReshapeFunc(changeSize);
-		// glutIdleFunc(renderScene);
 		glutSpecialFunc(pressKey);
 		glutSpecialUpFunc(pressKey);//test
-
-		// glEnable(GL_LIGHTING);
-		// glEnable(GL_COLOR_MATERIAL);
 		glEnable(GL_DEPTH_TEST);
 
 		ret = pthread_create(&thread, NULL, startGlutLoop, (void *)1);

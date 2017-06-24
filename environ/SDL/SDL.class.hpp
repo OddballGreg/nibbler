@@ -27,9 +27,7 @@ extern int	lastKeyPress;
 
 # include <cstring>
 # include <string>
-
 # include <unistd.h>
-# include <pthread.h>
 
 # include "../../shared/IDisplay.hpp"
 

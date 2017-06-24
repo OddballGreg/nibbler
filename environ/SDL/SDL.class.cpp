@@ -74,7 +74,7 @@ void		SDL::drawMap(MAP map) {
 		}
 	}
 	SDL_RenderPresent(_renderer);	
-	//this->pollEvents();
+
 	logger.log_step_in("SDL| drawMap() Called", IMPORTANT);
 }
 

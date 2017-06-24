@@ -65,13 +65,9 @@ public:
 
 	virtual void			setWindowSize(Coord size);
 
-	// virtual NcursesFSWindow* 	createObject();
-	// virtual void 			destroyObject( NcursesFSWindow* object );	
-
 private:
 	Coord					_size;
 	Direction				_direction;
-	// MAP					_map;
 	bool					_closed = false;
 
 	WINDOW					*_win;
