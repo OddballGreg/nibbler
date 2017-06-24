@@ -175,12 +175,12 @@ void		NcursesWindow::initWindow(Coord size) {
 	if (size.getX() == 0 && size.getY() == 0)
 		size = Coord(x - 2, y - 6);
 
-	if (x <= size.getX() || y <= size.getY() || x < 10 || y < 10)
+	if (x + 4 <= size.getX() || y + 6 <= size.getY() || x < 10 || y < 10)
 		throw std::runtime_error("Error The terminal is too small for the specified size");
 
-	_size = size;
+	// _size = size;
 
-	// _size = Coord(size.getX(), size.getY() - 2);
+	_size = Coord(size.getX() + 4, size.getY() + 6);
 	_win  = newwin(this->_size.getY(), this->_size.getX(), 1, 1);
 	_panel = new_panel(_win);
 
