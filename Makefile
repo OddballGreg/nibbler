@@ -64,9 +64,10 @@ clean:
 	/bin/rm -rf tst_file
 	/bin/rm -rf Shared.so
 	/bin/rm -rf NcursesWindow.so
+	/bin/rm -rf NcursesFSWindow.so
 	/bin/rm -rf OpenGL.so
 	/bin/rm -rf SDL.so
-	# /bin/rm -rf nibbler_log.txt 
+	/bin/rm -rf nibbler_log.txt 
 
 fclean: clean
 	/bin/rm -rf $(NAME)

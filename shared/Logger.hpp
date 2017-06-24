@@ -60,7 +60,7 @@ class Logger
 
 # ifdef LOGGER_GLOBAL
 
-Logger		logger("nibbler_log.txt", NONE);
+Logger		logger("nibbler_log.txt", AVERAGE);
 
 # else
 
