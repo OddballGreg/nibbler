@@ -59,19 +59,19 @@ void		SDL::drawMap(MAP map) {
 					drawBlank(k, l, 0, 1);
 					break;
 				case MAP_OBSTICLE :
-					drawBlock(k, l, rand() % 8 + 1);
+					drawBlock(k, l, 4);
 					break;
 				case MAP_HEAD :
-					drawBlock(k, l, rand() % 8 + 1);
+					drawBlock(k, l, 1);
 					break;
 				case MAP_BODY :
-					drawBlock(k, l, rand() % 8 + 1);
+					drawBlock(k, l, 6);
 					break;
 				case MAP_FOOD :
-					drawBlock(k, l, rand() % 8 + 1);
+					drawBlock(k, l, 5);
 					break;
 				default :
-					drawBlock(k, l, rand() % 8 + 1);
+					drawBlock(k, l, 0);
 					break;
 			}
 		}
@@ -103,10 +103,10 @@ void		SDL::drawGameOver(int finalScore) {
 void		SDL::drawBlock(int x, int y, int i) {
 	SDL_Rect r;
 
-	r.x = this->_size.getX() + x;
-	r.y = this->_size.getY() + y;
-	r.w = this->_size.getX() / 10;
-	r.h = this->_size.getY() / 10;
+	r.w = WIN_WIDTH / _size.getX();
+	r.h = WIN_HEIGHT / _size.getY();
+	r.x = r.w * x;
+	r.y = r.h * y;
 
 	SDL_SetRenderDrawColor( _renderer, _colors[i].r, _colors[i].g, _colors[i].b, 200 );
 	SDL_RenderFillRect( _renderer, &r );
@@ -115,10 +115,10 @@ void		SDL::drawBlock(int x, int y, int i) {
 void		SDL::drawBlank(int x, int y, int i, int j) {
 	SDL_Rect r;
 
-	r.x = this->_size.getX() + x;
-	r.y = this->_size.getY() + y;
-	r.w = this->_size.getX() / 10;
-	r.h = this->_size.getY() / 10;
+	r.w = WIN_WIDTH / _size.getX();
+	r.h = WIN_HEIGHT / _size.getY();
+	r.x = r.w * x;
+	r.y = r.h * y;
 
 	SDL_SetRenderDrawColor( _renderer, _colors[i].r, _colors[i].g, _colors[i].b, 200 );
 	SDL_RenderFillRect( _renderer, &r );
@@ -246,7 +246,7 @@ bool		SDL::getPaused(void) {
 }
 
 bool		SDL::getExit(void) {
-	return (this->_exit);
+	return (this->_closed);
 }
 
 /*
