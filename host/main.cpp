@@ -64,7 +64,7 @@ int				main( int ac, char **av )
 	std::string	input;
 	int			run(1);
 
-	while (run) {
+	/* while (run) */ {
 
 		ReadLib* lib = new ReadLib();
 
@@ -107,6 +107,7 @@ int				main( int ac, char **av )
 	}
 
 	logger.log("Graceful Exit", CRITICAL);
+	system("reset");
 	exit(0);
 	return 0;
 }
