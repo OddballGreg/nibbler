@@ -76,7 +76,7 @@ void		NcursesWindow::drawMap(MAP map) {
 					drawChar(k, l, ' ');
 					break;
 				case MAP_OBSTICLE :
-					drawChar(k, l, '#');
+					drawChar(k, l, ACS_CKBOARD);
 					break;
 				case MAP_HEAD :
 					drawChar(k, l, '0');
@@ -199,12 +199,12 @@ void		NcursesWindow::exitWindow(void) {
 		this->_win = NULL;
 	}
 
-	// if (_panel) {
-	// 	del_panel(this->_panel);
-	// 	this->_panel = NULL;
-	// }
-
 	endwin();
+
+	if (_panel) {
+		del_panel(this->_panel);
+		this->_panel = NULL;
+	}
 
 	logger.log_step_out("Ncurses Window| exitWindow() Completed", CRITICAL);
 }
@@ -267,7 +267,7 @@ void		NcursesWindow::drawTitle(void) {
 	logger.log_step_out("Ncurses Window| drawTitle() Completed", CRITICAL);
 }
 
-bool		NcursesWindow::drawChar(int y, int x, const int c) {
+bool		NcursesWindow::drawChar(int y, int x, unsigned int c) {
 	x += 2;
 	y += 3;
 

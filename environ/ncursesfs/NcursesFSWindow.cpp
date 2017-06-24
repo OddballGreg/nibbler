@@ -35,8 +35,11 @@ NcursesFSWindow::~NcursesFSWindow(void) {
 	if (_win)
 		delwin(this->_win);
 
-	// if (_panel)
-	// 	del_panel(this->_panel);
+	endwin();
+
+	if (_panel)
+		del_panel(this->_panel);
+
 	logger.log_step_out("Ncurses Window| Deconstructed", CRITICAL);
 }
 
@@ -78,7 +81,7 @@ void		NcursesFSWindow::drawMap(MAP map) {
 					drawChar(k, l, ' ');
 					break;
 				case MAP_OBSTICLE :
-					drawChar(k, l, ACS_BOARD);
+					drawChar(k, l, ACS_CKBOARD);
 					break;
 				case MAP_HEAD :
 					drawChar(k, l, ACS_DIAMOND);
