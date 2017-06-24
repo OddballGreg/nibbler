@@ -35,8 +35,11 @@ NcursesFSWindow::~NcursesFSWindow(void) {
 	if (_win)
 		delwin(this->_win);
 
-	// if (_panel)
-	// 	del_panel(this->_panel);
+	endwin();
+
+	if (_panel)
+		del_panel(this->_panel);
+
 	logger.log_step_out("Ncurses Window| Deconstructed", CRITICAL);
 }
 

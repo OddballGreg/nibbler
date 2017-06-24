@@ -199,12 +199,12 @@ void		NcursesWindow::exitWindow(void) {
 		this->_win = NULL;
 	}
 
-	// if (_panel) {
-	// 	del_panel(this->_panel);
-	// 	this->_panel = NULL;
-	// }
-
 	endwin();
+
+	if (_panel) {
+		del_panel(this->_panel);
+		this->_panel = NULL;
+	}
 
 	logger.log_step_out("Ncurses Window| exitWindow() Completed", CRITICAL);
 }
