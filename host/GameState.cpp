@@ -265,7 +265,7 @@ void		GameState::generateFood(void) {
 	do {
 		pos = Coord(rand() % this->_size.getX(), rand() % this->_size.getY());
 
-		if (this->_map[pos.getX()][pos.getY()] == MAP_EMPTY) {
+		if (this->_map[pos.getX()][pos.getY()] == MAP_EMPTY && !(pos >= this->_size)) {
 			found = true;
 			this->_food = pos;
 		}
