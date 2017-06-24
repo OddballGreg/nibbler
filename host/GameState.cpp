@@ -195,6 +195,15 @@ void	GameState::setAIFlag(bool flag) {
 	this->_AI_flag = flag;
 }
 
+void	GameState::setPaused(bool paused) {
+	// this->_paused = paused;
+
+	if (this->_mode == MODE_PLAY && paused)
+		this->_mode = MODE_PAUSE;
+	else if (this->_mode == MODE_PAUSE && !paused)
+		this->_mode = MODE_PLAY;
+}
+
 /*
 ** Functions
 */

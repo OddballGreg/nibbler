@@ -77,6 +77,7 @@ public:
 	void		setSnakeDir(Direction direction);
 	void		setMode(char mode);
 	void		setAIFlag(bool flag);
+	void		setPaused(bool paused);
 
 	bool		runIteration(void);
 	void		resetGame(void);

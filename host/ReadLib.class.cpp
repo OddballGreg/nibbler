@@ -133,8 +133,17 @@ void		ReadLib::runGame(IDisplay *window) const {
 	game.resetSnake(Coord((window->getWindowSize().getX() / 2), window->getWindowSize().getY() / 2), Direction(WEST));
 	gettimeofday(&reff, NULL);
 
-	while (game.runIteration()) {
-		window->drawScore(game.getScore());
+	while (game.getMode() != MODE_END) {
+
+		game.setPaused(window->getPaused());
+
+		game.runIteration();
+
+		if (game.getMode() == MODE_PAUSE)
+			window->drawPause();
+		else
+			window->drawScore(game.getScore());
+
 		window->drawMap(game.getMap());
 
 		if (game.getAIFlag() != true)
