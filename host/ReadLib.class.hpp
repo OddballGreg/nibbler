@@ -21,7 +21,7 @@ bool				g_ai_flag = false;
 int					g_height = 20;
 int					g_width = 20;
 int					g_verbosity = 0;
-unsigned int		g_delay = 30000;
+unsigned int		g_delay = 90000;
 
 # else
 

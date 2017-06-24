@@ -13,7 +13,7 @@ void			parseArgs(int ac, char **av) {
 		("height,h", boost::program_options::value<int>(&g_height)->required(), "sets the window height")
 		("width,w", boost::program_options::value<int>(&g_width)->required(), "sets the window width")
 		("ai,a", "enables the AI")
-		("delay,d", boost::program_options::value<unsigned int>(&g_delay), "Sets the timmers delay, default 30000usec")
+		("delay,d", boost::program_options::value<unsigned int>(&g_delay), "Sets the timmers delay, default 90000usec")
 		("verse_ai,b", "allows the player to play against the AI");
 
 		boost::program_options::variables_map	vm;
