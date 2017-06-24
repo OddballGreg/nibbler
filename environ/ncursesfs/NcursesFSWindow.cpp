@@ -173,7 +173,7 @@ void		NcursesFSWindow::initWindow(Coord size) {
 
 	size.setX(x);
 	size.setY(y);
-	_size = Coord(size.getX() - 2, size.getY() - 2);
+	_size = Coord(size.getX(), size.getY());
 
 	_win  = newwin(0, 0, 0, 0);
 	wbkgd(_win, COLOR_PAIR(1));
@@ -213,7 +213,7 @@ Direction	NcursesFSWindow::getDirection(void) {
 
 Coord		NcursesFSWindow::getWindowSize(void) {
 	logger.log("Ncurses Window| getWindowSize() Called", AVERAGE);
-	return (Coord(this->_size.getX() - 4, this->_size.getY() - 8));
+	return (Coord(this->_size.getX() - 4, this->_size.getY() - 6));
 }
 
 /*
@@ -230,10 +230,10 @@ void    	NcursesFSWindow::drawWindowFrame(void) {
 	logger.log_step_in("Ncurses Window| drawWindowFrame() Called", CRITICAL);
 	box(this->_win, 0, 0);
 	mvwaddch(this->_win, 2, 0, ACS_LTEE);
-	mvwaddch(this->_win, 2, this->_size.getX() + 1, ACS_RTEE);
-	for (int k = 1; k < this->_size.getX() + 1; k++) {
+	mvwaddch(this->_win, 2, this->_size.getX(), ACS_RTEE);
+	for (int k = 1; k < this->_size.getX() - 1; k++) {
 		mvwaddch(this->_win, 2, k, ACS_HLINE);
-		mvwaddch(this->_win, this->_size.getY() - 1, k, ACS_HLINE);
+		mvwaddch(this->_win, this->_size.getY() - 3, k, ACS_HLINE);
 	}
 
 	drawTitle();
@@ -251,7 +251,7 @@ void		NcursesFSWindow::drawTitle(void) {
 
 bool		NcursesFSWindow::drawChar(int y, int x, const unsigned c) {
 	x += 2;
-	y += 4;
+	y += 3;
 
 	if ((1 < x && x < this->_size.getX() - 2) && (1 < y && y < this->_size.getY() - 3)) {
 		mvwaddch(this->_win, y, x, c);
