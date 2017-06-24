@@ -36,6 +36,10 @@ public:
 	
 	bool operator != (const Coord &obj);
 	bool operator == (const Coord &obj);
+	bool operator >  (const Coord &obj);
+	bool operator <  (const Coord &obj);
+	bool operator >= (const Coord &obj);
+	bool operator <= (const Coord &obj);
 
 	int		getX(void) const;
 	int		getY(void) const;
