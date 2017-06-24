@@ -97,14 +97,15 @@ void		AI::run(GameState &gamestate) {
 */
 Direction	AI::moveSnake(GameState &gamestate, int delta_x, int delta_y) {
 	Log log("AI", "moveSnake()", CRITICAL);
-	static	Direction	dir;
-	char				tmp = 0;
+	Direction	dir;
+	char		tmp = 0;
 
+/*
 	if (dir != LOST && dir.getDirection() <= WEST && dir != gamestate.getSnakeDir().opposite()) {
 			tmp = dir.getDirection();
 			dir = Direction(LOST);
 			return (Direction(tmp));
-	}
+	}*/
 	if (delta_x > 1)
 		delta_x = 1;
 	else if (delta_x < -1)

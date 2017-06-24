@@ -25,8 +25,8 @@ GameState::GameState(void) {
 	_AI_flag = true;
 
 	resetMap();
-	generateFood();
 	generateObstacles();
+	generateFood();
 }
 
 GameState::GameState(Coord size) {
@@ -40,8 +40,8 @@ GameState::GameState(Coord size) {
 	_AI_flag = true;
 
 	resetMap();
-	generateFood();
 	generateObstacles();
+	generateFood();
 }
 
 GameState::GameState(int width, int height) {
@@ -56,8 +56,8 @@ GameState::GameState(int width, int height) {
 	_AI_flag = true;
 
 	resetMap();
-	generateFood();
 	generateObstacles();
+	generateFood();
 }
 
 GameState::~GameState(void) {
@@ -207,6 +207,9 @@ bool		GameState::runIteration(void) {
 	if (this->_AI_flag == true)
 		this->_AI->run(*this);
 
+	if (!inBounds(this->_food) || this->_map[this->_food.getX()][this->_food.getY()] != MAP_FOOD)
+		generateFood();
+
 	moveSnake();
 
 	if ((this->_mode == MODE_PLAY) ? true : false)
@@ -228,7 +231,7 @@ void		GameState::updateMap(void) {
 	resetMap();
 	loadSnake();
 	loadFood();
-	generateObstacles();
+	// generateObstacles();
 }
 
 bool		GameState::inBounds(Coord pos) const {
@@ -257,6 +260,7 @@ void		GameState::resetSnake(void) {
 /* Requires other assets to be loaded into the map first */
 void		GameState::generateFood(void) {
 	Log log("Gamestate", "generateFood()", CRITICAL);
+
 	bool	found = false;
 	Coord	pos;
 	int		max_runs = 0;
@@ -265,7 +269,7 @@ void		GameState::generateFood(void) {
 	do {
 		pos = Coord(rand() % this->_size.getX(), rand() % this->_size.getY());
 
-		if (this->_map[pos.getX()][pos.getY()] == MAP_EMPTY && !(pos >= this->_size)) {
+		if (this->inBounds(pos) && this->_map[pos.getX()][pos.getY()] == MAP_EMPTY) {
 			found = true;
 			this->_food = pos;
 		}
