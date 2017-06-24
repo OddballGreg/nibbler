@@ -216,6 +216,10 @@ Coord		NcursesFSWindow::getWindowSize(void) {
 	return (Coord(this->_size.getX() - 4, this->_size.getY() - 6));
 }
 
+bool		NcursesFSWindow::getPaused(void) {
+	return (paused);
+}
+
 /*
 ** Setters
 */
@@ -281,6 +285,8 @@ void		NcursesFSWindow::keyListener(void) {
 			this->_direction = Direction(SOUTH);
 		else if ((lastKeyPress == 's') && this->_direction.getDirection() != SOUTH)
 			this->_direction = Direction(NORTH);
+		else if (lastKeyPress == 'p')
+			paused = (paused) ? false : true;
 		lastKeyPress = 0;
 	 }
 	logger.log("Ncurses Window| keyListener() Completed", IMPORTANT);

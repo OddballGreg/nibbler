@@ -53,28 +53,28 @@ void		SDL::drawMap(MAP map) {
 	SDL_RenderClear(_renderer);
 	SDL_SetRenderDrawColor( _renderer, 30, 30, 30, 50 );
 	for (int k = 0; k < this->_size.getY(); k++)
-	for (int l = 0; l < this->_size.getX(); l++) {
-		switch (map[l][k]) {
-			case MAP_EMPTY :
-				drawBlank(k, l, 0, 1);
-				break;
-			case MAP_OBSTICLE :
-				drawBlock(k, l, rand() % 8 + 1);
-				break;
-			case MAP_HEAD :
-				drawBlock(k, l, rand() % 8 + 1);
-				break;
-			case MAP_BODY :
-				drawBlock(k, l, rand() % 8 + 1);
-				break;
-			case MAP_FOOD :
-				drawBlock(k, l, rand() % 8 + 1);
-				break;
-			default :
-				drawBlock(k, l, rand() % 8 + 1);
-				break;
+		for (int l = 0; l < this->_size.getX(); l++) {
+			switch (map[l][k]) {
+				case MAP_EMPTY :
+					drawBlank(k, l, 0, 1);
+					break;
+				case MAP_OBSTICLE :
+					drawBlock(k, l, rand() % 8 + 1);
+					break;
+				case MAP_HEAD :
+					drawBlock(k, l, rand() % 8 + 1);
+					break;
+				case MAP_BODY :
+					drawBlock(k, l, rand() % 8 + 1);
+					break;
+				case MAP_FOOD :
+					drawBlock(k, l, rand() % 8 + 1);
+					break;
+				default :
+					drawBlock(k, l, rand() % 8 + 1);
+					break;
+			}
 		}
-	}
 	SDL_RenderPresent(_renderer);
 	
 	this->pollEvents();
@@ -239,6 +239,10 @@ Direction	SDL::getDirection(void) {
 Coord		SDL::getWindowSize(void) {
 	logger.log("SDL| getWindowSize() Called", AVERAGE);
 	return (this->_size);
+}
+
+bool		SDL::getPaused(void) {
+	return (this->_paused);
 }
 
 /*

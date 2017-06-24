@@ -46,6 +46,7 @@ class SDL : public IDisplay {
 		SDL_Color			_colors[8];
 
 		bool				_closed = false;
+		bool				_paused = false;
 
 	public:
 		SDL(void);
@@ -73,6 +74,7 @@ class SDL : public IDisplay {
 	
 		virtual Direction	getDirection(void);
 		virtual Coord		getWindowSize(void);
+		virtual bool		getPaused(void);
 
 		virtual void		setWindowSize(Coord size);
 

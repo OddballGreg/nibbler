@@ -142,6 +142,8 @@ Direction	OpenGL::getDirection(void) {
 			this->_direction = Direction(SOUTH);
 		else if ((lastKeyPress == 's') && this->_direction.getDirection() != SOUTH)
 			this->_direction = Direction(NORTH);
+		else if (lastKeyPress == 'p')
+			paused = (paused) ? false : true;
 		lastKeyPress = 0;
 	 }
 
@@ -153,6 +155,10 @@ Direction	OpenGL::getDirection(void) {
 Coord		OpenGL::getWindowSize(void) {
 	logger.log("OpenGL| getWindowSize() Called", AVERAGE);
 	return (winSize);
+}
+
+bool		OpenGL::getPaused(void) {
+	return (paused);
 }
 
 /*

@@ -29,11 +29,13 @@
 
 bool		listen = false;
 int			lastKeyPress = 0;
+bool		paused = false;
 
 # else
 
 extern bool	listen;
 extern int	lastKeyPress;
+extern bool	paused;
 
 # endif
 
@@ -56,6 +58,7 @@ public:
 	
 	virtual Direction		getDirection(void);
 	virtual Coord			getWindowSize(void);
+	virtual bool			getPaused(void);
 
 	virtual void			setWindowSize(Coord size);
 
