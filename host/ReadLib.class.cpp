@@ -90,11 +90,20 @@ void		ReadLib::callRun( void ) {
 	}
 
 	IDisplay* display = (IDisplay*)create();
-	display->initWindow(Coord(g_width, g_height));
-	this->runGame(display);
+	try {
+		display->initWindow(Coord(g_width, g_height));
+		this->runGame(display);
+	}
+	catch (std::runtime_error(&e)) {
+		try {
+			display->exitWindow();
+		}
+		catch (...) {
+		}
+		std::cout << e.what() << std::endl;
+	}
 	if (!userExit)
 		sleep(2);
-	display->exitWindow();
 	destroy( display );
 
 	logger.log_step_out("ReadLib| callRun() Completed", CRITICAL);
