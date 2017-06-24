@@ -173,14 +173,14 @@ void		NcursesWindow::initWindow(Coord size) {
 	getmaxyx(stdscr, y, x);
 
 	if (size.getX() == 0 && size.getY() == 0)
-		size = Coord(x - 2, y - 2);
+		size = Coord(x - 2, y - 6);
 
 	if (x <= size.getX() || y <= size.getY() || x < 10 || y < 10)
 		throw std::runtime_error("Error The terminal is too small for the specified size");
 
 	_size = size;
 
-	// _size = Coord(x - 2, y - 2);
+	// _size = Coord(size.getX(), size.getY() - 2);
 	_win  = newwin(this->_size.getY(), this->_size.getX(), 1, 1);
 	_panel = new_panel(_win);
 
@@ -221,7 +221,7 @@ Direction	NcursesWindow::getDirection(void) {
 
 Coord		NcursesWindow::getWindowSize(void) {
 	logger.log("Ncurses Window| getWindowSize() Called", AVERAGE);
-	return (Coord(this->_size.getX() - 4, this->_size.getY() - 8));
+	return (Coord(this->_size.getX() - 4, this->_size.getY() - 6));
 }
 
 /*
@@ -259,7 +259,7 @@ void		NcursesWindow::drawTitle(void) {
 
 bool		NcursesWindow::drawChar(int y, int x, const int c) {
 	x += 2;
-	y += 4;
+	y += 3;
 
 	if ((1 < x && x < this->_size.getX() - 2) && (1 < y && y < this->_size.getY() - 3)) {
 		mvwaddch(this->_win, y, x, c);
