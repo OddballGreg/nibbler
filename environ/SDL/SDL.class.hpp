@@ -1,14 +1,10 @@
 #ifndef SDL_WINDOW_HPP
 # define SDL_WINDOW_HPP
 
-
 # include <SDL2/SDL.h>
 # include <SDL2/SDL_main.h>
 # include <SDL/SDL.h>
 # include <SDL/SDL_main.h>
-
-# include <unistd.h> //debug
-# include <pthread.h>
 
 # define WIN_WIDTH    920
 # define WIN_HEIGHT   920
@@ -31,6 +27,9 @@ extern int	lastKeyPress;
 
 # include <cstring>
 # include <string>
+
+# include <unistd.h>
+# include <pthread.h>
 
 # include "../../shared/IDisplay.hpp"
 
@@ -69,7 +68,6 @@ class SDL : public IDisplay {
 		virtual	void		initWindow(void);
 		virtual void		initWindow(Coord size);
 				bool		setupWindow(void);
-				void		pollEvents( void );
 				void		renderWindow(void);
 		virtual void		exitWindow(void);
 	
@@ -79,7 +77,7 @@ class SDL : public IDisplay {
 		virtual bool		getExit(void);
 
 		virtual void		setWindowSize(Coord size);
-
+				void		pollEvents( void );
 				void		displayBMP(char *file_name);
 		inline bool			isClosed() const { return _closed; };
 };

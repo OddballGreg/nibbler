@@ -44,20 +44,7 @@ void		OpenGL::drawMap(MAP map) {
 
 void		OpenGL::drawScore(int score) {
 	logger.log_step_in("OpenGL| drawScore() Called", IMPORTANT);
-	(void)score;//FIXME
-/*
-	char	tmp[50];
-
-	sprintf(tmp, "Distance: %i", score);
-
-	setOrthographicProjection();
-	glPushMatrix();
-	glLoadIdentity();
-	glColor3f(2, 2, 2);
-	renderBitmapString(0, 0, -0.5, GLUT_BITMAP_HELVETICA_18, tmp);
-
-	glPopMatrix();
-	restorePerspectiveProjection();*/
+	(void)score;
 	logger.log_step_out("OpenGL| drawScore() Completed", IMPORTANT);
 }
 
@@ -69,7 +56,7 @@ void		OpenGL::drawPause(void) {
 
 void		OpenGL::drawGameOver(int finalScore) {
 	logger.log_step_in("OpenGL| drawGameOver() Called", IMPORTANT);
-	(void)finalScore;//FIXME
+	(void)finalScore;
 	logger.log_step_out("OpenGL| drawGameOver() Completed", IMPORTANT);
 }
 

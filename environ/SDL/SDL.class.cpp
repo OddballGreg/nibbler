@@ -1,8 +1,6 @@
 #define SDL_FILE
 #include "SDL.class.hpp"
 
-//MAP		glMap;
-
 /*
 ** Constructors and Destructors
 */
@@ -48,11 +46,10 @@ void		SDL::drawMap(MAP map) {
 		suzy++;
 	}
 
-	_closed = true;
 	this->setPalette();
 	SDL_RenderClear(_renderer);
 	SDL_SetRenderDrawColor( _renderer, 30, 30, 30, 50 );
-	for (int k = 0; k < this->_size.getY(); k++)
+	for (int k = 0; k < this->_size.getY(); k++) {
 		for (int l = 0; l < this->_size.getX(); l++) {
 			switch (map[l][k]) {
 				case MAP_EMPTY :
@@ -75,9 +72,14 @@ void		SDL::drawMap(MAP map) {
 					break;
 			}
 		}
+	}
 	SDL_RenderPresent(_renderer);
 	
 	this->pollEvents();
+
+	//ret = pthread_create(&thread, NULL, pollEvents, (void *)1);
+	//if (ret)
+	//	throw std::runtime_error("Unable to create new thread");
 
 	logger.log_step_in("SDL| drawMap() Called", IMPORTANT);
 }
@@ -182,41 +184,20 @@ void		SDL::exitWindow(void) {
 	logger.log_step_out("SDL| exitWindow() Completed", CRITICAL);
 }
 
-void		SDL::renderWindow(void) {
-	
-	_renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_PRESENTVSYNC);
-		
-	//SDL_FreeSurface(_primaryDisplay);
-
-	SDL_SetRenderDrawColor(_renderer, 0, 0, 200, 0);
-		
-	SDL_Rect	rect;
-
-	rect.w = 120;
-	rect.h = 120;
-	rect.x = (WIN_WIDTH / 2) - (rect.w / 2);
-	rect.y = (WIN_HEIGHT / 2) - (rect.h / 2);
-
-	SDL_SetRenderDrawColor(_renderer, 200, 0, 200, 0);
-	SDL_RenderClear(_renderer);
-	SDL_RenderFillRect(_renderer, &rect);
-
-	SDL_RenderPresent(_renderer);
-}
-
 void		SDL::pollEvents( void ) {
-
 	SDL_Event	event;
 
 	if (SDL_PollEvent(&event)) {
 		switch (event.type) {
 			case SDL_QUIT:
-				_closed = false;
+				this->exitWindow();
+				this->_exit = true;
 				break;
 			case SDL_KEYDOWN:
 				switch (event.key.keysym.sym) {
 					case SDLK_ESCAPE:
-						_closed = false;
+						this->exitWindow();
+						this->_exit = true;
 						break;
 					default:
 						break;
@@ -225,7 +206,6 @@ void		SDL::pollEvents( void ) {
 				break;
 		}
 	}
-
 }
 
 /*
