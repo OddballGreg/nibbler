@@ -73,14 +73,8 @@ void		SDL::drawMap(MAP map) {
 			}
 		}
 	}
-	SDL_RenderPresent(_renderer);
-	
-	this->pollEvents();
-
-	//ret = pthread_create(&thread, NULL, pollEvents, (void *)1);
-	//if (ret)
-	//	throw std::runtime_error("Unable to create new thread");
-
+	SDL_RenderPresent(_renderer);	
+	//this->pollEvents();
 	logger.log_step_in("SDL| drawMap() Called", IMPORTANT);
 }
 
@@ -102,7 +96,7 @@ void		SDL::drawGameOver(int finalScore) {
 	logger.log_step_out("SDL| drawGameOver() Completed", IMPORTANT);
 }
 
-void		SDL::drawBlock(int x, int y, int i) {
+void		SDL::drawBlock(int y, int x, int i) {
 	SDL_Rect r;
 
 	r.w = WIN_WIDTH / _size.getX();
@@ -114,7 +108,7 @@ void		SDL::drawBlock(int x, int y, int i) {
 	SDL_RenderFillRect( _renderer, &r );
 };
 
-void		SDL::drawBlank(int x, int y, int i, int j) {
+void		SDL::drawBlank(int y, int x, int i, int j) {
 	SDL_Rect r;
 
 	r.w = WIN_WIDTH / _size.getX();
@@ -184,9 +178,14 @@ void		SDL::exitWindow(void) {
 	logger.log_step_out("SDL| exitWindow() Completed", CRITICAL);
 }
 
-void		SDL::pollEvents( void ) {
+/*
+** Getters
+*/
+Direction	SDL::getDirection(void) {
+	logger.log("SDL| getDirection() Called", AVERAGE);
+	
 	SDL_Event	event;
-
+	
 	if (SDL_PollEvent(&event)) {
 		switch (event.type) {
 			case SDL_QUIT:
@@ -199,6 +198,22 @@ void		SDL::pollEvents( void ) {
 						this->exitWindow();
 						this->_exit = true;
 						break;
+					case SDLK_a:
+						if (this->_direction.getDirection() != EAST)
+							this->_direction = Direction(WEST);
+						break;
+					case SDLK_d:
+						if (this->_direction.getDirection() != WEST)
+							this->_direction = Direction(EAST);
+						break;
+					case SDLK_w:
+						if (this->_direction.getDirection() != NORTH)
+							this->_direction = Direction(SOUTH);
+						break;
+					case SDLK_s:
+						if (this->_direction.getDirection() != SOUTH)
+							this->_direction = Direction(NORTH);
+						break;
 					default:
 						break;
 				}
@@ -206,13 +221,6 @@ void		SDL::pollEvents( void ) {
 				break;
 		}
 	}
-}
-
-/*
-** Getters
-*/
-Direction	SDL::getDirection(void) {
-	logger.log("SDL| getDirection() Called", AVERAGE);
 	return (this->_direction);
 }
 

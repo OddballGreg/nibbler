@@ -218,8 +218,6 @@ void	changeSize(int width, int height)
 	glViewport(0, 0, width, height);
 	gluPerspective(45.0, ratio, 1.0, 150.0);
 	glMatrixMode(GL_MODELVIEW);
-	// g_win.height = height;
-	// g_win.width = width;
 }
 
 void			pressKey(int key, int x, int y) {
@@ -296,8 +294,6 @@ void				drawSquare(int x, int y, char colour) {
 			glColor3f(0.0f, 0.0f, 0.0f);
 			break;
 	}
-
-	// std::cout << "new_x = " << new_x << "; new_y = " << new_y << std::endl;
 
 	glPushMatrix();
 	glTranslatef(new_x, new_y, 0);
