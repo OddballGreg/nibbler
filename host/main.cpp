@@ -29,10 +29,10 @@ void			parseArgs(int ac, char **av) {
 
 			boost::program_options::notify(vm);
 
-			if (g_height < 10 || g_height > 100)
-				throw boost::program_options::error("height can not be greater than 100, or less than 10");
-			if (g_width < 10 || g_width > 100)
-				throw boost::program_options::error("width can not be greater than 100, or less than 10");
+			if (g_height < 15 || g_height > 100)
+				throw boost::program_options::error("height can not be greater than 100, or less than 15");
+			if (g_width < 15 || g_width > 100)
+				throw boost::program_options::error("width can not be greater than 100, or less than 15");
 
 			logger.setVerbosity(g_verbosity);
 
