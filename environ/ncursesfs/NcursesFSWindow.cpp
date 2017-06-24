@@ -109,7 +109,7 @@ void		NcursesFSWindow::drawScore(int score) {
 	std::string str = s.str();
 	str.resize(20);
 
-	mvwaddstr(this->_win, this->_size.getY(), 2, str.c_str());
+	mvwaddstr(this->_win, this->_size.getY() - 2, 2, str.c_str());
 	logger.log_step_out("Ncurses Window| drawScore() Completed", IMPORTANT);
 }
 
