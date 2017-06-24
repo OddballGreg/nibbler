@@ -73,4 +73,8 @@ void			changeSize(int width, int height);
 void			*startGlutLoop(void *threadID);
 void			drawSquare(int x, int y, char colour);
 
+void			renderBitmapString(float x, float y, float z, void *font, const char *string);
+void			setOrthographicProjection(void);
+void			restorePerspectiveProjection(void);
+
 #endif

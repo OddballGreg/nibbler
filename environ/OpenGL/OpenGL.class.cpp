@@ -45,6 +45,19 @@ void		OpenGL::drawMap(MAP map) {
 void		OpenGL::drawScore(int score) {
 	logger.log_step_in("OpenGL| drawScore() Called", IMPORTANT);
 	(void)score;//FIXME
+/*
+	char	tmp[50];
+
+	sprintf(tmp, "Distance: %i", score);
+
+	setOrthographicProjection();
+	glPushMatrix();
+	glLoadIdentity();
+	glColor3f(2, 2, 2);
+	renderBitmapString(0, 0, -0.5, GLUT_BITMAP_HELVETICA_18, tmp);
+
+	glPopMatrix();
+	restorePerspectiveProjection();*/
 	logger.log_step_out("OpenGL| drawScore() Completed", IMPORTANT);
 }
 
@@ -223,6 +236,36 @@ void			*startGlutLoop(void *threadID) {
 	glutMainLoop();
 
 	return (NULL);
+}
+
+void renderBitmapString(
+		float x,
+		float y,
+		float z,
+		void *font,
+		const char *string) {
+
+  const char *c;
+  glRasterPos3f(x, y,z);
+  for (c=string; *c != '\0'; c++) {
+    glutBitmapCharacter(font, *c);
+  }
+}
+
+void	setOrthographicProjection(void)
+{
+	glMatrixMode(GL_PROJECTION);
+	glPushMatrix();
+	glLoadIdentity();
+	gluOrtho2D(0, WIN_WIDTH, WIN_HEIGHT, 0);
+	glMatrixMode(GL_MODELVIEW);
+}
+
+void	restorePerspectiveProjection(void)
+{
+	glMatrixMode(GL_PROJECTION);
+	glPopMatrix();
+	glMatrixMode(GL_MODELVIEW);
 }
 
 /*
